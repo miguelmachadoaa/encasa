@@ -1,0 +1,209 @@
+<div class="container-fluid">
+    
+    <h1 class="page-header">Caja</h1>
+
+    <div class="mensaje"></div>
+
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
+
+    <div class="comtainer-fluid" id="contenido_caja">
+        
+       <?php foreach ($this->pedido as $row) { ?>
+       
+        <button onclick="detalleCaja('<?php echo $row->id; ?>')" class="btn btn-sq-lg btn-primary">
+                <br/>
+                <span class="titulo" > <?php echo $row->descripcion; ?> </span>
+                <br/>
+               <span class="total">Bs. <?php echo $row->total; ?></span>
+        </button>
+
+    <?php } ?>
+
+
+        <button  onclick="agregarPedido()" class="btn btn-sq-lg btn-primary">
+                <br/>
+                <span class="glyphicon glyphicon-plus ">  </span>
+                <br/>
+                agregar 
+        </button>
+
+
+    </div>
+    
+	
+
+    
+    
+</div>
+
+<div id="addCajaModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Crear Cuenta</h4>
+            </div>
+            <div class="modal-body">
+               <div class="form-group">
+                    <label for="nombre" class="required">Nombre *</label>
+                    <input type="text" name="nombre_modal" id="nombre_modal" value="" class="form-control" placeholder="Nombre de la Cuenta">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="cliente" class="required">Cliente *</label>
+
+                    <select name="cliente" id="cliente" class="form-control">
+    
+                      <?php foreach ($this->clientes as $cliente): ?>
+                          <option value="<?php echo $cliente->id ?>"><?php echo $cliente->nombre; ?></option>
+                      <?php endforeach ?>
+                        
+                  
+                    </select>
+
+                    
+                </div>
+
+                 <div class="form-group">
+                    <label for="vendedor" class="required">Vendedor *</label>
+
+                    <select name="vendedor" id="vendedor" class="form-control">
+    
+                      <?php foreach ($this->empleados as $empleado): ?>
+                          <option value="<?php echo $empleado->id ?>"><?php echo $empleado->nombre; ?></option>
+                      <?php endforeach ?>
+                        
+                  
+                    </select>
+
+                    
+                </div>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button onclick="crearCaja()" type="button" class="btn btn-primary ">Crear</button>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="addPagoModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Agregar Pago</h4>
+            </div>
+            <div class="modal-body">
+
+             <input type="hidden" name="id_pedido" id="id_pedido">
+
+               <div class="form-group">
+                    <label for="nombre" class="required">Monto</label>
+                    <input type="text" name="monto_modal" id="monto_modal" value="" class="form-control" placeholder="Monto">
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo_pago" class="required">Tipo de Pago *</label>
+
+                    <select name="tipo_pago" id="tipo_pago" class="form-control">
+    
+                      
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="Debito">Debito</option>
+                        <option value="Transferencia">Transferencia</option>
+                  
+                    </select>
+
+
+                </div>
+
+                
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button onclick="pagarCaja()" type="button" class="btn btn-primary ">Pagar</button>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="rejectModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Rehazar Miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro desea realizar esta acción?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger reject">Aceptar</button>
+                <form id="formReject" name="formReject" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'reject')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="pendingModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Cambiar estatus de miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea cambiar el estatus del miembro a pendiente?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary pending">Aceptar</button>
+                <form id="formPending" name="formPending" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'pending')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar Producto</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea eliminar el Producto?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger delete">Borrar</button>
+                <form id="formDelete" name="formDelete" method="POST" action="<?php echo $this->url(array('controller' => 'productos', 'action' => 'delete')); ?>">
+                    <input type="hidden" id="id" name="id" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

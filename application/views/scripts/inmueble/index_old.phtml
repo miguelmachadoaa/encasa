@@ -1,0 +1,203 @@
+<div class="container-fluid" >
+    <h1 class="page-header">Registro de Inmuebles
+
+<div class="pull-right">
+                    <a href="<?php echo $this->baseUrl('/inmueble/add'); ?>" class="btn btn-default"><i class="fa fa-home" aria-hidden="true"></i>Agregar</a>
+                </div>
+
+    </h1>
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
+    <?php $ObjFotos = new Application_Model_DbTable_Fotos(); ?>
+    <?php  $ObjViews= new Application_Model_DbTable_Views(); ?>
+    <?php $ObjDatos = new Application_Model_DbTable_Datos(); ?>
+    <?php $ObjContacto = new Application_Model_DbTable_Contacto(); ?>
+
+
+    <?php foreach ($this->inmuebles as $row): ?>
+
+        <div id="<?php  echo $row->id; ?>" class="row well inmueble">
+            <div class="col-sm-2">
+           <?php $foto=$ObjFotos->getsSolicitudUna($row->id);  ?>  
+           <img class="img img-responsive" src="<?php echo $this->baseUrl('/assets/images/').$foto->foto; ?>">
+              
+            </div>
+            <div class="col-sm-6">
+                <a target="_blank" href="<?php echo $this->baseUrl('/inmueble/ver/id/').$row->id; ?>"><h4><?php echo $row->titulo;  ?></h4></a>
+                <p><?php if ($row->monto_vender) {  echo $row->monto_vender; }   ?></p>
+                <p><?php  echo $row->name.' '.$row->lastname;   ?> - <?php echo $row->fecha;  ?></p>
+                <p>
+
+                <?php if ($row->estatus=="activo"): ?>
+                    <div style="display: inline-block;" class="<?php echo $row->id; ?>estatus">Estatus: <span class=" label label-primary " onclick="cambiarEstatus('<?php echo $row->id; ?>', '<?php echo $row->estatus; ?>');">Activa</span></div> 
+
+                <?php endif ?>
+
+                <?php if ($row->estatus=="pendiente"): ?>
+                    <div style="display: inline-block;" class="<?php echo $row->id; ?>estatus">Estatus: <span class=" label label-default " onclick="cambiarEstatus('<?php echo $row->id; ?>', '<?php echo $row->estatus; ?>');">Pendiente</span></div> 
+
+                <?php endif ?>
+
+                <?php if ($row->estatus=="vendida"): ?>
+                    <div style="display: inline-block;" class="<?php echo $row->id; ?>estatus">Estatus: <span class=" label label-success " onclick="cambiarEstatus('<?php echo $row->id; ?>', '<?php echo $row->estatus; ?>');">Vendida</span></div> 
+
+                <?php endif ?>
+
+                <?php if ($row->estatus=="suspendida"): ?>
+                    <div style="display: inline-block;" class="<?php echo $row->id; ?>estatus">Estatus: <span class=" label label-warning " onclick="cambiarEstatus('<?php echo $row->id; ?>', '<?php echo $row->estatus; ?>');">Suspendida</span></div> 
+
+                <?php endif ?>
+
+                <?php if ($row->estatus=="eliminada"): ?>
+                    <div style="display: inline-block;" class="<?php echo $row->id; ?>estatus">Estatus: <span class=" label label-danger " onclick="cambiarEstatus('<?php echo $row->id; ?>', '<?php echo $row->estatus; ?>');">Eliminada</span></div> 
+
+                <?php endif ?>
+
+
+                  - 
+                
+
+                <?php if ($row->destacado=="destacada"): ?>
+                    <div style="display: inline-block;" class="<?php echo $row->id; ?>tipo">Tipo de Publicacion: <span class=" label label-danger" onclick="cambiartipo('<?php echo $row->id; ?>', '<?php echo $row->destacado; ?>');">Destacada</span></div>
+
+                <?php endif ?>
+
+                <?php if ($row->destacado=="normal"): ?>
+                    <div style="display: inline-block;" class="<?php echo $row->id; ?>tipo">Tipo de Publicacion: <span class=" label label-primary" onclick="cambiartipo('<?php echo $row->id; ?>', '<?php echo $row->destacado; ?>');">Normal</span></div>
+
+                <?php endif ?>
+
+
+                 </p>
+
+            </div>
+            <div class="col-sm-1">
+                <a href="<?php echo $this->baseUrl('/inmueble/estadistica/id/').$row->id; ?>"><i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                <?php $views=$ObjViews->fetchAll('id_inmueble="'.$row->id.'"'); ?>
+                <?php echo count($views); ?></a>
+            </div>
+            <div class="col-sm-1">
+                <a href="<?php echo $this->baseUrl('/inmueble/datos/id/').$row->id; ?>"><i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+                <?php $datos=$ObjDatos->fetchAll('id_inmueble="'.$row->id.'"'); ?>
+                <?php echo count($datos); ?></a>
+            </div>
+            <div class="col-sm-1">
+                <a href="<?php echo $this->baseUrl('/inmueble/contacto/id/').$row->id; ?>"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                <?php $contact=$ObjContacto->fetchAll('id_inmueble="'.$row->id.'"'); ?>
+                <?php echo count($contact); ?></a>
+            </div>
+            <div class="col-sm-1">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                   <i class="fa fa-th" aria-hidden="true"></i>
+                    
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a onclick="del('<?php echo $row->id; ?>')" href="#">Eliminar</a></li>
+                    <li><a href="<?php echo $this->baseUrl('/inmueble/edit/id/').$row->id; ?>">Editar</a></li>
+                    <li><a href="<?php echo $this->baseUrl('/inmueble/estadistica/id/').$row->id; ?>">Informe</a></li>
+                    <li><a href="#">Suspender</a></li>
+                    <li><a href="<?php echo $this->baseUrl('/inmueble/permisos/id/').$row->id; ?>">Permisos</a></li>
+                    <li><a href="<?php echo $this->baseUrl('/inmueble/ver/id/').$row->id; ?>">Ver</a></li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+
+    <?php endforeach; ?>
+
+
+
+
+
+
+
+
+ 
+    
+
+
+
+
+
+</div> <!-- End Container--> 
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="deletePresupuesto()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="TipoModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Tipo de Publicacion</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <select id="tipo_edit" name="tipo_edit" class="form-control" > 
+                        <option value="normal">Normal</option>
+                        <option value="destacada">Destacada</option>
+                </select>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button"  onclick="updateTipo();" class="btn btn-primary ">Actualizar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="EstatusModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Estatus de la Publicacion</h4>
+            </div>
+            <div class="modal-body">
+                <input  class="form-control" type="hidden" name="del_id" id="del_id">
+                <select id="estatus_edit" name="estatus_edit" class="form-control"> 
+                        <option value="activo">Activo</option>
+                        <option value="pendiente">Pendiente</option>
+                        <option value="vendida">Vendida</option>
+                        <option value="suspendida">Suspendida</option>
+                        <option value="eliminada">Eliminada</option>
+                </select>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="updateEstatus();"  class="btn btn-primary">Actualizar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="container">
+
+  <ol class="breadcrumb">
+      <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a></li>
+      <li><a href="<?php echo $this->baseUrl('/contacto/list'); ?>">Contactos</a></li>
+      <li class="active">Ver Detalle</li>
+  </ol>
+    
+   <div class="row">
+
+   <h1 class="page-header">Detalles del Contacto</h1>
+
+   <br> 
+
+   <table class="table table-striped table-responsive"> 
+      <tr>  
+      <th > Campo </th>
+      <th> Detalle </th>
+
+      </tr>
+
+      <tr>  
+        <th> Id </th>
+        <td> <?php echo $this->contacto['id']; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Nombre</th>
+        <td> <?php echo $this->contacto['nombre']; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Telefono  </th>
+        <td> <?php echo $this->contacto['telefono']; ?>  </td>
+      </tr>
+
+
+      <tr>  
+        <th> Email </th>
+        <td> <?php echo $this->contacto['email']; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Mensaje  </th>
+        <td> <?php echo $this->contacto['mensaje']; ?>  </td>
+      </tr>
+
+      
+      <tr>  
+        <th> Fecha </th>
+        <td> <?php echo $this->contacto['fecha']; ?>  </td>
+      </tr>
+      
+
+    </table>
+
+
+
+   </div>
+   
+    
+  
+  
+ 
+    
+</div>
+

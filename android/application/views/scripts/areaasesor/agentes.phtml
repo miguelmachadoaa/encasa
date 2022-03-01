@@ -1,0 +1,59 @@
+  <!-- breadcrumbs -->
+<div class="w3l_agileits_breadcrumbs">
+   <div class="container">
+    <div class="w3l_agileits_breadcrumbs_inner">
+      <ul>
+        <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a><span>«</span></li>
+                  
+        <li>Contactos </li>
+        </ul>
+    </div>
+  </div>
+</div>    
+<!-- //breadcrumbs -->
+
+
+<!-- Doctors -->
+<div class="blog" id="blog">
+  <div class="container">
+  
+    <h4 class="tittle-w3layouts">Contactos </h4>
+
+    <?php foreach ($this->usuarios as $row): ?>
+
+      <div class="row ">
+          <div class="col-sm-12">
+
+            <div class="well" style="margin: 1em;">
+            <p>
+              <b>Nombre:</b> <a href=" <?php    echo $this->baseUrl('areaasesor/perfil/id/').$row->id; ?>">   <?php echo   $row->name.' '. $row->lastname; ?>  </a>
+            </p>
+
+            
+
+            <p>
+              <b>Email:</b> <?php echo $row->email; ?>
+            </p>
+
+            <p>
+              <b>Teléfono:</b> <?php echo $row->telefono; ?>
+            </p>
+
+            <p>
+              <b>Movil:</b> <?php echo $row->movil; ?>
+            </p>
+
+
+            </div>
+
+          </div>
+        </div>
+      
+    <?php endforeach ?>
+
+
+  </div>
+</div>
+
+<!-- //Doctors --> 
+

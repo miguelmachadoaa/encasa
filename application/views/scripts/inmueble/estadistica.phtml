@@ -1,0 +1,88 @@
+<div class="container">
+
+  <ol class="breadcrumb">
+      <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a></li>
+      <li><a href="<?php echo $this->baseUrl('/inmueble'); ?>">Inmuebles</a></li>
+      <li class="active">Ver Detalle</li>
+  </ol>
+
+  <div class="row">
+
+
+<div class="row">
+  <div class="col-sm-12">
+
+    <a href="<?php echo $this->baseUrl('/inmueble'); ?>" class="btn btn-primary"> < Volver a Inmuebles </a>
+    <a href="<?php echo $this->baseUrl('/inmueble/ver/id/').$this->id; ?>" class="btn btn-primary"> Ver Aviso </a>
+    
+    
+    <br><br><br>
+  </div>
+</div>
+
+<div class="row">
+
+<div class="col-sm-2 col-md-2  col-xs-2">
+
+<div class="col-sm-12">
+
+    <a href="<?php echo $this->baseUrl('/inmueble/edit/id/').$this->id; ?>" class="btn btn-primary"> Editar </a>
+  
+  
+</div>
+
+<div class="col-sm-12">
+    <a href="<?php echo $this->baseUrl('/inmueble/datos/id/').$this->id; ?>" class="btn btn-primary"> Solicitud de Datos </a>
+  
+  
+</div>
+
+<div class="col-sm-12">
+    <a href="<?php echo $this->baseUrl('/inmueble/contacto/id/').$this->id; ?>" class="btn btn-primary"> Interesados </a>
+  
+  
+</div>
+
+<div class="col-sm-12">
+    <a href="<?php echo $this->baseUrl('/inmueble/permisos/id/').$this->id; ?>" class="btn btn-primary"> Permisos </a>
+
+</div>
+
+<div class="col-sm-12">
+    <a href="<?php echo $this->baseUrl('/inmueble/estadistica/id/').$this->id; ?>" class="btn btn-primary"> Estadistica </a>
+  
+  
+</div>
+
+
+  
+</div>  
+
+
+<div class="col-sm-10">
+
+<div id="data" data-datos="" style="display: none;"><?php echo $this->estadistica; ?></div>
+
+
+<div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Visitas a la Propiedad</h2>
+                   
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <canvas id="lineChart"></canvas>
+                  </div>
+                </div>
+              </div>
+
+
+              
+
+</div>
+</div>
+
+</div>
+</div>

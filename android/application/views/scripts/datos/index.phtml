@@ -1,0 +1,102 @@
+<div class="container-fluid" ng-controller="modulosCtrl">
+    <h1 class="page-header">Datos de Contacto
+
+<div class="pull-right">
+                    <a href="<?php echo $this->baseUrl('/modulo/add'); ?>" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Agregar</a>
+                </div>
+
+    </h1>
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    
+    <table class="table table-striped">
+        <tr>
+            <th>Titulo</th>
+            <th>Mensaje</th>
+            <th>Fecha</th>
+            
+            <th width="150px">
+                Accion
+            </th>
+        </tr>
+       
+        <?php foreach ($this->datos as $row): ?>
+        <tr id="<?php echo $row->id; ?>">
+            
+            
+            <td> <a href=" <?php    echo $this->baseUrl('inmueble/ver/id/').$row->id_inmueble; ?>">   <?php echo   $row->titulo.' - '. $row->tipo_inmueble; ?>  </a></td>
+            <td>Han Solicitado Datos de Contacto</td>
+            <td><?php echo $row->fecha; ?></td>
+            
+
+            <td>
+                
+                <div class="btn-group pull-right">
+
+                    
+                    <a href="<?php echo $this->baseUrl('/datos/edit/id/').$row->id; ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> </a>
+
+                    <button type="button" onclick="del(<?php echo $row->id; ?>)"  class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash"></span> </button>
+
+                    <?php if ($row->estatus){ ?>
+
+                      <button type="button"  onclick="desactivarModulo(<?php echo $row->id; ?> )"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-up"></span> </button>  
+
+                    <?php }else{ ?>
+
+                        <button type="button" onclick="activarModulo(<?php echo $row->id; ?>)"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-down"></span> </button>  
+
+                    <?php } ?>
+
+                    
+                </div>
+                
+                
+                
+                
+            </td>
+
+
+        </tr>
+        <?php endforeach; ?>
+
+
+
+        
+    </table>
+
+    
+
+
+
+
+
+</div> <!-- End Container--> 
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="deleteModulo()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>

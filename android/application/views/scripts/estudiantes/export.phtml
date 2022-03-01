@@ -1,0 +1,67 @@
+
+<html>
+    <head>
+        <meta charset="ANSI">
+        <title>Reporte</title>
+        <style>
+            body {font-size: 11px;}
+        </style>
+    </head>
+    <body>
+        <h2>Reporte de Participantes Registrados</h2>
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td>
+                    <strong>Grado de Instruccion:</strong>
+                    <?php if (isset($this->params['f_grado']) && !empty($this->params['f_grado'])): ?>
+                        <?php echo utf8_encode($this->objgrado->getGradoUn($this->params['f_grado'])); ?>
+                    <?php endif; ?>
+                </td>
+                <td>
+                    <strong>Ciudad:</strong>
+                    <?php if (isset($this->params['f_city']) && !empty($this->params['f_city'])): ?>
+                         <?php echo utf8_encode($this->objCities->getCity($this->params['f_city'])); ?>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <tr>
+              <td>
+                    <strong>Estado:</strong>
+                    <?php if (isset($this->params['f_state']) && !empty($this->params['f_state'])): ?>
+                         <?php echo utf8_encode($this->objStates->getState($this->params['f_state'])); ?>
+                    <?php endif; ?>
+                </td>
+              <td>
+                    <strong>Profesión:</strong>
+                    <?php if (isset($this->params['f_profession']) && !empty($this->params['f_profession'])): ?>
+                         <?php echo utf8_encode($this->objProfession->getProfession($this->params['f_profession'])); ?>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        </table>
+        <table cellpadding="2" cellspacing="2" border="0">
+            <tr style="background-color:#BDBDBD; font-weight: bold; color: white; text-align: center;">
+				<th width="10%" height="30px" style="border-right: 1px solid #ccc;">Cédula</th>
+                <th width="15%" height="30px" style="border-right: 1px solid #ccc;">Nombre y Apellido</th>
+                <th width="15%" height="30px" style="border-right: 1px solid #ccc;">Dirección</th>
+				<th width="10%" height="30px" style="border-right: 1px solid #ccc;">Télefono</th>
+                <th width="10%" height="30px" style="border-right: 1px solid #ccc;">Estado</th>
+                <th width="12%" height="30px" style="border-right: 1px solid #ccc;">Ciudad</th>
+                <th width="15%" height="30px" style="border-right: 1px solid #ccc;">Grado Instruccion</th>
+                <th width="13%" height="30px">Fecha de Nacimiento</th>
+            </tr>
+            <?php $i=0; foreach ($this->members as $row): $i++; ?>
+                <tr style="font-size:10px; background-color: <?php echo ($i%2==0) ? '#eee;' : '#fff'; ?>;">
+                    <td height="30px" style="border-right: 1px solid #ccc;"><?php echo  utf8_encode($row->cedula); ?></td>
+					<td height="30px" style="border-right: 1px solid #ccc;"><?php echo ucwords(implode(' ', array($row->nombre, $row->apellido))); ?></td>
+                    <td height="30px" style="border-right: 1px solid #ccc;"><?php echo  ucwords(utf8_encode($row->direccion)); ?></td>
+                    <td height="30px" style="border-right: 1px solid #ccc;"><?php echo  utf8_encode($row->tlf); ?></td>
+					<td height="30px" style="border-right: 1px solid #ccc;"><?php echo  utf8_encode($row->estado); ?></td>
+                    <td height="30px" style="border-right: 1px solid #ccc;"><?php echo  utf8_encode($row->ciudad); ?></td>
+                     <td height="30px" style="border-right: 1px solid #ccc;"><?php echo  utf8_encode($row->grado); ?></td>
+                    <td height="30px"><?php echo $row->fecha_nac; ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </body>
+</html>

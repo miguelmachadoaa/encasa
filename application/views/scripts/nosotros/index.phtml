@@ -1,0 +1,98 @@
+<!--/team-->
+<div class="team" id="team">
+         <div class="container">
+       <!--/about-section-->
+
+
+       <?php $i=1; foreach ($this->nosotros as $nos): ?>
+
+              <?php if ($i%2==0){ ?>
+
+
+              <div class="about-section agileits" >
+        <div class="col-md-4 ab-left">
+          <img src="<?php echo $this->baseUrl($nos->imagen); ?>" class="img-responsive" alt="<?php echo $nos->titulo; ?>"/>
+         </div>
+         <div class="col-md-8 ab-text">
+                   <h3 class="tittle"><?php echo $nos->titulo; ?></h3>  
+                    <p style="text-align: justify;"> <?php echo $nos->contenido; ?></p>
+              <div class="start">
+              </div>
+
+          </div>
+          <div class="clearfix"> </div>
+       </div>
+
+
+
+                
+              <?php }else{ ?>
+
+
+               <div class="about-section" style="padding-bottom: 2em;">
+              <div class="col-md-8 ab-text two">
+                   <h4 class="tittle"><?php echo $nos->titulo; ?> </h4>
+             <p style="text-align: justify;"><?php echo $nos->contenido; ?></p>
+              <div class="start">
+              </div>
+
+          </div>
+            <div class="col-md-4 ab-left">
+               <img src="<?php echo $this->baseUrl($nos->imagen); ?>" class="img-responsive" alt="<?php echo $nos->titulo; ?>"/>
+         </div>
+          <div class="clearfix"> </div>
+       </div>
+
+
+              <?php } ?>
+
+              
+              <?php $i++; ?>
+
+              
+            <?php endforeach ?>
+
+
+
+         
+        <!--//about-section-->
+        <!--/about-section2-->
+        
+        <!--//about-section2-->
+      </div>
+       </div>
+      <!--/team-->
+
+
+
+        <div class="company-w3">
+          <div class="container">
+            <div class="company-grids">
+      <div class="row">
+            <?php foreach ($this->objetivos as $objetivo): ?>
+              
+                <div class="col-sm-6 col-md-4">
+                  <div class="thumbnail">
+                    <img src="<?php echo $this->baseUrl($objetivo->imagen); ?>" class="img-responsive" alt="<?php echo $objetivo->titulo; ?>">
+                   
+                    <div class="">
+                      <h3><?php echo $objetivo->titulo; ?></h3>
+                      <p style="text-align: justify; font-size: 0.85em;    line-height: 2em;"><?php echo $objetivo->contenido; ?></p>
+                      
+                    </div>
+                  </div>
+                </div>
+             
+
+
+
+            <?php endforeach ?>
+ </div>
+              
+              
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      
+        

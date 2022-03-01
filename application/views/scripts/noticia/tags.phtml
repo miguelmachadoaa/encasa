@@ -1,0 +1,66 @@
+<div class="container">
+
+  <ol class="breadcrumb">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="app/noticia">Noticias</a></li>
+      <li class="active">Tags</li>
+  </ol>
+    
+   <div class="row">
+ 
+      <div class="col-sm-8">
+
+            
+                <?php foreach ($this->related as $new){ ?>
+
+
+                      <div  class="col-sm-6 col-md-6">
+                            <div class="thumbnail">
+                             <img class="img img-responsive" src="app/<?php echo $new['foto']; ?>" alt="...">
+                         <div class="caption">
+                        <h3><?php echo $new['titulo']; ?></h3>
+                        <p><?php echo strip_tags(substr($new['noticia'], 0, 200)) ; ?></p>
+                        <p><a href="app/noticia/ver/id/<?php echo $new['id']; ?>" class="btn btn-primary" role="button">Leer Mas</a> </div>
+                      </div>
+                
+                
+        </div>
+
+            <?php } ?>
+      
+    </div>
+
+   <div class="col-sm-4">
+
+   <div class="panel panel-primary ver">
+
+            <div class="panel-heading">
+
+                <h3 class="panel-title">Etiquetas </h3>
+
+
+
+            </div>
+
+            <div class="panel-body contenido" >
+
+            
+            <?php foreach ($this->etiquetas as $new): ?>
+
+
+                <p> <a href="app/noticia/tags/id/<?php echo $new['descripcion']; ?>"><?php echo $new['descripcion']; ?></a></p>
+              
+            <?php endforeach ?>
+
+
+            </div>
+
+            
+        </div>
+       
+
+   </div>
+
+
+   </div>
+ </div>

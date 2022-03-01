@@ -1,0 +1,73 @@
+  <!-- breadcrumbs -->
+<div class="w3l_agileits_breadcrumbs">
+   <div class="container">
+    <div class="w3l_agileits_breadcrumbs_inner">
+      <ul>
+        <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a><span>«</span></li>
+                  
+        <li>Propiedades</li>
+        </ul>
+    </div>
+  </div>
+</div>    
+<!-- //breadcrumbs -->
+
+
+<!-- Doctors -->
+<div class="blog" id="blog">
+  <div class="container">
+  <h4 class="tittle-w3layouts">Nuestras Propiedades</h4>
+
+
+   <?php $ObjFotos = new Application_Model_DbTable_Fotos(); ?>
+
+
+        <?php $i=0; ?>
+        <div class="row">
+
+
+        <?php foreach ($this->inmueble as $inm): ?>
+
+
+          <?php $i++; ?>
+
+          <?php $foto=$ObjFotos->getsSolicitudUna($inm->id);  ?>  
+
+
+          <div class="col-xs-3"> 
+
+            <img style="border-radius: 5em;" class="img img-responsive" src="<?php echo $this->baseUrl('/../assets/images/300/').$foto->foto; ?>" alt="">
+            
+          </div>
+
+          <div class="col-xs-9"> 
+
+          <p> <a href="<?php echo $this->baseUrl('/inmueble/ver/id/').$inm->id; ?>"> <?php echo substr($inm->titulo, 0, 50); ?></p> 
+
+          <p>Ubicacion: <?php echo utf8_encode($inm->zona);?></p>
+
+          <p class="para-wthree">Precio: <?php echo number_format($inm->monto_vender, 2, ',', '.');?> BS.</p>
+
+
+
+
+
+
+          </div>
+
+          <hr>  
+
+          <div class="clearfix">  </div>
+
+           <hr>
+
+        <?php endforeach ?>
+
+        </div>
+    
+    
+  </div>
+</div>
+
+<!-- //Doctors --> 
+

@@ -1,0 +1,43 @@
+ <div class="container">
+
+  <ol class="breadcrumb">
+      <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a></li>
+      <li><a href="<?php echo $this->baseUrl('/inmueble'); ?>">Inmuebles</a></li>
+      <li class="active">Estadistica</li>
+  </ol>
+
+  <div class="row">
+
+<div id="data" data-datos="" style="display: none;"><?php echo $this->estadistica; ?></div>
+<div id="dataregistro" data-datos="" style="display: none;"><?php echo $this->registros; ?></div>
+
+<div class="row">
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Visitas a todas las propiedades</h2>
+                   
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <canvas id="lineChart"></canvas>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Captacion de Propiedades por Usuario</h2>
+                   
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <canvas id="barChart"></canvas>
+                  </div>
+                </div>
+              </div>
+
+</div>
+</div>

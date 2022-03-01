@@ -1,0 +1,15 @@
+<?php
+
+$destacado=$this->inmueble['destacado'];
+$id=$this->inmueble['id'];
+
+
+if ($destacado=='destacada') { ?>
+
+	Tipo de Publicacion: <span class=" label label-danger" onclick="cambiartipo('<?php echo $id; ?>', '<?php echo $destacado; ?>');">Destacada</span>
+
+<?php }else{ ?>
+
+	Tipo de Publicacion: <span class=" label label-primary" onclick="cambiartipo('<?php echo $id; ?>', '<?php echo $destacado; ?>');">Normal</span>
+
+<?php 	}  ?>

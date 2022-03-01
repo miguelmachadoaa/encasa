@@ -1,0 +1,41 @@
+            <!--gallery-starts-->
+                <div class="gallery">
+                    <div class="container">
+                        <div class="gallery-text">
+                        <h2><?php echo $this->pagina->titulo; ?></h2>
+                        <p><?php echo $this->pagina->contenido; ?></p>
+                        </div>
+                            <div class="grid-gallery">
+
+                                             <?php $i=0; foreach ($this->elementos as $elemento): ?>
+
+                                        <?php if ($i==2){ ?>
+
+                                        <div class="col-md-4 <?php echo $i; ?> col-xs-4 gallery-grid">
+                                            <a class="example-image-link" href="<?php  echo $this->baseUrl($elemento->imagen); ?>" data-lightbox="<?php  echo $elemento->titulo; ?>" data-title="<?php  echo $elemento->descripcion; ?>"><img class="example-image" src="<?php  echo $this->baseUrl($elemento->imagen); ?>" alt="<?php  echo $elemento->titulo; ?>"/></a>
+                                         </div>
+
+
+                                         <div class="clearfix"></div>
+                                            <?php $i=0; ?>
+                                        
+                                        <?php }else{ ?>
+
+                                            <div class="col-md-4 <?php echo $i; ?> col-xs-4 gallery-grid">
+                                            <a class="example-image-link" href="<?php  echo $this->baseUrl($elemento->imagen); ?>" data-lightbox="<?php  echo $elemento->titulo; ?>" data-title="<?php  echo $elemento->descripcion; ?>"><img class="example-image" src="<?php  echo $this->baseUrl($elemento->imagen); ?>" alt="<?php  echo $elemento->titulo; ?>"/></a>
+                                            </div>
+
+                                        <?php $i++; ?>
+
+                                <?php }?>
+                                
+                                    <?php endforeach ?>
+
+                                
+                                
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                    </div>
+            </div>
+            <!--gallery-starts-->  

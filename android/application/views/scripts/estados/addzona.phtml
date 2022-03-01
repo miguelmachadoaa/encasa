@@ -1,0 +1,152 @@
+<div class="container" >
+
+	<ol class="breadcrumb">
+          <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a></li>
+		  <li><a href="<?php echo $this->baseUrl('/estados'); ?>">Estados</a></li>
+		  <li><a href="<?php echo $this->baseUrl('/estados/addciudad/id/').$this->ciudad['id_estado'].''; ?>">Ciudad</a></li>
+		  <li class="active">Agregar Ciudad</li>
+	</ol>
+
+    <h1 class="page-header">Agregar Zona a la Ciudad <?php echo $this->ciudad['ciudad']; ?></h1>
+    
+    <div class="row">
+
+
+
+<!--++++++++++++++++++++ Comienzo del formulario ++++++++++++++++++-->
+<div class="col-sm-12">
+	<form id="form_noticia" name="form_noticia" enctype="multipart/form-data" action="<?php echo $this->baseUrl('/estados/addzona/id/'); ?>" method="post"><div>
+
+		
+		<input type="hidden" id="id_ciudad" name="id_ciudad"  value="<?php echo $this->id_ciudad; ?>">
+
+
+		<div class="form-group">
+			<label for="cedula" class="required">Zona *</label>
+			<input type="text" name="zona" id="zona" value="" class="form-control" placeholder="Zona">
+		</div>
+
+
+
+		<dt id="buttons-label">&#160;</dt>
+		<dd id="buttons-element">
+			<fieldset id="fieldset-buttons">
+				<dl>
+					<input type="submit" name="btn_submit" id="btn_submit" value="Guardar" class="btn btn-default">
+
+					<button name="btn_cancel" id="btn_cancel" type="button" class="btn btn-danger">Cancelar</button>
+				</dl>
+
+			</fieldset>
+		</dd>
+		</div>
+	</form> 
+
+
+</div>
+
+
+<table class="table table-striped" id="tb_estudiantes">
+        <thead>
+        <tr>
+            <th>ID</th>
+           
+            <th>Estado</th>
+            
+            
+            <th width="150px">
+                Accion
+            </th>
+        </tr>
+    </thead><tbody>
+
+        <?php foreach ($this->elementos as $row): ?>
+        <tr id="<?php echo $row->id; ?>">
+            <td><?php echo $row->id; ?></td>
+            
+            <td><?php echo utf8_encode($row->zona) ; ?></td>
+            
+
+            <td>
+                
+                <div class=" pull-right" style=" width: 12em;">
+                    
+                    <a href="<?php echo $this->baseUrl('/estados/edit/id/').$row->id; ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> </a>
+
+                    
+
+                    <!--<a href="<?php echo $this->baseUrl('/estados/addmunicipio/id/').$row->id; ?>"  class="btn btn-primary" alt="Agregar Municipio" title="Agregar Municipio"><span class="glyphicon glyphicon-road"></span> </a>-->
+
+                   <button type="button" onclick="borrar(<?php echo $row->id; ?>, 'zonas')"  class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash"></span> </button>
+
+                   <div class="estatus" style="display: inline-block;">
+
+                   <?php if ($row->estatus){ ?>
+
+                      <button type="button"  onclick="estatus(<?php echo $row->id; ?>, 'estados', '0' )"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-up"></span> </button>  
+
+                    <?php }else{ ?>
+
+                        <button type="button" onclick="estatus(<?php echo $row->id; ?>,  'estados', '1')"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-down"></span> </button>  
+
+                    <?php } ?>
+
+                    </div>
+
+                </div>
+                
+            </td>
+        </tr>
+        <?php endforeach; ?>
+     </tbody>
+        
+    </table>
+
+
+
+
+
+   
+
+
+
+
+
+
+<!--+++<?php// echo $this->EstForm; ?> ++++++++++++++++++++ Fin  del formulario+++++++++++++++ ++++++++++++-->
+
+
+
+
+
+
+
+
+
+
+    </div> <!-- fin row -->
+    
+</div> <!-- fin container  -->
+
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <input type="hidden" name="del_modelo" id="del_modelo">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="eliminar()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>

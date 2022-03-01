@@ -1,0 +1,20 @@
+<div class="alert alert-success alert-dismissable">Solicitud procesada correctamente</div>
+
+<?php
+
+foreach ($this->pedido as $row) { ?>
+		<button  onclick="detalleCaja('<?php echo $row->id; ?>')" class="btn btn-sq-lg btn-primary">
+                <br/>
+                <span class="titulo" > <?php echo $row->descripcion; ?> </span>
+                <br/>
+               <span class="total">Bs. <?php echo $row->total; ?></span>
+        </button>
+
+<?php } ?>
+
+<button  onclick="agregarPedido()" class="btn btn-sq-lg btn-primary">
+                <br/>
+                <span class="glyphicon glyphicon-plus ">  </span>
+                <br/>
+                agregar 
+        </button>

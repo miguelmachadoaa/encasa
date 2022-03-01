@@ -1,0 +1,152 @@
+<div class="container">
+    
+    <h1 class="page-header">
+		Cursos Registrados
+		
+		<div class="pull-right">
+		<a href="<?php echo $this->url(array('controller' => 'cursos', 'action' => 'add')); ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> Agregar</a>
+
+        <a href="<?php echo $this->url(array('controller' => 'cursos', 'action' => 'export','f_profession' => @$this->params['f_profession'], 'f_grado' => @$this->params['f_grado'], 'f_state' => @$this->params['f_state'], 'f_city' => @$this->params['f_city'])); ?>" target="_blank" class="btn btn-link"><span class="glyphicon glyphicon-export"></span> Exportar PDF</a>
+
+         
+    </div>
+	
+	</h1>
+
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    
+   <div class="row col-xs-12 col-md-12 col-sm-12">
+    
+		
+
+	
+	</div>
+	
+	<div class="row col-xs-12 col-md-12 col-sm-12">
+	
+    <table class="table table-hover table-striped" id="tb_estudiantes">
+        <thead><tr>
+            <th>Id</th>
+             <th>Código</th>
+            <th>Descripción</th>
+            <th>Duración en Horas </th>
+            <th class="text-center" width="15%">Acción</th>
+        </tr></thead><tbody>
+        <?php foreach ($this->cursos as $row): ?>
+            <tr>
+                <td><?php echo utf8_encode(ucwords($row->id)); ?></td>
+                <td><?php echo utf8_encode(ucwords($row->codigo)); ?></td>
+                <td><?php echo utf8_encode(ucwords($row->descripcion)); ?></td>
+                <td><?php echo utf8_encode(ucwords($row->duracion)); ?></td>
+               
+                <td class="text-center">
+                    <div id="actiongroup" class="btn-group">
+                         <a href="<?php echo $this->url(array('controller' => 'cursos', 'action' => 'edit', 'id' => $row->id)); ?>" class="btn btn-info" title="Editar"><span class="glyphicon glyphicon-edit"></span> </a>
+
+                        <button type="button" data-id="<?php echo $row->id; ?>" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash"></span></button>
+                        
+
+                    </div>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody></table>
+    
+    </div>
+</div>
+
+<div id="approveModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Aprobar Miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro desea realizar esta acción?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary approve">Aceptar</button>
+                <form id="formApprove" name="formApprove" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'approve')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="rejectModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Rehazar Miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro desea realizar esta acción?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger reject">Aceptar</button>
+                <form id="formReject" name="formReject" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'reject')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="pendingModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Cambiar estatus de miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea cambiar el estatus del miembro a pendiente?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary pending">Aceptar</button>
+                <form id="formPending" name="formPending" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'pending')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea eliminar el miembro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger delete">Borrar</button>
+                <form id="formDelete" name="formDelete" method="POST" action="<?php echo $this->url(array('controller' => 'cursos', 'action' => 'delete')); ?>">
+                    <input type="hidden" id="id" name="id" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

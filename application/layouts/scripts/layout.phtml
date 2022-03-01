@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+  <html lang="es">
+
+  <title><?php echo $this->meta['titulo']; ?> </title>
+
+  <!-- Facebook and Twitter integration -->
+
+  <meta property="og:url"           content="<?php echo $this->meta['url']; ?>" />
+
+  <meta property="og:type"          content="website" />
+
+  <meta property="og:title"         content="<?php echo $this->meta['titulo']; ?>" />
+
+  <meta property="og:description"   content="<?php echo $this->meta['descripcion']; ?>" />
+
+  <meta property="og:image"         content="<?php echo $this->meta['imagen']; ?>" />
+
+
+  <meta name="twitter:title" content="dptpropiedades.com" />
+
+  <meta name="twitter:image" content="" />
+  
+  <meta name="twitter:url" content="https://twitter.com/dptpropiedades" />
+  
+  <meta name="twitter:card" content="@dptpropiedades" />
+
+  <?php
+
+    $directorio = 'assets/diseno/css/';
+    $css = scandir($directorio); 
+
+    $directorio_js = 'assets/diseno/js/';
+    $js = scandir($directorio_js); 
+
+  ?>
+
+    <?php foreach ($css as $c ): ?>
+      <?php if ($c=='.' or $c=='..'){ ?>
+      <?php }else{ ?>
+          <link href="<?php echo $this->baseUrl('/assets/diseno/css/'.$c); ?>" rel="stylesheet" >
+      <?php } ?>
+    <?php endforeach ?>
+
+    <?php foreach ($js as $j ): ?>
+      <?php if ($j=='.' or $j=='..'){ ?>
+      <?php }else{ ?>
+        <script src="<?php echo $this->baseUrl('/assets/diseno/js/'.$j); ?>"></script>
+      <?php } ?>
+    <?php endforeach ?>
+
+
+    <!--css-->
+
+<link href="<?php echo $this->baseUrl('/assets/css/jquery-ui.css'); ?>" rel="stylesheet" >
+
+<script src="<?php echo $this->baseUrl('/assets/js/upload.js'); ?>"></script>
+
+<!--/web-fonts-->
+<link href='//fonts.googleapis.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Lato:400,300,300italic,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+<link rel="apple-touch-icon" sizes="57x57" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="<?php echo $this->baseUrl('/'); ?>favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $this->baseUrl('/'); ?>favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="<?php echo $this->baseUrl('/'); ?>favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="<?php echo $this->baseUrl('/'); ?>favicon/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!--css-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="keywords" content="<?php  echo $this->identidad['palabras']; ?>" />
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--js-->
+
+</head>
+
+<body>
+
+  <div id="fb-root"></div>
+
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.10&appId=153625785193462";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script src="https://apis.google.com/js/platform.js" async defer>
+  {lang: 'es-419'}
+</script>
+
+<!--header-->
+
+<div class="navigation">
+
+  <div class="container-fluid">
+
+    <nav class="pull">
+
+      <ul>
+
+        <li><a  href="<?php echo $this->baseUrl('/'); ?>">Inicio</a></li>
+
+        <li><a  href="<?php echo $this->baseUrl('/nosotros'); ?>">Nosotros</a></li>
+
+        <li><a  href="<?php echo $this->baseUrl('/blog'); ?>">Noticias</a></li>
+
+        <li><a  href="<?php echo $this->baseUrl('/contacto'); ?>">Contacto</a></li>
+
+      </ul>
+
+    </nav>
+
+  </div>
+
+</div>
+
+<div class="header" style="position: absolute;z-index: 1001;width: 100%;background:#ffffffe6;color:    #fff;">
+
+  <div class="container">
+
+    <!--logo-->
+
+    <div class="logo">
+
+      <h1><a href="<?php echo $this->baseUrl('/'); ?>"><img style="max-width: 2em" class="img img-responsive" src="<?php echo $this->baseUrl($this->identidad['logo']); ?>"></a></h1>
+
+    </div>
+
+    <!--//logo-->
+
+    <div class="top-nav">
+
+      <ul class="right-icons">
+
+        <li><?php echo $this->spais; ?></li>
+
+        <li>
+          <select class="form-control" name="spais" id="spais" onchange="spais();">
+
+            <option <?php if($this->spais=='1'){ echo  'selected'; } ?> value="1">Venezuela</option>
+
+            <option <?php if($this->spais=='2'){ echo  'selected'; } ?> value="2">Dominicana</option>
+
+        </select>
+
+      </li>
+
+        <li><span ><i class="glyphicon glyphicon-phone"> </i><?php echo $this->identidad['telefono']; ?></span></li>
+
+        <li><a  href="<?php echo $this->baseUrl('/login'); ?>">Inicia Sesión</a></li>
+        <li><a  href="<?php echo $this->baseUrl('/inmueble/buscar'); ?>">Propiedades</a></li>
+        <li><a  href="<?php echo $this->baseUrl('/registro'); ?>">Unete a en Casa+</a></li>
+
+      </ul>
+
+      <div class="nav-icon">
+
+        <div class="hero fa-navicon fa-2x nav_slide_button" id="hero">
+
+          <a href="#"><i class="glyphicon glyphicon-menu-hamburger"></i> </a>
+
+        </div>
+
+      </div>
+
+      <div class="clearfix"> </div>
+
+    </div>
+
+  </div>
+
+</div>
+<!--//-->
+
+        <?php echo $this->layout()->content; ?>
+
+        <!-- footer section -->
+<!--footer-->
+
+<div class="footer">
+
+  <div class="container">
+
+    <div class="footer-top-at">
+
+      <div class="col-md-3 amet-sed">
+
+        <h4>Enlaces de Interes</h4>
+
+        <ul class="nav-bottom">
+
+          <li><a href="<?php echo $this->baseUrl('/nosotros'); ?>">Nosotros</a></li>
+
+          <li><a href="<?php echo $this->baseUrl('/blog'); ?>">Blog</a></li>
+
+          <li><a href="<?php echo $this->baseUrl('/terminos'); ?>">Terminos y Condiciones</a></li>
+
+          <li><a href="<?php echo $this->baseUrl('/inmueble/buscar'); ?>">Propiedades</a></li>
+
+        </ul> 
+
+      </div>
+
+      <div class="col-md-3 amet-sed ">
+
+        <h4>Propiedades</h4>
+
+        <ul class="nav-bottom">
+
+          <li><a href="<?php echo $this->baseUrl('/inmueble/buscar/tipo/apartamento'); ?>">Apartemanetos</a></li>
+
+          <li><a href="<?php echo $this->baseUrl('/inmueble/buscar/tipo/casa'); ?>">Casas</a></li>
+
+          <li><a href="<?php echo $this->baseUrl('/inmueble/buscar/tipo/galpon'); ?>">Galpones</a></li>
+
+          <li><a href="<?php echo $this->baseUrl('/inmueble/buscar/tipo/local'); ?>">Locales</a></li>
+
+        </ul>
+
+      </div>
+
+      <div class="col-md-3 amet-sed">
+
+        <h4>Contacto </h4>
+
+        <p>Mon-Fri, 7AM-7PM </p>
+
+        <p>Sat-Sun, 8AM-5PM </p>
+
+        <p><?php echo $this->identidad['telefono']; ?></p>
+
+        <ul class="nav-bottom">
+
+          <li><a href="<?php echo $this->baseUrl('/faqs'); ?>">Preguntas Frecuentes</a></li>
+
+        </ul>
+
+      </div>
+
+      <div class="col-md-3 amet-sed ">
+
+        <h4>Servicios </h4>
+
+           <ul class="nav-bottom">
+
+            <li><a href="single.html">Residencial </a></li>
+
+            <li><a href="single.html">Comercial </a></li>
+
+            <li><a href="login.html">Login</a></li>
+
+            <li><a href="register.html">Registro</a></li>
+
+          </ul> 
+
+          <ul class="social">
+
+            <li><a href="#"><i> </i></a></li>
+
+            <li><a href="#"><i class="gmail"> </i></a></li>
+
+            <li><a href="#"><i class="twitter"> </i></a></li>
+
+            <li><a href="#"><i class="camera"> </i></a></li>
+
+            <li><a href="#"><i class="dribble"> </i></a></li>
+
+          </ul>
+
+        </div>
+
+        <div class="clearfix"> </div>
+
+      </div>
+
+    </div>
+
+  </div>
+<!--//footer-->
+
+<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+</body>
+
+</html>
+
+
+<div id="RegistroModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Registro de Usuarios</h4>
+            </div>
+            
+            <div class="modal-footer">
+              
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Usuario </label>
+                  <input type="text"  name="username" id="username" value="" class="form-control" placeholder="Usuario">
+                </div>
+
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Email </label>
+                  <input type="text"  name="email" id="email" value="" class="form-control" placeholder="Email">
+                </div>
+
+                 <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Password </label>
+                  <input type="password"  name="clave" id="clave" value="" class="form-control" placeholder="Password">
+                </div>
+
+                <div class="col-sm-12 botones">
+                  <button onclick="registrar()" type="button" class="btn btn-primary" >Enviar</button>
+                  <p>Ya Posee una cuenta? <a onclick="login(event);" href="">Login</a></p>
+                </div>
+
+                <div id="respuesta_registro">
+                  
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<div id="LoginModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Acceso de Usuarios</h4>
+            </div>
+
+            <div class="modal-footer">
+               
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Email </label>
+                  <input type="text"  name="acc_email" id="acc_email" value="" class="form-control" placeholder="Email">
+                </div>
+
+                 <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Password </label>
+                  <input type="password"  name="acc_clave" id="acc_clave" value="" class="form-control" placeholder="Password">
+                </div>
+
+                <div class="col-sm-12 botones">
+                  <button onclick="acceder()" type="button" class="btn btn-primary">Enviar</button>
+                  <p>Olvido su contraseña? <a onclick="recuperarClave(event);" href="">Recuperar Contraseña</a></p>
+                  <p>Eres Nuevo en el Sitio <a onclick="registrate(event);" href="">Registrate</a></p>
+                </div>
+
+                <div id="respuesta_login">
+                  
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div id="RecuperarModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Recuperar Clave</h4>
+            </div>
+
+            <div class="modal-footer">
+              
+               <p>Por Favor ingrese el email asociado a su cuenta!</p>
+
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Email </label>
+                  <input type="text"  name="rec_email" id="rec_email" value="" class="form-control" placeholder="Email">
+                </div>
+
+                <div class="col-sm-12 botones">
+                  <button onclick="enviarClave()" type="button" class="btn btn-primary" >Enviar</button>
+                  
+                </div>
+
+                <div id="respuesta_recuperar">
+                  
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+</div>

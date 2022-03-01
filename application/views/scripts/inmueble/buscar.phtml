@@ -1,0 +1,117 @@
+  <?php $dolar='1'; ?>
+
+
+         <!--popular-->
+  <div class=" header-right">
+    <div class=" banner">
+       <div class="slider">
+          <div class="callbacks_container">
+            <ul class="rslides" id="slider">  
+
+              <?php foreach ($this->sliders as $slider): ?>
+                 <li>
+                   <div class="" style="background: url(<?php echo $this->baseUrl($slider->imagen); ?>) no-repeat;     width: 100%;    min-height: 550px;    background-size: cover;    -webkit-background-size: cover;">
+                    <div class="caption">
+                      <h3><span><?php echo $slider->titulo; ?></span></h3>
+                      <p><?php echo $slider->descripcion; ?></p>
+                    </div>
+                  </div>
+               </li>
+              <?php endforeach ?>
+
+   
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--header-bottom-->
+  <div class="banner-bottom-top">
+      <div class="container">
+      <div class="bottom-header">
+        <div class="header-bottom">
+          <div class=" bottom-head">
+            <a href="<?php echo $this->baseUrl('/inmueble/buscar/tipo/apartamento'); ?>">
+              <div class="buy-media">
+                <i class="buy"> </i>
+                <h6>Venta</h6>
+              </div>
+            </a>
+          </div>
+          <div class=" bottom-head">
+            <a href="<?php echo $this->baseUrl('/inmueble/buscar/tipo/apartamento'); ?>">
+              <div class="buy-media">
+              <i class="rent"> </i>
+              <h6>Alquiler</h6>
+              </div>
+            </a>
+          </div>
+         
+          
+          
+          <div class=" bottom-head">
+            <a href="<?php echo $this->baseUrl('/asesores'); ?>">
+              <div class="buy-media">
+              <i class="deal"> </i>
+              <h6>Comunidad</h6>
+              </div>
+            </a>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+  </div>
+  </div>
+      <!--//-->
+
+  
+    
+<div class="dealer-top">
+   
+      <div class="deal-top-top">
+
+        <?php $ObjFotos = new Application_Model_DbTable_Fotos(); ?>
+
+
+        <?php $i=0; ?>
+        <?php foreach ($this->inmueble as $inm): ?>
+          <?php $i++; ?>
+          <?php $foto=$ObjFotos->getsSolicitudUna($inm->id);  ?>  
+          
+          <div class="col-md-3 col-sm-4  top-deal-top" style="height: 28em;">
+          <div class=" top-deal">
+            <a href="<?php echo $this->baseUrl('/inmueble/ver/id/').$inm->id; ?>" class="mask"><img src="<?php echo $this->baseUrl('/assets/images/300/').$foto->foto; ?>" class="img-responsive zoom-img" alt=""></a>
+            <div class="deal-bottom">
+              <div class="top-deal1">
+                <h5><a href="<?php echo $this->baseUrl('/inmueble/ver/id/').$inm->id; ?>"> <?php echo substr($inm->titulo, 0, 50); ?></a></h5>
+                <p style="margin: 0px;">Ubicacion: <?php echo utf8_encode($inm->zona);?></p>
+                <p style="margin: 0px;" >Precio: <?php echo number_format($inm->monto_vender*$dolar, 2, ',', '.');?> BS.</p>
+                <!--<p>
+                  <span class="col-sm-4"><i  title="Area de Construcción" class="fa fa-arrows-alt " aria-hidden="true"></i> <?php echo $inm->contruccion; ?> </span>
+                                      <span class="col-sm-2"><i title="Habitacones" class="fa fa-bed " aria-hidden="true"></i> <?php echo $inm->habitaciones; ?></span>
+                                      <span class="col-sm-2"><i title="Baños" class="fa fa-shower " aria-hidden="true"></i><?php echo $inm->banos; ?> </span>
+                                      <span class="col-sm-4"><i title="Puestos de Estacionamiento"  class="fa fa-car " aria-hidden="true"></i> <?php echo $inm->puestos; ?></span>
+                </p>-->
+              </div>
+              <!--<div class="top-deal2">
+                <a href="<?php echo $this->baseUrl('/inmueble/ver/id/').$inm->id; ?>" class="hvr-sweep-to-right more">Mas</a>
+              </div>-->
+            <div class="clearfix"> </div>
+            </div>
+          </div>
+        </div>
+
+
+
+          
+        <?php endforeach ?>
+
+        
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!--popular-->

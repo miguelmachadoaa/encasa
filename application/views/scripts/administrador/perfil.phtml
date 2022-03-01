@@ -1,0 +1,266 @@
+        <!-- page content -->
+        <div class="" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Perfil de Usuario</h3>
+              </div>
+
+            </div>
+            
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Reporte <small>Actividad</small></h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                      <div class="profile_img">
+                        <div id="crop-avatar">
+                          <!-- Current avatar -->
+                          <img class="img-responsive avatar-view" src="<?php  echo $this->baseUrl('assets/img/').$this->usuario->imagen; ?>" alt="Avatar" title="Change the avatar">
+                        </div>
+                      </div>
+                      <h3><?php echo $this->usuario->name.' '.$this->usuario->lastname; ?></h3>
+
+                      <ul class="list-unstyled user_data">
+                        <li><i class="fa fa-map-marker user-profile-icon"></i><?php   echo $this->usuario->state; ?>
+                        </li>
+
+                        <li>
+                          <i class="fa fa-briefcase user-profile-icon"></i> <?php   echo $this->usuario->role; ?>
+                        </li>
+                        <li>
+                          <i class="fa fa-phone user-profile-icon"></i> <?php   echo $this->usuario->telefono; ?>
+                        </li>
+                        <li>
+                          <i class="fa fa-mobile user-profile-icon"></i> <?php   echo $this->usuario->movil; ?>
+                        </li>
+
+                        <li class="m-top-xs">
+                          <i class="fa fa-envelope user-profile-icon"></i>
+                          <?php   echo $this->usuario->email; ?>
+                        </li>
+
+                        <li class="m-top-xs">
+                          <a class="btn btn-primary" target="_blank" href="<?php echo $this->baseUrl('sitio/ver/empresa/').$this->usuario->id ?>"><i class="fa fa-globe" aria-hidden="true"></i> Ver Mi Sitio</a>
+                          
+                        </li>
+                      </ul>
+
+                      <a href="<?php echo $this->baseUrl('administrador/edit/id/').$this->usuario->id; ?>" class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Editar Perfil</a>
+                      <br />
+
+                      
+
+                    </div>
+
+
+
+
+                       <div class="col-xs-9 " >
+
+      <p>Propiedades Activas  <?php echo $this->activas.'/'.$this->total; ?></p>
+
+
+        <div class="progress" style="">
+            <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $this->activas ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $this->p_activas ?>%;">
+              <?php echo $this->activas?>
+            </div>
+          </div>
+
+
+            <p>Propiedades Alquiler  <?php echo $this->suspendidas.'/'.$this->total; ?></p>
+
+
+        <div class="progress" style="">
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<?php echo $this->suspendidas ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $this->p_suspendidas ?>%;">
+              <?php echo $this->suspendidas ?>
+            </div>
+          </div>
+
+
+
+        <p>Propiedades Vendidas  <?php echo $this->vendidas.'/'.$this->total; ?></p>
+
+
+        <div class="progress" style="">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $this->vendidas ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $this->p_vendidas ?>%;">
+              <?php echo $this->vendidas ?>
+            </div>
+          </div>
+
+
+
+          <p>Propiedades Suspendidas  <?php echo $this->suspendidas.'/'.$this->total; ?></p>
+
+
+        <div class="progress" style="">
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<?php echo $this->suspendidas ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $this->p_suspendidas ?>%;">
+              <?php echo $this->suspendidas ?>
+            </div>
+          </div>
+
+
+
+    </div >
+
+
+
+
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+
+
+                        
+
+
+                 
+
+
+
+
+
+
+                      
+
+                      <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                          
+                          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Solicitudes de Contacto</a>
+                          </li>
+
+                          <li role="presentation" class=""><a href="#tab_content2" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Mensajes Recibidos</a>
+                          </li>
+
+                          <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Mis Propiedades</a>
+                          </li>
+
+                          
+
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                          <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+
+                            <!-- start recent activity -->
+                            <ul class="messages">
+                              
+                            <?php $mes = array('01' =>'Enero' , '02' =>'Febrero' ,'03' =>'Marzo' ,'04' =>'Abril' ,'05' =>'Mayo' ,'06' =>'Junio' ,'07' =>'Julio' ,'08' =>'Agosto' ,'09' =>'Septiembre' ,'10' =>'Octubre' ,'11' =>'Noviembre' , '12' =>'Diciembre'); ?>
+
+                           <?php $ObjFotos = new Application_Model_DbTable_Fotos(); ?>
+                              
+                              <?php foreach ($this->datos as $dato): ?>
+                                 <?php $foto=$ObjFotos->fetchRow('id_solicitud="'.$dato->id.'"');  ?>  
+                                <li>
+                                <img src="<?php echo $this->baseUrl('assets/images/300/').$foto->foto; ?>" class="avatar" alt="Avatar">
+                                <div class="message_date">
+                                  <h3 class="date text-info"><?php echo  substr($dato->fecha_mensaje, 8, 2); ?></h3>
+                                  <p class="month"><?php echo $mes[substr($dato->fecha_mensaje, 5,2)]; ?></p>
+                                </div>
+                                <div class="message_wrapper">
+                                  <h4 class="heading"><a target="_blank" href="<?php  echo $this->baseUrl('inmueble/ver/id/').$dato->id; ?> "> <?php echo $dato->titulo; ?></a></h4>
+                                  <blockquote class="message"><?php echo 'Han Solicitado datos de contacto del inmueble'; ?></blockquote>
+                                  
+                                </div>
+                                <br>  
+                              </li>
+
+                              <?php endforeach ?>
+                                
+                            
+                             
+
+                            </ul>
+                            <!-- end recent activity -->
+
+                          </div>
+
+
+                          <div role="tabpanel" class="tab-pane fade " id="tab_content2" aria-labelledby="home-tab">
+
+                            <!-- start recent activity -->
+                            <ul class="messages">
+                              
+                            <?php $mes = array('01' =>'Enero' , '02' =>'Febrero' ,'03' =>'Marzo' ,'04' =>'Abril' ,'05' =>'Mayo' ,'06' =>'Junio' ,'07' =>'Julio' ,'08' =>'Agosto' ,'09' =>'Septiembre' ,'10' =>'Octubre' ,'11' =>'Noviembre' , '12' =>'Diciembre'); ?>
+
+                           <?php $ObjFotos = new Application_Model_DbTable_Fotos(); ?>
+                              
+                              <?php foreach ($this->mensajes as $mensaje): ?>
+                                 <?php $foto=$ObjFotos->fetchRow('id_solicitud="'.$mensaje->id.'"');  ?>  
+                                <li>
+                                <img src="<?php echo $this->baseUrl('assets/images/300/').$foto->foto; ?>" class="avatar" alt="Avatar">
+                                <div class="message_date">
+                                  <h3 class="date text-info"><?php echo  substr($mensaje->fecha_mensaje, 8, 2); ?></h3>
+                                  <p class="month"><?php echo $mes[substr($mensaje->fecha_mensaje, 5,2)]; ?></p>
+                                </div>
+                                <div class="message_wrapper">
+                                  <h4 class="heading"><a target="_blank" href="<?php  echo $this->baseUrl('inmueble/ver/id/').$mensaje->id; ?> "> <?php echo $mensaje->titulo; ?></a></h4>
+                                  <blockquote class="message"><?php echo $mensaje->mensaje; ?></blockquote>
+                                  
+                                </div>
+                                <br>  
+                              </li>
+
+                              <?php endforeach ?>
+                                
+                            
+                             
+
+                            </ul>
+                            <!-- end recent activity -->
+
+                          </div>
+
+
+                          <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+
+                            <!-- start user projects -->
+                            <table class="data table table-striped no-margin" id="tb_estudiantes">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>Titulo</th>
+                                  <th>Tipo</th>
+                                  <th class="hidden-phone">Ubicacicon</th>
+                                  <th>Monto</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <?php foreach ($this->inmuebles as $inm): ?>
+                                  <tr>
+                                  <td>1</td>
+                                  <td> <a target="_blank" href="<?php echo $this->baseUrl('/inmueble/ver/id/').$inm->id; ?>"><?php echo utf8_encode($inm->titulo);  ?></a></td>
+                                  <td><?php echo $inm->tipo_inmueble; ?></td>
+                                  <td class="hidden-phone"><?php echo $inm->estado; ?> - <?php echo $inm->ciudad; ?></td>
+                                  <td class="vertical-align-mid">
+                                    <?php echo $inm->monto_vender; ?>
+                                  </td>
+                                </tr>
+                                <?php endforeach ?>
+                                
+                              </tbody>
+                            </table>
+                            <!-- end user projects -->
+
+                          </div>
+
+
+
+                         
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->

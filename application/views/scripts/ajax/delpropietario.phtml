@@ -1,0 +1,32 @@
+<?php if (isset($this->res)): ?>
+
+	<table class="table">
+		<tr>
+			<td>Nombre</td>
+			<td>Apellido</td>
+			<td>Fecha de Nacimiento </td>
+			<td>Telefono</td>
+			<td>Email</td>
+			<td>Acciones</td>
+		</tr>
+
+	<?php foreach ($this->res as $propietario): ?>
+
+		<tr id="<?php echo $propietario->id; ?>" >
+			<td><?php echo $propietario->nombre_propietario; ?></td>
+			<td><?php echo $propietario->apellido_propietario; ?></td>
+			<td><?php echo $propietario->fecha_nacimiento_propietario; ?></td>
+			<td><?php echo $propietario->telefono_propietario; ?></td>
+			<td><?php echo $propietario->email_propietario; ?></td>
+			<td>
+				<button type="button" onclick="eliminarPropietario('<?php echo $propietario->id ?>');" class="btn danger">Eliminar</button>
+			</td>
+			
+		</tr>
+
+		
+	<?php endforeach ?>
+	</table>
+
+	
+<?php endif ?>

@@ -1,0 +1,128 @@
+
+<section class="page-crumb">
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+        <ol class="breadcrumb">
+                    <li><a href="<?php echo $this->baseUrl('/'); ?>">Home</a>
+                    </li>
+                    <li><a href="<?php echo $this->baseUrl('/solicitud'); ?>">Solicitudes</a>
+                    </li>
+                    <li class="active">Notificacion</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+  </div>
+</section>
+
+
+<section class="service-w3ls">
+  <h3 class="text-center w3layouts w3 w3l w3ls agileits-w3layouts agile w3-agile">Su solicitud a sido recibida satisfactoriamente.</h3>
+  <p class="text-center w3layouts w3 w3l w3ls agileits-w3layouts agile w3-agile"></p> 
+  <div class="container"> 
+        <!-- Service Panels -->
+        <div class="row">
+
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+
+        Gracias por utilizar nuestro sistemas automatizado, pronto estaremos procesando su solicitud... 
+
+        Su Identificador de solicitud es:<br>
+         <h1><?php echo $this->id; ?></h1><br>
+
+        Se ha enviado un correo con la informacion para hacerle seguimiento a su solicitud. <br>
+
+       
+
+        <div class="row">
+          
+          <!--<a href="<?php echo $this->baseUrl('/solicitud/fotos/id/'.$this->id); ?>" class="btn btn-primary"> Agregar Fotos a la Solicitud </a>
+
+          <a href="<?php echo $this->baseUrl('/solicitud/pago/id/'.$this->id); ?>" class="btn btn-primary"> Agregar Pago a la Solicitud</a>-->
+
+
+        </div>
+       </div><!--  fin col-sm-6 -->
+
+
+
+
+
+    </div>  
+  </div>
+</section>  
+
+<section class="service-agile">
+  <div class="container">
+    <h3 class="text-center agileits agileinfo wthree w3-agileits">Avaluos</h3>
+    <p class="text-center agileits agileinfo wthree w3-agileits">Un avalúo es la estimación del valor de un bien mueble o inmueble expresado en cifras monetarias de acuerdo a criterios, herramientas y a metodologías científicas adecuadas tomando en cuenta las condiciones físicas, características, ubicación, uso, conservación, mantenimiento, operatividad, funcionamiento, y de una indagación y análisis de mercado, para la fecha en que se realiza dicha estimación.  .</p> 
+        <!-- Service Tabs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <ul id="myTab" class="nav nav-tabs nav-justified">
+                    <?php $j=0; ?>
+                    <?php foreach ($this->avaluos as $ava): ?>
+
+                      <?php if ( $j!=0): ?>
+                        <li class=""><a href="#service-<?php echo $ava->id; ?>" data-toggle="tab"> <?php echo $ava->titulo; ?></a>
+                        </li>
+                        <?php $j++; ?>
+                      <?php endif ?>
+
+                      <?php if ($j==0): ?>
+                        <li class="active"><a href="#service-<?php echo $ava->id; ?>" data-toggle="tab"> <?php echo $ava->titulo; ?></a>
+                        </li>
+                        <?php $j++; ?>
+                      <?php endif ?>
+                       
+                    <?php endforeach ?>
+
+                    
+                </ul>
+
+                <div id="myTabContent" class="tab-content">
+                    
+                    <?php $j=0; ?>
+                    <?php foreach ($this->avaluos as $ava): ?>
+
+                      <?php if ( $j!=0): ?>
+
+                      <div class="tab-pane fade" id="service-<?php echo $ava->id; ?>">
+                        <h4><?php echo $ava->titulo; ?></h4>
+                        <img class="img " alt="<?php echo $ava->titulo; ?>" title="<?php echo $ava->titulo; ?>" src="<?php echo $this->baseUrl($ava->imagen); ?>">
+                        <?php echo $ava->descripcion; ?>
+                    </div>
+
+                        
+                        <?php $j++; ?>
+                      <?php endif ?>
+
+                      <?php if ($j==0): ?>
+
+                      <div class="tab-pane fade active in" id="service-<?php echo $ava->id; ?>">
+                      
+                        <h4><?php echo $ava->titulo; ?></h4>
+                        <img class="img " alt="<?php echo $ava->titulo; ?>" title="<?php echo $ava->titulo; ?>" src="<?php echo $this->baseUrl($ava->imagen); ?>">
+                        <?php echo $ava->descripcion; ?>
+                        
+                    </div>
+
+
+                        
+                        <?php $j++; ?>
+                      <?php endif ?>
+                       
+                    <?php endforeach ?>
+
+
+
+                   
+                    
+            </div>
+        </div>
+        <hr>
+  </div>  
+</section>  

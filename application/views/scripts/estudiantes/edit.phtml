@@ -1,0 +1,105 @@
+<div class="container">
+    <h1 class="page-header">Registro de Participante</h1>
+    <div style="position: absolute; z-index: 9999; <?php echo ($this->auth->getIdentity()->role === 'administrador') ? 'display:block;' : 'display:none;'; ?>">
+    </div>
+    <div class="row">
+
+
+
+
+            <!--++++++++++++++++++++ Comienzo del formulario ++++++++++++++++++-->
+
+<form id="form_estudiantes" name="form_estudiantes" enctype="multipart/form-data" action="app/estudiantes/edit" method="post"><div>
+<input type="hidden" id="id" name="id" value="<?php echo $this->id;?>">
+<div class="form-group"><label for="cedula" class="required">Cédula *</label>
+
+<input type="text" name="cedula" id="cedula" value="<?php echo $this->dcedula;?>" class="form-control" placeholder="Cédula"></div>
+<div class="form-group"><label for="nombre" class="required">Nombre *</label>
+
+<input type="text" name="nombre" id="nombre" value="<?php echo $this->dnombre;?>" class="form-control span3" placeholder="Nombre"></div>
+<div class="form-group"><label for="apellido" class="required">Apellido *</label>
+
+<input type="text" name="apellido" id="apellido" value="<?php echo $this->dapellido;?>" class="form-control" placeholder="Apellido"></div>
+<div class="form-group"><label for="email" class="optional">Email</label>
+
+<input type="text" name="email" id="email" value="<?php echo $this->demail;?>" class="form-control" placeholder="ej: john@gmail.com" required="1"></div>
+<div class="form-group"><label for="fecha_nac" class="required">Fecha de Nacimiento *</label>
+
+<input type="text" name="fecha_nac" id="fecha_nac" value="<?php echo $this->dfecha_nac;?>" class="form-control fecha" placeholder="Fecha de Nacimiento"></div>
+<div class="form-group"><label for="estado" class="required">Estado  *</label>
+
+<select name="estado" id="estado" class="form-control">
+    
+            <option value="">--Estado--</option>
+                    <?php foreach ($this->states as $state): ?>
+                    <option value="<?php echo $state->id; ?>" <?php echo (isset($this->destado) && $this->destado== $state->id) ? 'selected' : ''; ?>><?php echo utf8_encode($state->state); ?></option>
+                    <?php endforeach; ?>
+
+
+</select></div>
+<div class="form-group"><label for="ciudad" class="required">Ciudad  *</label>
+
+<select name="ciudad" id="ciudad" class="form-control">
+    
+    <option value="">--Ciudad--</option>
+                    <?php foreach ($this->cities as $cities): ?>
+                    <option value="<?php echo $cities->id; ?>" <?php echo (isset($this->dciudad) && $this->dciudad== $cities->id) ? 'selected' : ''; ?> ><?php echo utf8_encode($cities->city); ?></option>
+                    <?php endforeach; ?>
+
+
+<</select></div>
+<div class="form-group"><label for="direccion" class="required">Dirección  *</label>
+
+<input type="text" name="direccion" id="direccion" value="<?php echo $this->ddireccion;?>" class="form-control" placeholder="Dirección"></div>
+<div class="form-group"><label for="tlf" class="required">Teléfono  *</label>
+
+<input type="text" name="tlf" id="tlf" value="<?php echo $this->dtlf;?>" class="form-control" placeholder="Teléfono"></div>
+<div class="form-group"><label for="grado" class="required">Grado de Instrucción  *</label>
+
+<select name="grado" id="grado" class="form-control">
+    
+                <option value="">--Grado de Instrucción--</option>
+                <?php foreach ($this->grado as $grado): ?>
+                <option value="<?php echo $grado->id; ?>" <?php echo (isset($this->dgrado) && $this->dgrado== $grado->id) ? 'selected' : ''; ?>><?php echo utf8_encode($grado->descripcion); ?></option>
+                <?php endforeach; ?>
+
+
+</select></div>
+
+<div class="form-group"><label for="profesion" class="required">Profesión  *</label>
+
+<select name="profesion" id="profesion" class="form-control">
+
+                <option value="">--Profesión--</option>
+                <?php foreach ($this->professions as $profession): ?>
+                <option value="<?php echo $profession->id; ?>" <?php echo (isset($this->dprofesion) && $this->dprofesion == $profession->id) ? 'selected' : ''; ?> ><?php echo utf8_encode($profession->profession); ?></option>
+                <?php endforeach; ?>
+
+
+    
+</select></div>
+
+
+
+<div id="doc_path-label"><label for="doc_path" class="optional">Seleccionar Archivo:</label></div>
+<div id="doc_path-element">
+<input type="hidden" name="MAX_FILE_SIZE" value="2097152" id="MAX_FILE_SIZE">
+<input type="file" name="doc_path" id="doc_path" class="btn">
+Tamaño Maximo de Imagen 1Mb. <img src="app/<?php echo $this->dfoto;?>" width="100px">
+</div>
+
+
+
+<div id="buttons-label">&#160;</div><div id="buttons-element"><fieldset id="fieldset-buttons"><div>
+
+<input type="submit" name="btn_submit" id="btn_submit" value="Guardar" class="btn btn-default">
+
+<button name="btn_cancel" id="btn_cancel" type="button" class="btn btn-danger">Cancelar</button></div></fieldset></div></div></form> 
+
+
+
+
+
+    </div>
+    
+</div>

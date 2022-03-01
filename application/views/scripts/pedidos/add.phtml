@@ -1,0 +1,66 @@
+<div class="container-fluid">
+
+
+
+<?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
+
+    <h1 class="page-header">Registro de Ventas</h1>
+    <div style="position: absolute; z-index: 9999; <?php echo ($this->auth->getIdentity()->role === 'administrador') ? 'display:block;' : 'display:none;'; ?>">
+    </div>
+    <div class="row">
+
+
+
+<!--++++++++++++++++++++ Comienzo del formulario ++++++++++++++++++-->
+
+<form id="form_productos" name="form_productos" enctype="multipart/form-data" action="app/productos/add" method="post"><div>
+
+
+<div class="form-group">
+<label for="nombre" class="required">Codigo *</label>
+
+<input type="text" name="codigo" id="codigo" value="" class="form-control" placeholder="Codigo">
+</div>
+<div class="form-group"><label for="email" class="optional">Descripcion</label>
+
+<input type="text" name="descripcion" id="descripcion" value="" class="form-control" placeholder="Descripcion" required="1"></div>
+<div class="form-group"><label for="fecha_nac" class="required">Precio *</label>
+
+<input type="text" name="precio" id="precio" value="" class="form-control fecha" placeholder="840,00"></div>
+
+<dt id="buttons-label">&#160;</dt><dd id="buttons-element"><fieldset id="fieldset-buttons"><dl>
+
+<input type="submit" name="btn_submit" id="btn_submit" value="Guardar" class="btn btn-default">
+
+<button name="btn_cancel" id="btn_cancel" type="button" class="btn btn-danger">Cancelar</button></dl></fieldset></dd></div></form> 
+
+
+   
+
+
+
+
+
+
+<!--+++<?php// echo $this->EstForm; ?> ++++++++++++++++++++ Fin  del formulario+++++++++++++++ ++++++++++++-->
+
+
+
+	<div class="alert alert-danger" role="alert">
+		* Campos Requeridos 
+	</div>
+
+
+
+
+    </div>
+    
+</div>

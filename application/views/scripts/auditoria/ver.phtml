@@ -1,0 +1,94 @@
+<div class="container">
+
+  <ol class="breadcrumb">
+      <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a></li>
+      <li><a href="<?php echo $this->baseUrl('/auditoria'); ?>">Auditorias</a></li>
+      <li class="active">Ver Detalle</li>
+  </ol>
+    
+   <div class="row">
+
+   <h1 class="page-header">Detalles de la Solicitud de Auditoria</h1>
+
+   <br> 
+
+   <table class="table table-striped table-responsive"> 
+      <tr>  
+      <th > Campo </th>
+      <th> Detalle </th>
+
+      </tr>
+
+      <tr>  
+        <th> Id </th>
+        <td> <?php echo $this->auditorias['id']; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Nombre</th>
+        <td> <?php echo $this->auditorias['nombres'].' '.$this->auditorias['apellidos'] ; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Telefono Local </th>
+        <td> <?php echo $this->auditorias['tlf']; ?>  </td>
+      </tr>
+
+       <tr>  
+        <th> Telefono Movil </th>
+        <td> <?php echo $this->auditorias['tlf_movil']; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Email </th>
+        <td> <?php echo $this->auditorias['email']; ?>  </td>
+      </tr>
+      
+      <tr>  
+        <th> Fecha </th>
+        <td> <?php echo $this->auditorias['fecha']; ?>  </td>
+      </tr>
+      
+
+    </table>
+
+
+
+   </div>
+   
+    
+	
+	
+   <div class="row">
+
+   <h1 class="page-header">Archivos de la Solicitud de Auditoria</h1>
+
+   <br> 
+
+   <table class="table table-striped table-responsive"> 
+      <tr>  
+      <th > Campo </th>
+      <th> Detalle </th>
+
+      </tr>
+
+      <?php foreach ($this->archivos as $archivo): ?>
+
+      	 <tr>  
+      <td > Archivo </td>
+      <td> <a href="/assets/images/<?php echo $archivo->foto; ?>" target="_blank"> Ver</a> </td>
+
+      </tr>
+      	
+      <?php endforeach ?>
+      
+
+
+    </table>
+
+
+   </div>
+	
+    
+</div>
+

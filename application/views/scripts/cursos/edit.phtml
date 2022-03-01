@@ -1,0 +1,15 @@
+<div class="container">
+    <h1 class="page-header">Registro de Cursos</h1>
+    <div style="position: absolute; z-index: 9999; <?php echo ($this->auth->getIdentity()->role === 'administrador') ? 'display:block;' : 'display:none;'; ?>">
+    </div>
+    <div class="row">
+
+
+            <?php echo $this->cursosForm; ?> 
+
+
+
+
+    </div>
+    
+</div>

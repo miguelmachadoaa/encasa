@@ -1,0 +1,117 @@
+<!-- /navigation -->
+<section class="page-crumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="<?php echo $this->baseUrl('/'); ?>">Home</a>
+                    </li>
+                    <li class="active">Blog </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="blog-post">
+        <!-- Page Content -->
+    <div class="container">
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Blog Post Content Column -->
+        <div class="col-lg-8">
+
+            <div class="row">
+
+                <?php $i=0; foreach ($this->related as $row){ $i++;  ?>
+
+                    <div  class="col-sm-12 col-md-12" style="padding-bottom: 15px; min-height: 225px;">
+
+                      <div class="media">
+                          <div class="media-left">
+                            <a href="#">
+                              <img class="media-object" src="<?php echo $this->baseUrl('/').$row->foto; ?>" alt="<?php echo $new['titulo']; ?>" style="
+                            max-width: 250px; ">
+                            </a>
+                          </div>
+                          <div class="media-body">
+                            <h4 class="media-heading"><?php echo $row->titulo; ?></h4>
+                            <?php echo strip_tags(substr($row->noticia, 0, 200)) ; ?>
+                            <p><a href="<?php echo $this->baseUrl('/blog/ver/id/').$row->id; ?>" class="btn btn-primary" role="button">Leer Mas</a>
+                          </div>
+                        </div>
+                           
+                      </div>
+                    
+                      <br>
+
+            <?php } ?>
+                
+            </div>  
+
+        </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4 blog-post-w3layouts">
+        
+         <!-- Blog Categories Well -->
+        <div class="well blog-post-agileits">
+          <h4 class="blogpost-w3lsagile">Etiquetas</h4>
+          <div class="row">
+            <div class="col-lg-12">
+
+            <?php foreach ($this->etiquetas as $new): ?>
+
+                  <a href="<?php echo $this->baseUrl('/blog/tags/id/').$new['descripcion']; ?>"> <span class="badge"><?php echo $new['descripcion']; ?></span> </a>
+              
+            <?php endforeach ?>
+              
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+
+        <!-- Blog Categories Well -->
+         <div class="well blog-post-agileits">
+          <h4 class="blogpost-w3lsagile">Comprar</h4>
+          <div class="row">
+            <div class="col-lg-12">
+              <ul class="list-unstyled">
+                 <li> <a href="http://encasaplus.com/inmueble/buscar/f_estado//f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/Apartamento">Apartamentos</a></li>
+                    <li> <a href="http://encasaplus.com/inmueble/buscar/f_estado//f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/Casa">Casas</a></li>
+                    <li> <a href="http://encasaplus.com/inmueble/buscar/f_estado//f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/Local%20Comercial">Local Comercial</a></li>
+                    <li> <a href="http://encasaplus.com/inmueble/buscar/f_estado//f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/Galpon">Galpon</a></li>
+                    <li> <a href="http://encasaplus.com/inmueble/buscar/f_estado//f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/Terreno">Terreno</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+
+        <div class="well blog-post-agileits">
+          <h4 class="blogpost-w3lsagile">Ubicaciones</h4>
+          <div class="row">
+            <div class="col-lg-12">
+              <ul class="list-unstyled">
+                <li><a href="http://encasaplus.com/inmueble/buscar/f_estado/4/f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/"><span class="fa fa-hand-o-right" aria-hidden="true"></span>Aragua</a></li>
+                <li><a href="http://encasaplus.com/inmueble/buscar/f_estado/5/f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/"><span class="fa fa-hand-o-right" aria-hidden="true"></span>Caracas</a></li>
+                <li><a href="http://encasaplus.com/inmueble/buscar/f_estado/9/f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/"><span class="fa fa-hand-o-right" aria-hidden="true"></span>Carabobo</a></li>
+                <li><a href="http://encasaplus.com/inmueble/buscar/f_estado//f_ciudad/352/f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/"><span class="fa fa-hand-o-right" aria-hidden="true"></span>Maracaibo</a></li>
+                <li><a href="http://encasaplus.com/inmueble/buscar/f_estado//f_ciudad/163/f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/"><span class="fa fa-hand-o-right" aria-hidden="true"></span>Barquisimeto</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+
+
+        <!-- Side Widget Well -->
+         
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        
+    </div>
+    <!-- /.container -->
+</section>  

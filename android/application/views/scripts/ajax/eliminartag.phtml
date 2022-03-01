@@ -1,0 +1,7 @@
+<?php foreach ($this->etiquetas as $tag): ?>
+    
+                <div class="col-sm-9"><?php echo $tag->descripcion; ?></div>
+                <div class="col-sm-3">
+                    <button class="btn btn-danger " onclick="eliminarTag(<?php echo $tag->id; ?>)">x</button>
+                </div>
+<?php endforeach ?>

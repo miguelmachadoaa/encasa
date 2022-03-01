@@ -1,0 +1,109 @@
+<div class="container" ng-controller="categoriaCtrl">
+    <h1 class="page-header">Categorias</h1>
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+	
+	 <div class="row">
+      
+     <div class="col-sm-4">
+
+     <h3>Agregar Nueva categoria</h3>
+         
+     <form>
+     <input type="hidden" name="id" id="id" ng-model="id" value="">
+
+        <div class="form-group">
+            <label for="cedula" class="required">Categoria *</label>
+            <input type="text" ng-model="nombre" name="nombre" id="nombre" value="" class="form-control" placeholder="categoria">
+        </div>
+
+        <div class="form-group">
+            <label for="cedula" class="required">Descripcion *</label>
+            <input ng-model="descripcion" type="text" name="descripcion" id="descripcion" value="" class="form-control" placeholder="descripcion">
+        </div>
+
+        <button name="btn_agregar" id="btn-agregar" type="button" ng-click="addCategoria(id, nombre, descripcion)" class="btn btn-primary">Agregar</button>
+         
+     </form>
+
+
+
+
+
+
+     </div>
+
+     <div class="col-sm-8">
+         
+        <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            
+            <th>
+              Accion
+            </th>
+        </tr>
+
+        <tr ng-repeat="categoria in categorias">
+            <td>{{categoria.id}}</td>
+            <td>{{categoria.nombre}}</td>
+            <td>{{categoria.descripcion}}</td>
+            
+            <td>
+                  <button name="btn_editar" id="btn_editar" type="button" ng-click="editCategoria(categoria.id, categoria.nombre, categoria.descripcion)" class="btn btn-info">
+                  <span class="glyphicon glyphicon-pencil"></span></button>
+
+
+
+                  <button name="btn_eliminar" id="btn_eliminar" type="button" ng-click="deleteCategoria(categoria.id)" class="btn btn-danger">
+                  <span class="glyphicon glyphicon-remove"></span></button>
+            </td>
+        </tr>
+        
+    </table>
+
+
+     </div>
+
+
+
+
+
+     </div>
+    
+    
+    
+    
+    
+</div>
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar Usuario</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro desea realizar esta acción?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary delete">Aceptar</button>
+                <form id="formDelete" name="formDelete" method="POST" action="<?php echo $this->url(array('controller' => 'users', 'action' => 'del')); ?>">
+                    <input type="hidden" id="uid" name="uid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

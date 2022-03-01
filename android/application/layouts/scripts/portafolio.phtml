@@ -1,0 +1,350 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Diseños y Proyectos Tirex2021</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Ship Industry Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- font files -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<!-- /font files -->
+<!-- css files -->
+<link rel="apple-touch-icon" sizes="57x57" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="<?php echo $this->baseUrl('/'); ?>favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $this->baseUrl('/'); ?>favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="<?php echo $this->baseUrl('/'); ?>favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="<?php echo $this->baseUrl('/'); ?>favicon/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+
+<link href="<?php echo $this->baseUrl('/assets/diseno/css/bootstrap.min.css'); ?>" rel="stylesheet" >
+<link href="<?php echo $this->baseUrl('/assets/diseno/css/font-awesome.min.css'); ?>" rel="stylesheet">
+<link href="<?php echo $this->baseUrl('/assets/diseno/css/typo.css'); ?>" rel="stylesheet">
+<link href="<?php echo $this->baseUrl('/assets/diseno/css/portfolio.css'); ?>" rel="stylesheet">
+<link href="<?php echo $this->baseUrl('/assets/diseno/css/serv.css'); ?>" rel="stylesheet">
+<link href="<?php echo $this->baseUrl('/assets/diseno/css/nav.css'); ?>" rel="stylesheet">
+<link href="<?php echo $this->baseUrl('/assets/diseno/css/style.css'); ?>" rel="stylesheet">
+<link href="<?php echo $this->baseUrl('/assets/diseno/'); ?>" rel="stylesheet">
+
+          <script src="<?php echo $this->baseUrl('/assets/diseno/js/modernizr.custom.js'); ?>"></script>
+
+
+<!-- /css files -->
+<!-- js files -->
+
+<!-- /js files -->
+</head>
+<body>
+<!-- banner section -->
+<section class="banner-w3ls">
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="7500">
+  <!-- Indicators -->
+  <?php $i=0; ?>
+
+  <ol class="carousel-indicators">
+  
+   <?php foreach ($this->sliders as $slider): ?>
+    <?php if ($i!=0): ?>
+      <li data-target="#carousel-example-generic" data-slide-to="<?php echo $i;  ?>"></li>
+
+      <?php $i++; ?>
+    <?php endif ?>
+
+
+    <?php if ($i==0): ?>
+      <li data-target="#carousel-example-generic" data-slide-to="<?php echo $i;  ?>" class="active"></li>
+
+      <?php $i++; ?>
+    <?php endif ?>
+
+     
+
+<?php endforeach ?>
+</ol>
+  <div class="carousel-inner" role="listbox">
+  <?php $i=0; ?>
+     <?php foreach ($this->sliders as $slider): ?>
+
+
+ <?php if ($i!=0): ?>
+    <div class="item">
+      <img width="100%" src="<?php echo $this->baseUrl('/').$slider->imagen; ?>" alt="<?php echo $slider->titulo;  ?>">
+      <div class="carousel-caption">
+        <h3><?php echo $slider->titulo;  ?></h3>
+        <p><?php echo $slider->descripcion;  ?></p>
+
+      </div>
+    </div>
+      <?php $i++; ?>
+    <?php endif ?>
+
+
+    <?php if ($i==0): ?>
+     <div class="item active">
+      <img width="100%" src="<?php echo $this->baseUrl('/').$slider->imagen; ?>" alt="<?php echo $slider->titulo;  ?>">
+      <div class="carousel-caption">
+        <h3><?php echo $slider->titulo;  ?></h3>
+        <p><?php echo $slider->descripcion;  ?></p>
+      </div>
+    </div>
+      <?php $i++; ?>
+    <?php endif ?>
+
+
+<?php endforeach ?>
+</div>
+
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Siguiente</span>
+  </a>
+</div>
+
+</section>
+<!-- /banner section -->
+<!-- navigation -->
+<section class="navigation">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-md-5 col-sm-5 nav-w3ls1">
+        <div class="logo">
+         <a href="<?php echo $this->baseUrl('/'); ?>" class="logo-w3ls"><img class="img img-responsive logo_empresa" width="1em" src="<?php echo $this->baseUrl('/assets/archivos/procesadas/logo_blanco.png'); ?>"><h1> Tirex2021</h1></a>
+        </div>
+      </div>
+      <div class="col-lg-7 col-md-7 col-sm-7 nav-w3ls2">
+        <div class="main clearfix">
+          <nav id="menu" class="nav">         
+            <ul>
+              <li class="active">
+                <a href="<?php echo $this->baseUrl('/'); ?>">
+                  <span class="icon"><i aria-hidden="true" class="icon-home"></i></span>
+                  <span>Inicio</span>
+                </a>
+              </li>
+              <li>
+                <a href="<?php echo $this->baseUrl('/servicios'); ?>">
+                  <span class="icon"><i aria-hidden="true" class="icon-services"></i></span>
+                  <span>Services</span>
+                </a>
+              </li>
+              <li>
+                <a href="<?php echo $this->baseUrl('/portafolio'); ?>">
+                  <span class="icon"><i aria-hidden="true" class="icon-portfolio"></i></span>
+                  <span>Portfolio</span>
+                </a>
+              </li>
+              <li>
+                  <a href="<?php echo $this->baseUrl('/blog'); ?>">
+                  <span class="icon"><i aria-hidden="true" class="icon-team"></i></span>
+                  <span>Blog</span>
+                </a>
+              </li>
+              <li>
+                <a href="<?php echo $this->baseUrl('/contacto'); ?>">
+                  <span class="icon"><i aria-hidden="true" class="icon-contact"></i></span>
+                  <span>Contacto</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+        <?php echo $this->layout()->content; ?>
+
+        <!-- footer section -->
+<section class="footer">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 footer-w3ls1">
+        <h3>Noticias</h3>
+          <div class="media">
+              <div class="media-left">
+                <a href="#">
+             <img class="media-object" src="http://static-cf.panageos.com/uploads/fotos/o/z/5/a/edificios-tn.jpg" alt="Edificio">
+                </a>
+              </div>
+          <div class="media-body">
+           <h4 class="media-heading">Evaluar Edificios Antiguos</h4>
+                La Evaluacion de edificios antiguos es basada principal...
+          </div>
+        </div>
+
+
+         <div class="media">
+              <div class="media-left">
+                <a href="#">
+             <img class="media-object" src="http://s.libertaddigital.com/2014/02/28/60/60/lamborghini-132.jpg" alt="vehiculo">
+                </a>
+              </div>
+          <div class="media-body">
+           <h4 class="media-heading">Vehiculos Lujosos</h4>
+                Los vehiculos lujosos se devaluan menos en el tiempo...
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="col-lg-3 col-md-3 footer-w3ls1">
+        <h3>Nosotros</h3>
+        <p class="footer-p1">Diseños y Proyectos Tirex 2021, C.A., es una empresa que reúne a un grupo de Profesionales – Avaluadores con formación diversa en Avalúos Inmobiliarios y Mobiliarios, con el hábito y visión de trabajo en equipo para brindarle a sus clientes un servicio de calidad y excelencia </p>
+      </div>
+      <div class="col-lg-3 col-md-3 footer-w3ls2">
+        <h3>Suscribete</h3>
+        <p class="footer-p1">Recibe nuestro newsletter y esta al tanto de los avances.</p>
+        <div class="sub-w3ls">
+          <form action="#" method="post">
+            <div class="form-group">
+              <label for="inputEmail1" class="col-lg-4 control-label"></label>
+              <input type="email" name="email" class="form-control" id="inputEmail1" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn-outline">Enviar</button>
+            </div>
+          </form>
+        </div>  
+      </div>
+      <div class="col-lg-3 col-md-3 footer-w3ls3">
+        <h3>Nuestras Redes</h3>
+        <ul class="social-icons">
+          <li><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
+          <li><a href="#"><i class="fa fa-linkedin"></i>Linkedin</a></li>
+          <li><a href="#"><i class="fa fa-google-plus"></i>Googleplus</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-lg-7 copy-w3ls1">
+        <ul class="nav-links">
+          <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a></li>
+          <li><a href="<?php echo $this->baseUrl('/servicios'); ?>">Servicios</a></li>
+          <li><a href="<?php echo $this->baseUrl('/portafolio'); ?>">Portafolio</a></li>
+          <li><a href="<?php echo $this->baseUrl('/blog'); ?>">Blog</a></li>
+          <li><a href="<?php echo $this->baseUrl('/contacto'); ?>">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-5 copy-w3ls2">
+        <p class="copyright">&copy; 2016 Diseños y Proyectos Tirex2021 | Design by <a href="http://maymi.com.ve/" target="_blank">Maymi</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- /footer section -->
+<!-- back to top -->
+<a href="#0" class="cd-top">Top</a>
+<!-- /back to top -->
+<!-- js files -->
+
+<script src="<?php echo $this->baseUrl('/assets/diseno/js/jquery.min.js'); ?>"></script>
+<script src="<?php echo $this->baseUrl('/assets/diseno/js/bootstrap.min.js'); ?>"></script>
+<script src="<?php echo $this->baseUrl('/assets/diseno/js/SmoothScroll.min.js'); ?>"></script>
+<script src="<?php echo $this->baseUrl('/assets/diseno/js/top.js'); ?>"></script>
+
+
+
+<script>
+      //  The function to change the class
+      var changeClass = function (r,className1,className2) {
+        var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
+        if( regex.test(r.className) ) {
+          r.className = r.className.replace(regex,' '+className2+' ');
+          }
+          else{
+          r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"),' '+className1+' ');
+          }
+          return r.className;
+      };  
+
+      //  Creating our button in JS for smaller screens
+      var menuElements = document.getElementById('menu');
+      menuElements.insertAdjacentHTML('afterBegin','<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true"><i aria-hidden="true" class="icon-menu"> </i> Menu</button>');
+
+      //  Toggle the class on click to show / hide the menu
+      document.getElementById('menutoggle').onclick = function() {
+        changeClass(this, 'navtoogle active', 'navtoogle');
+      }
+
+      // http://tympanus.net/codrops/2013/05/08/responsive-retina-ready-menu/comment-page-2/#comment-438918
+      document.onclick = function(e) {
+        var mobileButton = document.getElementById('menutoggle'),
+          buttonStyle =  mobileButton.currentStyle ? mobileButton.currentStyle.display : getComputedStyle(mobileButton, null).display;
+
+        if(buttonStyle === 'block' && e.target !== mobileButton && new RegExp(' ' + 'active' + ' ').test(' ' + mobileButton.className + ' ')) {
+          changeClass(mobileButton, 'navtoogle active', 'navtoogle');
+        }
+      }
+    </script>
+
+<script src="<?php echo $this->baseUrl('/assets/diseno/js/slideshow.js'); ?>"></script>
+<script src="<?php echo $this->baseUrl('/assets/diseno/js/numscroller-1.0.js'); ?>"></script>
+
+<!-- /js for navigation -->
+<!-- js for about section -->
+
+<!-- /js for stats section -->
+<script type="text/javascript">
+              $(window).load(function() {
+                $("#flexiselDemo1").flexisel({
+                  visibleItems: 4,
+                  animationSpeed: 1000,
+                  autoPlay: true,
+                  autoPlaySpeed: 3000,        
+                  pauseOnHover: true,
+                  enableResponsiveBreakpoints: true,
+                  responsiveBreakpoints: { 
+                    portrait: { 
+                      changePoint:480,
+                      visibleItems: 1
+                    }, 
+                    landscape: { 
+                      changePoint:640,
+                      visibleItems:2
+                    },
+                    tablet: { 
+                      changePoint:768,
+                      visibleItems: 3
+                    }
+                  }
+                });
+                
+              });
+          </script>
+
+          <script src="<?php echo $this->baseUrl('/assets/diseno/js/jquery.flexisel.js'); ?>"></script>
+
+          <script src="<?php echo $this->baseUrl('/assets/diseno/js/lightbox-plus-jquery.min.js'); ?>"></script>
+
+         
+<!-- /js files -->
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es" style="height: 100%">
+    <head>
+        <base href="<?php echo $this->baseUrl(); ?>">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->baseUrl('/assets/img/favicon.ico'); ?>">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+        <title>En Casa Plus</title>
+        <link href="<?php echo $this->baseUrl('/assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
+        <link href="<?php echo $this->baseUrl('/assets/css/font-awesome.min.css'); ?>" rel="stylesheet">
+
+        <link href="<?php echo $this->baseUrl('/assets/css/custom.css'); ?>" rel="stylesheet">
+        <link href="<?php echo $this->baseUrl('/assets/css/style-admin.css'); ?>" rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <style>
+            
+            .form-control{
+                background-color: #15a4b2 !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff;
+    -webkit-box-shadow: 0 0 0px 1000px #a1e5d6 inset;
+        height: 50px;
+    padding: 6px 12px;
+    font-size: 23px;
+}
+
+.btn{
+        padding: 1em;
+    border-radius: 5em;
+    font-size: 1.2em;
+        margin-top: 1em;
+        width: 100%;
+}
+
+
+            
+        </style>
+
+         </head>
+    <body style="height: 100%;    background: url(android/assets/images/fondo.jpg);    background-size: cover;">
+
+
+<div class="container">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="text-center" style="margin-top: 3em;"><img class="img img-responsive" src="http://encasaplus.com/android/assets/images/EnCasaPlus.png" alt="En casa Plus."></div>
+
+        <?php if (isset($this->error)): ?>
+
+            <div class="alert alert-danger ">
+                <?php echo $this->error ?>
+            </div>    
+            
+        <?php endif ?>
+        
+        <form id="formOlvide" name="formOlvide" action="<?php echo $this->baseurl('/olvide') ?>" method="POST" >
+
+            <div class="form-signin">
+
+                <div class="form-group">
+
+                    <input type="text" name="email" id="email" value="" class="form-control" placeholder="Ingrese Su email" autofocus="1">
+                    
+                </div>
+               
+                <input type="submit" name="btn_submit" id="btn_submit" value="Reiniciar" class="btn btn-lg btn-primary btn-block">
+            </div>   
+            
+        </form>
+
+       
+        
+        <a class="btn btn-link" style="color:#fff; text-decoration: none;" href="<?php echo $this->baseUrl('/') ?>">Volver al inicio</a>
+
+    </div>
+
+    
+</div>
+
+  
+    
+        <script src="<?php echo $this->baseUrl('/assets/js/jquery-2.1.1.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/gmaps.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/smoothscroll.js'); ?>"></script>
+
+        <script src="<?php echo $this->baseUrl('/assets/js/jquery.metisMenu.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/custom-layout.js'); ?>"></script>
+        
+
+        <script src="<?php echo $this->baseUrl('/assets/js/smoothscroll.js'); ?>"></script>
+<script src="<?php echo $this->baseUrl('/assets/js/morris/raphael-2.1.0.min.js'); ?>"></script>
+<script src="<?php echo $this->baseUrl('/assets/js/morris.js'); ?>"></script>
+<script src="<?php echo $this->baseUrl('/assets/js/dataTables/jquery.dataTables.js'); ?>"></script>
+<script src="<?php echo $this->baseUrl('/assets/js/dataTables/dataTables.bootstrap.js'); ?>"></script>
+
+
+        <script src="<?php echo $this->baseUrl('/assets/js/custom-admin.js'); ?>"></script>
+       
+    </body>
+    
+    
+</html>

@@ -1,0 +1,9 @@
+<?php if ($this->data['id']){ ?>
+	
+<span class=" label label-danger " onclick="descompartirinmueble('<?php echo $this->data['id_inmueble']; ?>');">Dejar de Compartir</span>
+
+<?php }else{ ?>
+
+<span class=" label label-success " onclick="compartirinmueble('<?php echo $this->data['id_inmueble']; ?>');">Compartir Inmueble</span>
+
+<?php } ?>

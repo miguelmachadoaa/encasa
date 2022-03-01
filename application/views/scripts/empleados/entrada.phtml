@@ -1,0 +1,178 @@
+<div class="container-fluid">
+    
+    <h1 class="page-header">
+	
+		Entrada
+	
+	
+	</h1>
+
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    
+	<div class="row">
+	
+		<div class="well form-inline col-xs-12 col-md-12">
+
+    <form id="form_fecha" name="form_fecha"  action="wake/empleados/entrada" method="post">
+        
+    <div class="form-group">
+        <label for="estado" class="required">Empleados  *</label>
+        <select name="empleado" id="empleado" class="form-control">
+    
+            <option value="">--Empleado--</option>
+                    <?php foreach ($this->empleados as $empleado): ?>
+                    <option value="<?php echo $empleado->id; ?>" ><?php echo utf8_encode($empleado->nombre); ?></option>
+                    <?php endforeach; ?>
+
+
+        </select>
+    </div>
+
+
+        <div class="form-group  ">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            
+        </div>
+
+
+        </form>
+      
+        
+		</div>
+	
+	</div>
+	
+   
+	
+		<table class="table table-hover table-striped" id="tb_pedidos">
+        <thead style="backgroun"><tr>
+            <th>Id</th>
+             <th >Empleado</th>
+
+       
+            <th class="hidden-xs">Fecha </th>
+            
+            
+            <th class="text-center" >Acción</th>
+        </tr></thead><tbody>
+        <?php foreach ($this->asistencia as $row): ?>
+		
+		
+
+            <tr>
+                <td><?php echo $row->id; ?></td>
+                <td ><?php echo $row->nombre; ?></td>
+                <td><?php echo $row->fecha; ?></td>
+                
+                <td class="text-center">
+                    <div id="actiongroup" class="btn-group">
+                        
+
+                        <button type="button" data-id="<?php echo $row->id; ?>" data-toggle="modal" data-target="" class="btn btn-danger btn-sm deletePedido" title="Eliminar"><span class="glyphicon glyphicon-trash"></span></button>
+                        
+
+                    </div>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+		</tbody>
+	</table>
+    
+    
+</div>
+
+<div id="approveModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Aprobar Miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro desea realizar esta acción?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary approve">Aceptar</button>
+                <form id="formApprove" name="formApprove" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'approve')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="rejectModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Rehazar Miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro desea realizar esta acción?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger reject">Aceptar</button>
+                <form id="formReject" name="formReject" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'reject')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="pendingModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Cambiar estatus de miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea cambiar el estatus del miembro a pendiente?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary pending">Aceptar</button>
+                <form id="formPending" name="formPending" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'pending')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar Producto</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea eliminar el Producto?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger delete">Borrar</button>
+                <form id="formDelete" name="formDelete" method="POST" action="<?php echo $this->url(array('controller' => 'productos', 'action' => 'delete')); ?>">
+                    <input type="hidden" id="id" name="id" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

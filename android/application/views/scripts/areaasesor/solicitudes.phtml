@@ -1,0 +1,127 @@
+
+<div class="w3l_agileits_breadcrumbs">
+   <div class="container">
+    <div class="w3l_agileits_breadcrumbs_inner">
+      <ul>
+        <li><a href="<?php echo $this->baseUrl('/areacliente'); ?>">Area Cliente</a><span>«</span></li>
+                  
+        <li>Mis Solicitudes</li>
+        </ul>
+    </div>
+  </div>
+</div>    
+
+
+
+
+
+
+<!--Services-->
+<div class="options-wthree">
+    <div class="container">
+
+      <?php foreach ($this->consultas as $consulta): ?>
+
+
+        <div class="row ">
+          <div class="col-sm-12">
+
+            <div class="well" style="margin: 1em;">
+            <p>
+              <b>Departamento:</b> <?php echo $consulta['departamento']; ?>
+            </p>
+
+            <p>
+              <b>ciudad:</b> <?php echo $consulta['ciudad']; ?>
+            </p>
+
+            <p>
+              <b>zona:</b> <?php echo $consulta['zona']; ?>
+            </p>
+
+            <p>
+              <b>habitacion:</b> <?php echo $consulta['habitaciones']; ?>
+            </p>
+
+            <p>
+              <b>banos:</b> <?php echo $consulta['banos']; ?>
+            </p>
+            <p>
+              <b>tipo:</b> <?php echo $consulta['tipo']; ?>
+            </p>
+
+             <p>
+              <b>desde:</b> <?php echo $consulta['desde']; ?>
+            </p>
+
+             <p>
+              <b>hasta:</b> <?php echo $consulta['hasta']; ?>
+            </p>
+
+            <p>
+              <b>Nota:</b> <?php echo $consulta['notas']; ?>
+            </p>
+
+            </div>
+
+          </div>
+        </div>
+        
+      <?php endforeach ?>
+    
+  </div>
+</div>
+
+
+
+
+
+<!--Services-->
+<div class="options-wthree">
+    <div class="container">
+    <ul>
+      <li>
+      <a href="<?php echo $this->baseUrl('/inmueble/buscar'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Ver Propiedades</h6>
+        </div>
+      </a>
+      </li>
+      <li>
+      <a href="<?php echo $this->baseUrl('/areacliente/solicitud'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-clipboard" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Solicitar Propiedad</h6>
+        </div>
+      </a>
+      </li>
+      <li>
+      <a href="<?php echo $this->baseUrl('/areacliente/missolicitudes'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-list" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Mis Solicitudes</h6>
+        </div>
+      </a>
+      </li>
+     
+     
+      <li>
+      <a href="<?php echo $this->baseUrl('/auth/logout'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Salir</h6>
+        </div>
+      </a>
+      </li>
+    </ul>
+  </div>
+</div>

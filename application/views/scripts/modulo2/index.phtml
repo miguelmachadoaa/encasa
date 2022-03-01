@@ -1,0 +1,68 @@
+<div class="container-fluid" ng-controller="modulosCtrl">
+    <h1 class="page-header">Modulos</h1>
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+	
+	 
+    
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+           
+            <th>Titulo</th>
+            <th>Descripcion</th>
+            <th>Imagen</th>
+            
+            <th>
+                <div class="pull-right">
+                    <a href="mminternationalgroup.com/modulo/add" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Crear Modulo</a>
+                </div>
+            </th>
+        </tr>
+       
+                    <?php foreach ($this->modulos as $row): ?>
+        <tr>
+            <td><?php echo $row->id; ?></td>
+            
+            <td><?php echo $row->titulo; ?></td>
+            <td><?php echo $row->descripcion; ?></td>
+            <td><img src="mminternationalgroup.com/<?php echo $row->imagen; ?>" class="img img-responsive" width="90px"> </td>
+
+            <td>
+                
+                <div class="btn-group pull-right">
+                    
+                    <a href="
+                    mminternationalgroup.com/modulo/edit/id/<?php echo $row->id; ?>"  class="btn btn-link"><span class="glyphicon glyphicon-edit"></span> </a>
+                    <button type="button" onclick="deleteSlider(\'<?php echo $row->id; ?>\')"  class="btn btn-link" title="Eliminar"><span class="glyphicon glyphicon-trash"></span> </button>
+                </div>
+                
+                
+                
+                
+            </td>
+
+
+        </tr>
+        <?php endforeach; ?>
+
+
+
+        
+    </table>
+    
+    <?php echo ($this->paginator->count() > 1) ? $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml') : ''; ?>
+    
+
+
+
+
+
+</div> <!-- End Container--> 

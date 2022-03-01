@@ -1,0 +1,144 @@
+<div class="container-fluid" >
+    <h1 class="page-header">Ventas
+        <!-- <?php  if ($this->acceso['venta']['add']): ?>
+
+            <div class="pull-right">
+                    <a href="<?php echo $this->baseUrl('/asesores/add'); ?>" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Crear </a>
+                </div>
+ <?php endif ?>-->
+            
+
+    </h1>
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    
+    <table class="table table-striped" id="tb_estudiantes">
+        <thead>
+        <tr>
+            <th>ID</th>
+           
+            <th>Titulo</th>
+            <th>Captador</th>
+            <th>Cerrador</th>
+            <th>Monto de Venta</th>
+            <th>Comision</th>
+            <th>Fecha</th>
+            
+            <th width="150px">
+                Accion
+            </th>
+        </tr>
+    </thead><tbody>
+
+      <?php  
+        $ObjUsers= new Application_Model_DbTable_Users();
+
+
+       ?>
+
+        <?php foreach ($this->elementos as $row): ?>
+
+          <?php if ($row->id_captador!='Externo') {
+
+            $captador=$ObjUsers->fetchRow('id="'.$row->id_captador.'"');
+
+            $row->id_captador=$captador['username'];
+          } ?>
+
+          <?php if ($row->id_cerrador!='Externo') {
+
+            $cerrador=$ObjUsers->fetchRow('id="'.$row->id_cerrador.'"');
+
+            $row->id_cerrador=$cerrador['username'];
+          } ?>
+            
+          
+        <tr id="<?php echo $row->id; ?>">
+            <td><?php echo $row->id; ?></td>
+            <td><?php echo $row->titulo; ?></td>
+            
+            <td><?php echo $row->id_captador; ?></td>
+            <td><?php echo $row->id_cerrador; ?></td>
+            <td><?php echo $row->monto_venta; ?></td>
+            <td><?php echo $row->comision; ?></td>
+            <td><?php echo $row->fecha; ?></td>
+
+            <td>
+                
+               <!-- <div class=" pull-right" style=" width: 12em;">
+
+                    <?php  if (isset($this->acceso['asesores']['edit'])): ?>
+
+                     <a href="
+                    <?php echo $this->baseUrl('/asesores/edit/id/').$row->id; ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> </a>
+
+ <?php endif ?>
+
+ 
+    <?php  if (isset($this->acceso['asesores']['del'])): ?>
+
+     <button type="button" onclick="borrar(<?php echo $row->id; ?>, 'asesores')"  class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash"></span> </button>
+ <?php endif ?>
+
+ <?php  if (isset($this->acceso['asesores']['estatus'])): ?>
+
+     <div class="estatus" style="display: inline-block;">
+
+                   <?php if ($row->estatus){ ?>
+
+                      <button type="button"  onclick="estatus(<?php echo $row->id; ?>, 'asesores', '0' )"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-up"></span> </button>  
+
+                    <?php }else{ ?>
+
+                        <button type="button" onclick="estatus(<?php echo $row->id; ?>,  'asesores', '1')"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-down"></span> </button>  
+
+                    <?php } ?>
+
+                    </div>
+
+
+ <?php endif ?>
+
+                  
+
+                </div>-->
+                
+            </td>
+        </tr>
+        <?php endforeach; ?>
+     </tbody>
+        
+    </table>
+    
+
+</div> <!-- End Container--> 
+
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <input type="hidden" name="del_modelo" id="del_modelo">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="eliminar()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>

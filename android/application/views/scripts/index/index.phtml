@@ -1,0 +1,128 @@
+
+
+
+
+<!-- banner -->
+  <div class="banner-silder">
+      <div class="callbacks_container">
+        <ul class="rslides callbacks callbacks1" id="slider4">
+
+
+          <?php foreach ($this->sliders as $slider): ?>
+
+                  <li>
+            <div class="w3layouts-banner-top"  style="background: url(<?php echo $this->baseUrl($slider->imagen); ?>)">
+
+              <div class="container">
+                <div class="agileits-banner-info">
+                  <h3><?php echo $slider->titulo; ?></h3>
+                </div>  
+              </div>
+            </div>
+          </li>
+
+
+
+
+                
+              <?php endforeach ?>
+
+
+
+          
+          
+          
+         
+        </ul>
+      </div>
+      <div class="clearfix"> </div>
+      </div>
+<!-- //banner -->
+
+
+<!--Services-->
+<div class="options-wthree">
+    <div class="container">
+    <ul>
+      <li>
+      <a href="<?php echo $this->baseUrl('/inmueble/buscar'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Propiedades</h6>
+        </div>
+      </a>
+      </li>
+      <li>
+      <a href="<?php echo $this->baseUrl('/inmueble/buscar/tipo/apartamento'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-building" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Apartamentos</h6>
+        </div>
+      </a>
+      </li>
+      <li>
+      <a href="<?php echo $this->baseUrl('/inmueble/buscar/tipo/casa'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Casas</h6>
+        </div>
+      </a>
+      </li>
+      <li>
+      <a href="<?php echo $this->baseUrl('/inmueble/buscar/tipo/galpon'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-warehouse" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Galpones</h6>
+        </div>
+      </a>
+      </li>
+      <li>
+      <a href="<?php echo $this->baseUrl('/servicios'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Servicios</h6>
+        </div>
+      </a>
+      </li>
+      <li>
+      <a href="<?php echo $this->baseUrl('/contacto'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Contacto</h6>
+        </div>
+      </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--//Services-->
+<!--social-icons-->
+<div class="social-agileinfo">
+  <a href="#"  class="social-icon-w3-agile facebook">
+    <i class="fa fa-facebook" aria-hidden="true"></i>
+  </a>
+  <a href="#"  class="social-icon-w3-agile google-plus">
+    <i class="fa fa-google-plus" aria-hidden="true"></i>
+  </a>
+  <a href="#" class="social-icon-w3-agile twitter">
+    <i class="fa fa-twitter" aria-hidden="true"></i>
+  </a>
+  <a href="#" class="social-icon-w3-agile rss">
+    <i class="fa fa-rss" aria-hidden="true"></i>
+  </a>
+  <div class="clearfix"></div>
+</div>
+<!--//social-icons-->

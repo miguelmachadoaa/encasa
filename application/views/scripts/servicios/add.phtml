@@ -1,0 +1,94 @@
+<div class="container" ng-controller="addnoticiaCtrl">
+
+	<ol class="breadcrumb">
+		 <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a></li>
+		  <li><a href="<?php echo $this->baseUrl('/servicios/list'); ?>">Servicios</a></li>
+		  <li class="active">Editar</li>
+	</ol>
+
+    <h1 class="page-header">Agregar Servicios</h1>
+   
+    <div class="row">
+
+
+
+<!--++++++++++++++++++++ Comienzo del formulario ++++++++++++++++++-->
+<div class="col-sm-12">
+	<form id="form_noticia" name="form_noticia" enctype="multipart/form-data" action="<?php echo $this->baseUrl('/servicios/add'); ?>" method="post"><div>
+
+		<input type="hidden" id="id" name="id"  value="<?php echo time();?>">
+
+		<div id="idNoticia" data-id="<?php echo time();?>"></div>
+
+
+		<div class="form-group">
+			<label for="cedula" class="required">Titulo *</label>
+			<input type="text"  name="titulo" id="titulo" value="" class="form-control" placeholder="Titulo">
+		</div>
+
+		<div class="form-group">
+			<label for="cedula" class="required">Descripcion *</label>
+			<textarea  name="descripcion" id="descripcion" class="form-control" rows="3"></textarea>
+			
+		</div>
+
+		
+
+
+
+
+
+		<div id="doc_path-label">
+		<label for="doc_path" class="optional">Imagen Destacada:</label>
+		</div>
+		<div id="doc_path-element">
+			<input type="hidden" name="MAX_FILE_SIZE" value="2097152" id="MAX_FILE_SIZE">
+			<input type="file" name="doc_path" id="doc_path" class="btn">
+			Tamaño Maximo de Imagen 1Mb.
+		</div>
+
+
+
+		<dt id="buttons-label">&#160;</dt>
+		<dd id="buttons-element">
+			<fieldset id="fieldset-buttons">
+				<dl>
+					<input type="submit" name="btn_submit" id="btn_submit" value="Guardar" class="btn btn-default">
+
+					<a href="<?php echo $this->baseUrl('/servicios'); ?>"  name="btn_cancel" id="btn_cancel" type="button" class="btn btn-danger">Cancelar</a>
+				</dl>
+
+			</fieldset>
+		</dd>
+		</div>
+	</form> 
+
+
+</div>
+
+
+
+
+
+
+   
+
+
+
+
+
+
+<!--+++<?php// echo $this->EstForm; ?> ++++++++++++++++++++ Fin  del formulario+++++++++++++++ ++++++++++++-->
+
+
+
+
+
+
+
+
+
+
+    </div> <!-- fin row -->
+    
+</div> <!-- fin container  -->

@@ -1,0 +1,19 @@
+
+<div class="container">
+	<div class="row">
+<?php foreach ($this->images as $img ): ?>
+
+	<div id="<?php echo md5('/assets/images/'.$img); ?>" class="col-sm-12">
+		<div class="col-sm-1">
+		<img class="img img-responsive" src="<?php echo '/assets/images/300/'.$img; ?>">
+		</div>
+		<div class="col-sm-5"><?php echo '/assets/images/'.$img; ?></div>
+		<div class="col-sm-6">
+			<button class="btn btn-danger" onclick="borrarimagen('<?php echo 'assets/images/'.$img; ?>','<?php echo md5('/assets/images/'.$img); ?>')">Borrar</button>
+			<button class="btn btn-info" onclick="generarimagen('<?php echo $img; ?>','<?php echo md5('/assets/images/'.$img); ?>')">Generar</button>
+		</div>
+		
+	</div>
+<?php endforeach ?>
+	</div>
+</div>

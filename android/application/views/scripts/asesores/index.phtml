@@ -1,0 +1,61 @@
+           <!--popular-->
+
+        <div class="popular-w3">
+      <div class="container">
+        <h2 class="tittle"> Nuestros Asesores </h2>
+        <div class="popular-grids">
+
+      
+
+        <?php foreach ($this->elementos as $asesor): ?>
+           
+
+          <div class="col-md-3 popular-grid">
+            <h4><?php echo $asesor->nombre; ?></h4>
+            <img src="<?php echo $this->baseUrl($asesor->imagen); ?>" class="img-responsive" alt="<?php echo $asesor->nombre; ?>"/>
+            <div class="popular-text">
+              <h3><?php echo $asesor->cargo; ?></h3>
+              <p><?php echo $asesor->telefono; ?> <br><?php echo $asesor->email; ?></p>
+              
+            </div>
+          </div>
+
+          
+        <?php endforeach ?>
+
+        
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!--popular-->
+
+
+    <!--featured-->
+      <div class="featured-w3l">
+        <div class="container">
+          <h3 class="tittle1">Servicios</h3>
+          <div class="feature-grids">
+
+          <?php $icono = array('home', 'signal', 'cog'); ?>
+          <?php $i=0; ?>
+            <?php foreach ($this->avaluos as $ava): ?>
+
+              <div class="col-md-4 fer-grid">
+              <div class="icons">
+                <i class="glyphicon glyphicon-<?php echo $icono[$i]; ?>" aria-hidden="true"></i>
+              </div>
+                <h4> <?php echo $ava->titulo; ?></h4>
+                <p> <?php echo $ava->descripcion; ?></p>
+            </div>
+              <?php $i++; ?>
+            <?php endforeach ?>
+            
+           
+            
+            <div class="clearfix"></div>
+          </div>
+          
+        </div>
+      </div>
+    <!--featured-->

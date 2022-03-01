@@ -1,0 +1,114 @@
+<div class="container-fluid" >
+    <h1 class="page-header">Noticias
+        <?php  if ($this->acceso['noticia']['add']): ?>
+             <div class="pull-right">
+                    <a href="<?php echo $this->baseUrl('/noticia/add'); ?>" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Crear Noticia</a>
+                </div>
+<?php endif ?>
+           
+
+
+    </h1>
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+	
+	 
+    
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Autor</th>
+            <th>Titulo</th>
+            
+            <th>Imagen</th>
+            
+            <th width="150px">
+                Accion
+            </th>
+        </tr>
+
+
+        <?php foreach ($this->noticias as $row): ?>
+        <tr id="<?php echo $row->id; ?>">
+            <td><?php echo $row->id; ?></td>
+            
+            <td><?php echo $row->name.' '.$row->lastname; ?></td>
+            <td><?php echo $row->titulo; ?></td>
+            
+            <td><img src="<?php echo $this->baseUrl('/').$row->foto; ?>" class="img img-responsive" width="90px"> </td>
+
+            <td>
+                
+                <div class="btn-group pull-right">
+
+                       <?php  if (isset($this->acceso['noticia']['edit'])): ?>
+<a href="
+                    <?php echo $this->baseUrl('/noticia/edit/id/').$row->id; ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> </a>
+<?php endif ?>
+
+       <?php  if (isset($this->acceso['noticia']['del'])): ?>
+ <button type="button" onclick="del(<?php echo $row->id; ?>)"  class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash"></span> </button>
+<?php endif ?>
+
+       <?php  if (isset($this->acceso['noticia']['estatus'])): ?>
+<?php if ($row->estatus){ ?>
+
+                      <button type="button"  onclick="desactivarNoticia(<?php echo $row->id; ?> )"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-up"></span> </button>  
+
+                    <?php }else{ ?>
+
+                        <button type="button" onclick="activarNoticia(<?php echo $row->id; ?>)"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-down"></span> </button>  
+
+                    <?php } ?>
+<?php endif ?>
+                    
+                    
+
+                  
+
+                   
+                </div>
+                
+            </td>
+
+
+        </tr>
+        <?php endforeach; ?>
+       
+    </table>
+    
+  
+    
+
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="deleteNoticia()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</div> <!-- End Container--> 

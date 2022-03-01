@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <h1 class="page-header">Usuarios</h1>
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+	
+	 <?php
+	 $rol=0;
+	 $auth = Zend_Auth::getInstance(); 
+		if ($auth->hasIdentity()){  
+		 if($auth->getIdentity()->role=='superadmin'){$rol=3;};
+	 } 
+	 //echo $rol;?>
+    
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Estado</th>
+            <th>Rol</th>
+            <th>Creado</th>
+            <th>Modificado</th>
+            <th>
+
+                 <?php  if ($this->acceso['users']['add']): ?>
+
+                  <div class="pull-right">
+                    <a href="<?php echo $this->url(array('controller' => 'users', 'action' => 'add')); ?>" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Crear usuario</a>
+                </div>  
+<?php endif ?>
+
+
+                
+            </th>
+        </tr>
+        <?php foreach ($this->paginator as $row): ?>
+        <tr id="<?php echo $row->id; ?>">
+            <td><?php echo $row->id; ?></td>
+            <td><?php echo implode(', ', array($row->lastname, $row->name)); ?></td>
+            <td><?php echo $row->username; ?></td>
+            <td><?php echo $this->objStates->getState($row->state_id); ?></td>
+            <td><?php echo $this->objRoles->getRoleDescription($row->role_id); ?></td>
+            <td><?php echo $row->created; ?></td>
+            <td><?php echo $row->modified; ?></td>
+            <td>
+				
+				
+					
+					
+					<div class="btn-group pull-right">
+
+                    <?php  if ($this->acceso['users']['edit']): ?>
+<a href="<?php echo $this->url(array('controller' => 'users', 'action' => 'edit', 'id' => $row->id)); ?>" class="btn btn-link"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+<?php endif ?>         
+
+ <?php  if ($this->acceso['users']['del']): ?>
+  <button type="button" onclick="borrar(<?php echo $row->id; ?>, 'users')"  class="btn btn-link" title="Eliminar"><span class="glyphicon glyphicon-trash"></span> </button>
+<?php endif ?>
+
+                    
+
+                  
+
+					</div>				
+					
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+    
+    <?php echo ($this->paginator->count() > 1) ? $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml') : ''; ?>
+    
+</div>
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <input type="hidden" name="del_modelo" id="del_modelo">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="eliminar()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+<div class="container" ng-controller="editnoticiaCtrl">
+
+	<ol class="breadcrumb">
+		  <li><a href="#">Inicio</a></li>
+		  <li><a href="mminternationalgroup.com/portafolio">Personal</a></li>
+		  <li class="active">Editar</li>
+	</ol>
+
+    <h1 class="page-header">Editar Personal</h1>
+    
+    <div class="row">
+
+
+
+<!--++++++++++++++++++++ Comienzo del formulario ++++++++++++++++++-->
+<div class="col-sm-12">
+	<form id="form_noticia" name="form_noticia" enctype="multipart/form-data" action="mminternationalgroup.com/personal/edit" method="post"><div>
+
+		<input type="hidden" id="id" name="id"  value="<?php echo $this->personal['id']; ?>">
+
+		<div id="idNoticia" data-id="<?php echo $this->personal['id']; ?>"></div>
+
+		
+
+
+		<div class="form-group">
+			<label for="cedula" class="required">Nobre *</label>
+			<input type="text" name="titulo" id="titulo" value="<?php echo $this->personal['nombre']; ?>" class="form-control" placeholder="nombre">
+		</div>
+
+		<div class="form-group">
+			<label for="cedula" class="required">Descripcion *</label>
+			<input type="text" name="descripcion" id="descripcion" value="<?php echo $this->personal['descripcion']; ?>" class="form-control" placeholder="Descripcion">
+		</div>
+
+		<div class="form-group">
+			<label for="cedula" class="required">Url *</label>
+			<input type="text" name="url" id="url" value="<?php echo $this->personal['url']; ?>" class="form-control" placeholder="Url">
+		</div>
+
+
+
+
+
+		<div class="col-sm-12">	
+				<div id="doc_path-label col-sm-9">
+		<label for="doc_path" class="optional">Imagen Destacada:</label>
+		</div>
+		<div id="doc_path-element">
+			<input type="hidden" name="MAX_FILE_SIZE" value="5242880" id="MAX_FILE_SIZE">
+			<input type="file" name="doc_path" id="doc_path" class="btn">
+			Tamaño Maximo de Imagen 5Mb. Cambie la Imagen solo si requiere actualizarla
+		</div>
+
+		<div class="col-sm-3">
+		<img src="mminternationalgroup.com/<?php echo $this->personal['imagen'];?>" class="img ig-responsive img-form" max-width="100px" >
+			
+		</div>
+
+		</div>
+		
+
+		
+
+
+
+		<dt id="buttons-label">&#160;</dt>
+		<dd id="buttons-element">
+			<fieldset id="fieldset-buttons">
+				<dl>
+					<input type="submit" name="btn_submit" id="btn_submit" value="Guardar" class="btn btn-default">
+
+					<button name="btn_cancel" id="btn_cancel" type="button" class="btn btn-danger">Cancelar</button>
+				</dl>
+
+			</fieldset>
+		</dd>
+		</div>
+	</form> 
+
+
+</div>
+
+
+
+
+   
+
+
+
+
+
+
+<!--+++<?php// echo $this->EstForm; ?> ++++++++++++++++++++ Fin  del formulario+++++++++++++++ ++++++++++++-->
+
+
+
+
+
+
+
+
+
+
+    </div> <!-- fin row -->
+    
+</div> <!-- fin container  -->

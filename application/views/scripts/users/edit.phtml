@@ -1,0 +1,9 @@
+<div class="container">
+    <h1 class="page-header">Editar Usuario</h1>
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <span><strong>*</strong> Si no desea cambiar la contraseña deje los campos vacíos.</span>
+    </div>
+    <div class="pull-right"><a href="<?php echo $this->baseUrl('/users'); ?>" class="btn btn-link"><span class="glyphicon glyphicon-chevron-left"></span> Volver al listado</a></div>
+    <?php echo $this->userForm; ?>
+</div>

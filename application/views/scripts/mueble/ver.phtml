@@ -1,0 +1,183 @@
+<div class="container">
+
+  <ol class="breadcrumb">
+      <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a></li>
+      <li><a href="<?php echo $this->baseUrl('/mueble'); ?>">Presupuestos</a></li>
+      <li class="active">Ver Detalle</li>
+  </ol>
+    
+   <div class="row">
+
+   <h1 class="page-header">Detalles de la Solicitud de Presupuestos</h1>
+
+   <br> 
+
+   <table class="table table-striped table-responsive"> 
+      <tr>  
+      <th > Campo </th>
+      <th> Detalle </th>
+
+      </tr>
+
+      <tr>  
+        <th> Id </th>
+        <td> <?php echo $this->presupuesto['id']; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Nombres y Apellidos </th>
+        <td> <?php echo $this->presupuesto['nombres'].' '.$this->presupuesto['apellidos']; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Cedula</th>
+        <td> <?php echo $this->presupuesto['cedula']; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Telefono Local  </th>
+        <td> <?php echo $this->presupuesto['tlf']; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Telefono Movil </th>
+        <td> <?php echo $this->presupuesto['tlf_movil']; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Email </th>
+        <td> <?php echo $this->presupuesto['email']; ?>  </td>
+      </tr>
+      
+
+      <tr>  
+        <th> Estado </th>
+        <td> <?php echo $this->presupuesto['estado']; ?>  </td>
+      </tr>
+        
+      
+      <tr>  
+        <th> Ciudad </th>
+        <td> <?php echo $this->presupuesto['ciudad']; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Direccion </th>
+        <td> <?php echo $this->presupuesto['direccion']; ?>  </td>
+      </tr>
+
+     
+      <tr>  
+        <th> Fecha </th>
+        <td> <?php echo $this->presupuesto['fecha']; ?>  </td>
+      </tr>
+
+    </table>
+
+         <div class="row">
+
+   <h1 class="page-header">Detalles de los Bienes</h1>
+
+   <br> 
+
+   <?php foreach ($this->bienes as $bien): ?>
+
+      <table class="table table-striped table-responsive"> 
+      <tr>  
+      <th > Campo </th>
+      <th> Detalle </th>
+
+      </tr>
+
+      <tr>  
+        <th> Id </th>
+        <td> <?php echo $bien->id; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Tipo de Bien </th>
+        <td> <?php echo $bien->tipo_bien; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Cantidad</th>
+        <td> <?php echo $bien->cantidad_bien; ?>  </td>
+      </tr>
+
+<tr>  
+        <th> Marca</th>
+        <td> <?php echo $bien->marca; ?>  </td>
+      </tr>
+
+
+<tr>  
+        <th> Modelo </th>
+        <td> <?php echo $bien->modelo; ?>  </td>
+      </tr>
+
+
+<tr>  
+        <th> Edad en Años</th>
+        <td> <?php echo $bien->edad_bien; ?>  </td>
+      </tr>
+
+
+<tr>  
+        <th> Estado de Conservacion </th>
+        <td> <?php echo $bien->conservacion_bien; ?>  </td>
+      </tr>
+
+
+<tr>  
+        <th> Cambio de Tecnologia  </th>
+        <td> <?php echo $bien->tecnologia_bien; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Tipo de Mantenimiento  </th>
+        <td> <?php echo $bien->mantenimiento_bien; ?>  </td>
+      </tr>
+      <tr>  
+        <th> Tipo de Trabajo  </th>
+        <td> <?php echo $bien->trabajo_bien; ?>  </td>
+      </tr>
+      <tr>  
+        <th> Observaciones y Comentarios </th>
+        <td> <?php echo $bien->observacion_bien; ?>  </td>
+      </tr>
+      <tr>  
+        <th> Imagen  </th>
+        <td> <?php echo $bien->imagen; ?>  </td>
+      </tr>
+
+    </table>
+
+   <?php endforeach ?>
+
+   </div> 
+
+
+
+    <div class="row">
+
+   <h1 class="page-header">Fotos  del Bien</h1>
+
+   <br> 
+
+   <?php foreach ($this->fotos as $foto): ?>
+
+    <div class="col-sm-3">
+
+        <img class="img img-responsive" src="<?php echo $this->baseUrl('/assets/images/').$foto->foto; ?>">
+
+     </div>
+
+
+
+    <?php endforeach ?>
+</div> 
+ 
+   </div>
+      
+</div>
+

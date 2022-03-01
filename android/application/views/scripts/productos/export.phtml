@@ -1,0 +1,30 @@
+
+<html>
+    <head>
+        <meta charset="ANSI">
+        <title>Reporte</title>
+        <style>
+            body {font-size: 11px;}
+        </style>
+    </head>
+    <body>
+        <h2>Reporte de Participantes Registrados</h2>
+        
+        <table cellpadding="2" cellspacing="2" border="0">
+            <tr style="background-color:#BDBDBD; font-weight: bold; color: white; text-align: center;">
+				<th width="10%" height="30px" style="border-right: 1px solid #ccc;">Id</th>
+                <th width="15%" height="30px" style="border-right: 1px solid #ccc;">Codigo</th>
+				<th width="65%" height="30px" style="border-right: 1px solid #ccc;">Descripcion</th>
+                <th width="10%" height="30px" style="border-right: 1px solid #ccc;">Precio</th>
+            </tr>
+            <?php $i=0; foreach ($this->members as $row): $i++; ?>
+                <tr style="font-size:10px; background-color: <?php echo ($i%2==0) ? '#eee;' : '#fff'; ?>;">
+                    <td height="30px" style="border-right: 1px solid #ccc;"><?php echo  utf8_encode($row->id); ?></td>
+                    <td height="30px" style="border-right: 1px solid #ccc;"><?php echo  ucwords(utf8_encode($row->codigo)); ?></td>
+                    <td height="30px" style="border-right: 1px solid #ccc;"><?php echo  utf8_encode($row->descripcion); ?></td>
+					<td height="30px" style="border-right: 1px solid #ccc;"><?php echo  utf8_encode($row->precio); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </body>
+</html>

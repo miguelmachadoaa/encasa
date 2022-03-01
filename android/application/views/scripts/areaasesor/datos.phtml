@@ -1,0 +1,55 @@
+  <!-- breadcrumbs -->
+<div class="w3l_agileits_breadcrumbs">
+   <div class="container">
+    <div class="w3l_agileits_breadcrumbs_inner">
+      <ul>
+        <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a><span>«</span></li>
+                  
+        <li>Datos</li>
+        </ul>
+    </div>
+  </div>
+</div>    
+<!-- //breadcrumbs -->
+
+
+<!-- Doctors -->
+<div class="blog" id="blog">
+  <div class="container">
+  
+    <h4 class="tittle-w3layouts">Datos</h4>
+
+    <?php foreach ($this->datos as $row): ?>
+
+      <div class="row ">
+          <div class="col-sm-12">
+
+            <div class="well" style="margin: 1em;">
+            <p>
+              <b>Propiedad:</b> <a href=" <?php    echo $this->baseUrl('inmueble/ver/id/').$row->id_inmueble; ?>">   <?php echo   $row->titulo.' - '. $row->tipo_inmueble; ?>  </a>
+            </p>
+
+            <p>
+              <b>Mensaje:</b> Han Solicitado datos del inmueble.
+            </p>
+
+           
+
+            <p>
+              <b>Fecha:</b> <?php echo $row->fecha; ?>
+            </p>
+            
+
+            </div>
+
+          </div>
+        </div>
+      
+    <?php endforeach ?>
+
+
+  </div>
+</div>
+
+<!-- //Doctors --> 
+

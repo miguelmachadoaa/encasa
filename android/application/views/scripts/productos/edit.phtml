@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <h1 class="page-header">Registro de Producto</h1>
+    <div style="position: absolute; z-index: 9999; <?php echo ($this->auth->getIdentity()->role === 'administrador') ? 'display:block;' : 'display:none;'; ?>">
+    </div>
+    <div class="row">
+
+
+
+
+            <!--++++++++++++++++++++ Comienzo del formulario ++++++++++++++++++-->
+
+<form id="form_productos" name="form_productos" enctype="multipart/form-data" action="wake/productos/edit" method="post"><div>
+<input type="hidden" id="id" name="id" value="<?php echo $this->id;?>">
+
+
+<div class="form-group"><label for="cedula" class="required">Codigo *</label>
+
+<input type="text" name="codigo" id="codigo" value="<?php echo $this->dcodigo;?>" class="form-control" placeholder="Codigo"></div>
+
+
+<div class="form-group"><label for="nombre" class="required">Descripcion *</label>
+
+<input type="text" name="descripcion" id="descripcion" value="<?php echo $this->ddescripcion;?>" class="form-control span3" placeholder="Nombre"></div>
+
+
+
+
+<div class="form-group"><label for="email" class="optional">Precio</label>
+
+<input type="text" name="precio" id="precio" value="<?php echo $this->dprecio;?>" class="form-control" placeholder="840.00" required="1"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="buttons-label">&#160;</div><div id="buttons-element"><fieldset id="fieldset-buttons"><div>
+
+<input type="submit" name="btn_submit" id="btn_submit" value="Guardar" class="btn btn-default">
+
+<a name="btn_cancel" href="wake/productos" id="btn_cancel" type="button" class="btn btn-danger">Cancelar</a></div></fieldset></div></div></form> 
+
+
+
+
+
+    </div>
+    
+</div>

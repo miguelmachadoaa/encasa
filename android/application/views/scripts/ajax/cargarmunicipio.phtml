@@ -1,0 +1,9 @@
+<?php if (isset($this->municipios)): ?>
+        <option value="">--Municipios--</option>
+	
+<?php foreach ($this->municipios as $municipio): ?>
+
+	<option value="<?php echo $municipio->id; ?>"><?php echo utf8_encode($municipio->nombre); ?></option>
+	
+<?php endforeach ?>	
+<?php endif ?>

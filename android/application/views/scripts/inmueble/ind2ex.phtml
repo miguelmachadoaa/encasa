@@ -1,0 +1,104 @@
+<div class="container-fluid" ng-controller="modulosCtrl">
+    <h1 class="page-header">Registro de Inmuebles
+
+<div class="pull-right">
+                    <a href="<?php echo $this->baseUrl('/inmueble/add'); ?>" class="btn btn-default"><i class="fa fa-home" aria-hidden="true"></i>Agregar</a>
+                </div>
+
+    </h1>
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
+    <?php $ObjFotos = new Application_Model_DbTable_Fotos(); ?>
+    <?php  $ObjViews= new Application_Model_DbTable_Views(); ?>
+    <?php $ObjDatos = new Application_Model_DbTable_Datos(); ?>
+    <?php $ObjContacto = new Application_Model_DbTable_Contacto(); ?>
+
+
+    <?php foreach ($this->inmuebles as $row): ?>
+
+        <div class="row well">
+            <div class="col-sm-2">
+           <?php $foto=$ObjFotos->getsSolicitudUna($row->id);  ?>  
+           <img class="img img-responsive" src="<?php echo $this->baseUrl('/assets/images/').$foto->foto; ?>">
+              
+            </div>
+            <div class="col-sm-6">
+                <h3><?php echo $row->titulo;  ?></h3>
+                <p><?php if ($row->monto_vender) {  echo $row->monto_vender; }   ?></p>
+                <p><?php  echo $row->name.' '.$row->lastname;   ?> - <?php echo $row->fecha;  ?></p>
+
+            </div>
+            <div class="col-sm-1">
+                <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                <?php $views=$ObjViews->fetchAll('id_inmueble="'.$row->id.'"'); ?>
+                <?php echo count($views); ?>
+            </div>
+            <div class="col-sm-1">
+                <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+                <?php $datos=$ObjDatos->fetchAll('id_inmueble="'.$row->id.'"'); ?>
+                <?php echo count($datos); ?>
+            </div>
+            <div class="col-sm-1">
+                <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                <?php $contact=$ObjContacto->fetchAll('id_inmueble="'.$row->id.'"'); ?>
+                <?php echo count($contact); ?>
+            </div>
+            <div class="col-sm-1">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                   <i class="fa fa-th" aria-hidden="true"></i>
+                    
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a onclick="del('<?php echo $row->id; ?>')" href="#">Eliminar</a></li>
+                    <li><a href="<?php echo $this->baseUrl('/inmueble/edit/id/').$row->id; ?>">Editar</a></li>
+                    <li><a href="<?php echo $this->baseUrl('/inmueble/informe/id/').$row->id; ?>">Informe</a></li>
+                    <li><a href="#">Suspender</a></li>
+                    <li><a href="<?php echo $this->baseUrl('/inmueble/permisos/id/').$row->id; ?>">Permisos</a></li>
+                    <li><a href="<?php echo $this->baseUrl('/inmueble/ver/id/').$row->id; ?>">Ver</a></li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+
+    <?php endforeach; ?>
+	
+	 
+   
+ 
+    
+
+
+
+
+
+</div> <!-- End Container--> 
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="deletePresupuesto()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>

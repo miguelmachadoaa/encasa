@@ -1,0 +1,53 @@
+<?php if (	$this->usuario=='false'){ ?>
+<div class="row">	
+		<div class="col-sm-12">	
+				<p>	No se encontro el usuario</p>
+		</div>
+</div>	
+	
+<?php }else{ ?>
+<div class="row">
+	<div class="col-sm-4">
+		<img  src="<?php echo $this->baseUrl('assets/img/').$this->usuario['imagen']; ?>" class="img img-responsive" alt="<?php echo $this->usuario['name'].' '.$this->usuario['lastname']; ?>">
+	</div>
+	<div class="col-sm-8">
+		<table>
+			<tr>
+				<td colspan="2"><b><?php echo $this->usuario['name'].' '.$this->usuario['lastname']; ?></b></td>
+				
+			</tr>
+			<tr>
+				<td><i class="fa fa-user" aria-hidden="true"></i></td>
+				<td><?php echo $this->usuario['name'].' '.$this->usuario['lastname']; ?></td>
+			</tr>
+			<tr>
+				<td><i class="fa fa-envelope" aria-hidden="true"></i></td>
+				<td><?php echo $this->usuario['email']; ?></td>
+			</tr>
+			<tr>
+				<td><i class="fa fa-phone" aria-hidden="true"></i></td>
+				<td><?php echo $this->usuario['telefono']; ?></td>
+			</tr>
+			<tr>
+				<td><i class="fa fa-mobile" aria-hidden="true"></i></td>
+				<td><?php echo $this->usuario['movil']; ?></td>
+			</tr>
+			<tr>
+				<td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
+				<td><?php echo $this->usuario['state']; ?></td>
+			</tr>
+
+			
+
+		</table>
+		<br>
+		<div class="col-sm-12">
+		<button onclick="enviaralianza('<?php echo $this->id_user; ?>','<?php echo $this->usuario['id']; ?>')" class="btn btn-primary">Solicitar Alianza </button>
+
+		<div class="respuesta_solicitud">	</div>
+	</div>
+	</div>
+
+	
+</div>
+<?php } ?>

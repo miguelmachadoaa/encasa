@@ -1,0 +1,33 @@
+<h2>Imagenes</h2>
+
+<?php foreach ($this->fotos as $foto): ?>
+
+		        		
+						 <div class="col-sm-6 col-md-4" id="<?php echo $foto->id; ?>">
+						    <div class="thumbnail">
+						      <img style="max-width: 12em;  max-height: 10em;"  class="img img-responsive" src="<?php echo $this->baseUrl('assets/images/'.$foto->foto); ?>" alt="...">
+						      <div class="caption">
+						        
+						        <div class="col-sm-3"><?php if ($foto->posicion=='1'){ ?>
+						        	<button style="float: right;" onclick="principal('<?php echo $foto->id; ?>')" type="button" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+
+						        <?php }else { ?>
+
+						        	 <button style="float: right;" onclick="principal('<?php echo $foto->id; ?>')" type="button"  class="btn btn-default" role="button"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+
+						       <?php  } ?></div>
+						        <div class="col-sm-3"><button onclick="borrar('<?php echo $foto->id; ?>','fotos')" type="button"  class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>
+
+						         <div class="col-sm-6">
+                      <h4>Posicion: <span class="badge" onclick="cambiarPosicion('<?php echo $foto->id; ?>', '<?php echo $foto->posicion; ?>');"><?php echo $foto->posicion; ?></span></h4> 
+                    </div>
+						        
+						         
+						          
+						        
+						      </div>
+						    </div>
+						  </div>
+						
+								        		
+		        	<?php endforeach ?>

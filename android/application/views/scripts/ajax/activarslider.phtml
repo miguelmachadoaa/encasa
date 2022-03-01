@@ -1,0 +1,38 @@
+<?php
+$id=$this->slider['id'];
+$titulo=$this->slider['titulo'];
+$descripcion=$this->slider['descripcion'];
+$imagen=$this->slider['imagen'];
+$estatus=$this->slider['estatus'];
+ ?>
+
+            <td><?php echo $id; ?></td>
+            <td><?php echo $titulo; ?></td>
+            <td><?php echo $descripcion; ?></td>
+            <td><img src="<?php echo $this->baseUrl($imagen); ?>" class="img img-responsive" width="90px"> </td>
+
+            <td>
+                
+                <div class="btn-group pull-right">
+
+                    
+                    <a href="<?php echo $this->baseUrl('/sliders/edit/id/').$id; ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> </a>
+                    <button type="button" onclick="del(<?php echo $id; ?>)"  class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash"></span> </button>
+
+                    <?php if ($estatus){ ?>
+
+                      <button type="button"  onclick="desactivarSlider(<?php echo $id; ?> )"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-up"></span> </button>  
+
+                    <?php }else{ ?>
+
+                        <button type="button" onclick="activarSlider(<?php echo $id; ?>)"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-down"></span> </button>  
+
+                    <?php } ?>
+
+                    
+                </div>
+                
+                
+                
+                
+            </td>

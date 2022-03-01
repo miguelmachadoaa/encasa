@@ -1,0 +1,336 @@
+
+  <?php $dolar='1'; ?>
+
+
+
+<div class=" banner-buying" style="    background: url(<?php echo $this->baseUrl($this->pagina['imagen']); ?>) no-repeat;    width: 100%;    min-height: 250px;    background-size: cover;    -webkit-background-size: cover;">
+  <div class=" container">
+  <h3 style="margin-top: 0.8em;"><span><?php echo $this->pagina['titulo']; ?></span></h3> 
+  <!---->
+<!--banner-->
+  <div class="content">
+    <div class="serach-w3agile">
+      <div class="container">
+        <div class="place-grids">
+         
+           <div class="clearfix"></div>
+          <br>
+
+         <input class="filtros" type="hidden" name="f_estado" id="f_estado">
+          <input class="filtros" type="hidden" name="f_ciudad" id="f_ciudad">
+          <input class="filtros" type="hidden" name="f_zona" id="f_zona">
+        
+
+          <div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+
+      <select id="tipo_propiedad" name="tipo_propiedad" class=" col-sm-3 selectpicker form-control input-lg" data-live-search="true" title="Tipos de Propiedades">
+                        <option value="">Todo</option>
+                        <option value="Apartamento">Apartamento</option>
+              <option value="Casa">Casa</option>
+              <option value="Terreno">Terreno</option>
+              <option value="Hacienda">Hacienda</option>
+              <option value="Town House">Town House</option>
+              <option value="Habitacion">Habitacion</option>
+              <option value="Local Comercial">Local Comercial</option>
+              <option value="Oficina Comercial">Oficina Comercial</option>
+              <option value="Bodega-Galpon">Galpon</option>
+              <option value="Fondo de Comercio">Fondo de Comercio</option>
+              <option value="Hotel">Hotel</option>
+              <option value="Edificio">Edificio</option>
+              <option value="Anexo">Anexo</option>
+                    </select>
+
+      <div class="input-group input-group-lg">
+      <input style="border-radius: 0px;" type="text"  id="buscador" name="buscador" class="col-sm-9 form-control" placeholder="Buscar Propiedades">
+      <span class="input-group-btn">
+        <button id="btn_buscar" name="btn_buscar" onclick="buscar()" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+      </span>
+    </div>
+
+  </div><!-- /.col-lg-6 -->
+  </div><!-- /.row -->
+  </div><!-- /.row -->
+
+
+        </div>
+      </div>
+    </div>
+  <div class="clearfix"> </div>
+    <!--initiate accordion-->
+          
+  </div>
+</div>
+
+
+      <!--//-->
+        
+  <!--//header-bottom-->
+
+
+
+<div class="container" style="height: auto;">
+
+<?php 
+$estado=$this->presupuesto['estado'];
+$ciudad=$this->presupuesto['ciudad'];
+$zona=$this->presupuesto['zona'];
+$inm_usuario=$this->presupuesto['usuario'];
+
+ ?>  
+
+  <div class="row " style="padding-top: 1em;"> 
+    <div class="col-sm-12"> 
+      <h3 class="tittle "><?php echo $this->presupuesto['titulo']; ?></h3>
+      <h3 class="tittle "> <span><a href="<?php echo $this->baseUrl('/inmueble/buscar/').'f_estado/'.$this->presupuesto['id_estado'];?>"><?php echo utf8_encode($this->presupuesto['estado'])?></a> / 
+      <a href="<?php echo $this->baseUrl('/inmueble/buscar/f_ciudad/').$this->presupuesto['id_ciudad']; ?>"><?php echo utf8_encode($this->presupuesto['ciudad']);?></a> / 
+      <?php echo utf8_encode($this->presupuesto['zona']);?> / <?php $this->presupuesto['direccion']; ?></span> </h3>
+      <h3 class="tittle ">Bs. <?php echo number_format($this->presupuesto['monto_vender']*$dolar, 2, ',', '.'); ?>  -  <?php echo $this->presupuesto['tipo_inmueble']; ?> </h3>
+
+
+      
+
+    </div>
+  
+  </div> 
+
+  
+  <div class="buy-single-single" style="padding: 1em 0 0;">
+  
+    <div class="col-sm-12 single-box">
+        
+      <div class=" buying-top"> 
+
+        <div class="flexslider">
+
+          <ul class="slides">
+
+            <?php foreach ($this->fotos as $foto): ?>         
+
+              <li data-thumb="<?php echo $this->baseUrl('/assets/images/').$foto->foto; ?>">
+
+                <img src="<?php echo $this->baseUrl('/assets/images/').$foto->foto; ?>" />
+              </li>
+
+            <?php endforeach ?>
+
+          </ul>
+
+        </div>
+
+
+<!-- FlexSlider -->
+
+
+        <script>
+        // Can also be used with $(document).ready()
+        $(window).load(function() {
+          $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: "thumbnails"
+          });
+        });
+        </script>
+
+      </div>
+
+      <div class="buy-sin-single">
+
+        <div class="col-sm-6 middle-side immediate">
+
+          <h4>Estatus: Desocupado</h4>
+
+          <p><span class="">Habitaciones </span>: <span class="two"><?php echo $this->presupuesto['habitaciones']; ?> </span></p>
+
+          <p>  <span class="">Baños </span>: <span class="two"><?php echo $this->presupuesto['banos']; ?></span></p>
+
+          <p><span class="">Construccion</span>: <span class="two"><?php echo $this->presupuesto['contruccion']; ?> M2</span></p>
+
+          <p><span class="">Terreno </span>:<span class="two"> <?php echo $this->presupuesto['totales']; ?></span></p>
+
+          <p><span class="">Antiguedad</span> : <span class="two"><?php echo $this->presupuesto['edad_inmueble']; ?> Años</span></p>
+
+          <p><span class="">Precio </span>:<span class="two">Bs. <?php echo number_format($this->presupuesto['monto_vender']*$dolar, 2, ',', '.'); ?> </span></p>  
+
+          <div class="right-side">
+
+               <!--<a href="contact.html" class="hvr-sweep-to-right more" >Contact Builder</a> -->
+               <div id="info_contacto"></div>
+            <button class="btn btn-default " onclick="verinfo('<?php echo $inm_usuario ?>')">Ver Informacion de Contacto</button>  
+
+          </div>
+
+        </div>
+           
+        <div class="col-sm-6 buy-sin">
+
+          <div class="col-sm-12">
+            
+            <h4>Descripcion</h4>
+                        
+            <?php echo $this->presupuesto['descripcion']; ?>
+
+            <hr> 
+
+          </div>
+
+          <?php if (!$this->presupuesto['coords']==NULL || !$this->presupuesto['coords']=='' ): ?>
+            
+             <div class="col-sm-12">
+            
+            <h4>Ubicacion del Inmueble</h4>
+                        
+            <div id="map" style="height: 400px; width: 100%; "></div>
+
+            <hr> 
+
+          </div>
+
+          <?php endif ?>
+                      
+          <div class="col-sm-12">
+                    
+            <div id="botones-para-compartir">
+                                
+              <div class="col-sm-4">  
+                                    
+                <div class="fb-share-button" data-href="http://encasa.tk/inmueble/ver/id/<?php echo $this->presupuesto['id']; ?>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" >Compartir</a>
+                </div>      
+
+              </div>     
+
+              <div class="col-sm-4">
+
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="encasaplus" data-size="small">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+              
+              </div>
+                                
+              <div class="col-sm-4">
+
+                <div class="g-plus" data-action="share"></div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="clearfix"> </div>
+
+      </div>
+          
+          
+    </div>
+
+    <div class="clearfix"> </div>
+
+  </div>
+
+</div>
+
+
+<div style="margin: 1em"><br></div>
+
+<div class="container" style="height: auto">
+
+  <div class="row">
+
+
+
+      <div class="col-sm-12 well" style="background: #222222; padding: 0em 1em;">
+
+        <h3 class="page-header tittle two"> Solicita Informacion <span>del Inmueble</span>   </h3>
+
+        <input type="hidden" name="id" id="id" value="<?php echo $this->id; ?>">
+
+        <div class="form-group col-sm-6">
+
+          <input type="text"  name="solicitud_nombre" id="solicitud_nombre" value="" class="form-control" placeholder="Nombre">
+
+        </div>
+
+        <div class="form-group col-sm-6">
+
+          <input type="text"  name="solicitud_tlf" id="solicitud_tlf" value="" class="form-control" placeholder="Telefono">
+
+        </div>
+
+        <div class="form-group col-sm-12">
+
+          <input type="text"  name="solicitud_email" id="solicitud_email" value="" class="form-control" placeholder="Email">
+
+        </div>
+
+        <div class="form-group col-sm-12">
+
+          <textarea  rows="3"  name="solicitud_mensaje" id="solicitud_mensaje" style="width: 100%;">Hola, estoy interesado en esta propiedad que he visto en En Casa Venezuela  y quisiera que me contacten para recibir más información</textarea>
+
+        </div>
+
+        <div class="form-group col-sm-12">
+
+          <button onclick="solicitar()" name="btn_info" id="btn_info" type="button" class="btn btn-primary">Solicitar</button>
+
+        </div>
+
+        <div class="respuesta"></div>
+
+      </div>
+
+    
+
+  </div>
+
+</div>
+<?php 
+
+if ($this->presupuesto['coords']==NULL || $this->presupuesto['coords']=='') {
+  
+  $lat='';
+  $lng='';
+
+}else{
+
+  $coords=str_replace(array('(',')'),'',$this->presupuesto['coords'] );
+  $partes=explode(',', $coords);
+
+  //echo $coords.'<br>';
+
+ // var_dump($partes);
+
+
+    $lat=$partes[0];
+  $lng=$partes[1];
+
+
+}
+
+ ?>
+
+
+<script>
+// Initialize and add the map
+function initMap() {
+ map = new google.maps.Map(document.getElementById('map'), {
+     zoom: 8,
+     center: {lat: <?php echo $lat ?>, lng: <?php echo $lng ?>}
+   });
+   
+   var marker=new google.maps.Marker({
+      position:map.getCenter(), 
+      map:map, 
+      draggable:true
+   });
+      
+   google.maps.event.addListener(marker,'dragend',function(event) {
+      document.getElementById("coords").value = this.getPosition().toString();
+   });
+}
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpHwisz-ifc6C95v8SOVXDfWvIOMqFlfI&callback=initMap">
+    </script>
+
+

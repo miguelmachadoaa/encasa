@@ -1,0 +1,113 @@
+<div class="container-fluid" >
+    <h1 class="page-header">Paginas
+
+       <?php  if (isset($this->acceso['pagina']['add'])): ?>
+
+        <div class="pull-right">
+                    <a href="<?php echo $this->baseUrl('/pagina/add'); ?>" class="btn btn-default btn-large"><span class="glyphicon glyphicon-user"></span> Crear Pagina</a>
+                </div>
+ 
+<?php endif ?>
+
+    </h1>
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+	
+	 
+    
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Grupo</th>
+            <th>Titulo</th>
+            <th>Imagen</th>
+            
+            <th width="150px">
+               Accion
+            </th>
+        </tr>
+
+        <?php foreach ($this->paginas as $pagina): ?>
+            <tr  id="<?php echo $pagina->id; ?>">
+            <td><?php echo $pagina->id; ?></td>
+            <td><?php echo $pagina->grupo; ?></td>
+            <td><?php echo $pagina->titulo; ?></td>
+           
+            <td><img src="<?php echo $this->baseUrl('/').$pagina->imagen; ?>" class="img img-responsive" width="90px">  </td>
+            
+            <td>
+                
+                <div class="btn-group pull-right">
+                   <?php  if (isset($this->acceso['pagina']['edit'])): ?>
+  <a href="<?php echo $this->baseUrl('/pagina/edit/id/').$pagina->id; ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> </a>
+<?php endif ?>
+
+   <?php  if (isset($this->acceso['pagina']['del'])): ?>
+  <button type="button" onclick="del(<?php echo $pagina->id; ?>)"  class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash"></span> </button>
+<?php endif ?>
+
+   <?php  if (isset($this->acceso['pagina']['estatus'])): ?>
+  <?php if ($pagina->estatus){ ?>
+
+                        <button type="button"  onclick="desactivarPagina(<?php echo $pagina->id; ?> )"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-up"></span> </button>  
+
+                    <?php }else{ ?>
+
+                        <button type="button" onclick="activarPagina(<?php echo $pagina->id; ?>)"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-down"></span> </button>  
+
+                    <?php } ?>
+<?php endif ?>
+                    
+                   
+                    
+                   
+
+                   
+                </div>
+                
+                
+                
+                
+            </td>
+        </tr>
+        <?php endforeach ?>
+       
+        
+        
+    </table>
+    
+    <?php echo ($this->paginator->count() > 1) ? $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml') : ''; ?>
+    
+
+
+
+</div> <!-- End Container--> 
+
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="deletePagina()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>

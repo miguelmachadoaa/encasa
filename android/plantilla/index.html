@@ -1,0 +1,518 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>En Casa Venezuela</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--menu-->
+<script src="js/scripts.js"></script>
+<link href="css/styles.css" rel="stylesheet">
+<!--//menu-->
+<!--theme-style-->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Real Home Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- slide -->
+<script src="js/responsiveslides.min.js"></script>
+   <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+  </script>
+</head>
+<body >
+<!--header-->
+	<div class="navigation">
+			<div class="container-fluid">
+				<nav class="pull">
+					<ul>
+						<li><a  href="index.html">Home</a></li>
+						<li><a  href="about.html">About Us</a></li>
+						<li><a  href="blog.html">Blog</a></li>
+						<li><a  href="terms.html">Terms</a></li>
+						<li><a  href="privacy.html">Privacy</a></li>
+						<li><a  href="contact.html">Contact</a></li>
+					</ul>
+				</nav>			
+			</div>
+		</div>
+
+<div class="header">
+	<div class="container">
+		<!--logo-->
+			<div class="logo">
+				<h1><a href="index.html"><img style="max-width: 2em" class="img img-responsive" src="images/logo.jpg"></a></h1>
+			</div>
+		<!--//logo-->
+		<div class="top-nav">
+			<ul class="right-icons">
+				<li><span ><i class="glyphicon glyphicon-phone"> </i>+1384 757 546</span></li>
+				<li><a  href="login.html"><i class="glyphicon glyphicon-user"> </i>Login</a></li>
+				<li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i> </a></li>
+				
+			</ul>
+			<div class="nav-icon">
+				<div class="hero fa-navicon fa-2x nav_slide_button" id="hero">
+						<a href="#"><i class="glyphicon glyphicon-menu-hamburger"></i> </a>
+					</div>	
+				<!---
+				<a href="#" class="right_bt" id="activator"><i class="glyphicon glyphicon-menu-hamburger"></i>  </a>
+			--->
+			</div>
+		<div class="clearfix"> </div>
+			<!---pop-up-box---->
+			   
+				<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+				<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+			<!---//pop-up-box---->
+				<div id="small-dialog" class="mfp-hide">
+					    <!----- tabs-box ---->
+				<div class="sap_tabs">	
+				     <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+						  <ul class="resp-tabs-list">
+						  	  <li class="resp-tab-item " aria-controls="tab_item-0" role="tab"><span>All Homes</span></li>
+							  <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>For Sale</span></li>
+							  <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>For Rent</span></li>
+							  <div class="clearfix"></div>
+						  </ul>				  	 
+						  <div class="resp-tabs-container">
+						  		<h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>All Homes</h2><div class="tab-1 resp-tab-content resp-tab-content-active" aria-labelledby="tab_item-0" style="display:block">
+								 	<div class="facts">
+									  	<div class="login">
+											<input type="text" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">		
+									 		<input type="submit" value="">
+									 	</div>        
+							        </div>
+						  		</div>
+							     <h2 class="resp-accordion" role="tab" aria-controls="tab_item-1"><span class="resp-arrow"></span>For Sale</h2><div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+									<div class="facts">									
+										<div class="login">
+											<input type="text" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">		
+									 		<input type="submit" value="">
+									 	</div> 
+							        </div>	
+								 </div>									
+							      <h2 class="resp-accordion" role="tab" aria-controls="tab_item-2"><span class="resp-arrow"></span>For Rent</h2><div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
+									 <div class="facts">
+										<div class="login">
+											<input type="text" value="Search Address, Neighborhood, City or Zip" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Address, Neighborhood, City or Zip';}">		
+									 		<input type="submit" value="">
+									 	</div> 
+							         </div>	
+							    </div>
+					      </div>
+					 </div>
+					 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+				    	<script type="text/javascript">
+						    $(document).ready(function () {
+						        $('#horizontalTab').easyResponsiveTabs({
+						            type: 'default', //Types: default, vertical, accordion           
+						            width: 'auto', //auto or any width like 600px
+						            fit: true   // 100% fit in a container
+						        });
+						    });
+			  			 </script>	
+				</div>
+				</div>
+				 <script>
+						$(document).ready(function() {
+						$('.popup-with-zoom-anim').magnificPopup({
+							type: 'inline',
+							fixedContentPos: false,
+							fixedBgPos: true,
+							overflowY: 'auto',
+							closeBtnInside: true,
+							preloader: false,
+							midClick: true,
+							removalDelay: 300,
+							mainClass: 'my-mfp-zoom-in'
+						});
+																						
+						});
+				</script>
+					
+	
+		</div>
+		<div class="clearfix"> </div>
+		</div>	
+</div>
+<!--//-->	
+	<div class=" header-right">
+		<div class=" banner">
+			 <div class="slider">
+			    <div class="callbacks_container">
+			      <ul class="rslides" id="slider">		       
+					 <li>
+			          	 <div class="banner1">
+			           		<div class="caption">
+					          	<h3><span>Titulo</span>Primario</h3>
+					          	<p>Titulo Secundario</p>
+			          		</div>
+			          	</div>
+			         </li>
+					 <li>
+			          	 <div class="banner2">
+			           		<div class="caption">
+					          	<h3><span>Titulo</span>Primario</h3>
+					          	<p>Titulo Secundario</p>
+			          		</div>
+			          	</div>
+			         </li>
+			         <li>
+			          	 <div class="banner3">
+			           		<div class="caption">
+					          	<h3><span>Titulo</span>Primario</h3>
+					          	<p>Titulo Secundario</p>
+			          		</div>
+			          	</div>
+			         </li>		
+			      </ul>
+			  </div>
+			</div>
+		</div>
+	</div>
+	 
+	<!--header-bottom-->
+	<div class="banner-bottom-top">
+			<div class="container">
+			<div class="bottom-header">
+				<div class="header-bottom">
+					<div class=" bottom-head">
+						<a href="buy.html">
+							<div class="buy-media">
+								<i class="buy"> </i>
+								<h6>Buy</h6>
+							</div>
+						</a>
+					</div>
+					<div class=" bottom-head">
+						<a href="buy.html">
+							<div class="buy-media">
+							<i class="rent"> </i>
+							<h6>Rent</h6>
+							</div>
+						</a>
+					</div>
+					<div class=" bottom-head">
+						<a href="buy.html">
+							<div class="buy-media">
+							<i class="pg"> </i>
+							<h6>Hostels</h6>
+							</div>
+						</a>
+					</div>
+					<div class=" bottom-head">
+						<a href="buy.html">
+							<div class="buy-media">
+							<i class="sell"> </i>
+							<h6>Resale</h6>
+							</div>
+						</a>
+					</div>
+					<div class=" bottom-head">
+						<a href="loan.html">
+							<div class="buy-media">
+							<i class="loan"> </i>
+							<h6>Home Loans</h6>
+							</div>
+						</a>
+					</div>
+					<div class=" bottom-head">
+						<a href="buy.html">
+							<div class="buy-media">
+							<i class="apart"> </i>
+							<h6>Projects</h6>
+							</div>
+						</a>
+					</div>
+					<div class=" bottom-head">
+						<a href="dealers.html">
+							<div class="buy-media">
+							<i class="deal"> </i>
+							<h6>Dealers</h6>
+							</div>
+						</a>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+	</div>
+	</div>
+			<!--//-->
+				
+	<!--//header-bottom-->
+	
+	
+<!--//header-->
+<!--content-->
+<div class="content">
+	<div class="content-grid">
+		<div class="container">
+			<h3>Propiedades Populares</h3>
+				<div class="col-md-4 box_2">
+			     	 <a href="single.html" class="mask">
+			     	   	<img class="img-responsive zoom-img" src="images/pc4.jpg" alt="">
+			     	   	<span class="four">40,000Bs.</span>
+			     	 </a>
+			     	   <div class="most-1">
+			     	   	 <h5><a href="single.html">Propiedad en Venta</a></h5>
+			     	    	<p>Descripcion</p>
+			     	   </div>
+			 </div>
+			  <div class="col-md-4 box_2">
+		     	 <a href="single.html" class="mask">
+			     	   	<img class="img-responsive zoom-img" src="images/pc5.jpg" alt="">
+			     	   	<span class="four">40,000Bs.</span>
+			     	 </a>
+		     	   <div class="most-1">
+			     	   	<h5><a href="single.html">Propiedad en Venta</a></h5>
+			     	    	<p>Descripcion</p>
+			     	   </div>
+		     	
+		      </div>
+			  <div class="col-md-4 box_2">
+		     	 <a href="single.html" class="mask">
+			     	   	<img class="img-responsive zoom-img" src="images/pc3.jpg" alt="" >
+			     	   	<span class="four">40,000Bs.</span>
+			     	 </a>
+		     	   <div class="most-1">
+			     	   	 <h5><a href="single.html">Propiedad en Venta</a></h5>
+			     	    	<p>Descripcion</p>
+			     	   </div>
+		     	
+		      </div>
+		 	<div class="clearfix"> </div>
+		</div>
+	</div>
+<!--service-->
+	<div class="services">
+		<div class="container">
+			<div class="service-top">
+				<h3>Servicios</h3>
+				<p>Descripcion de los Servicios .</p>
+			</div>
+			<div class="services-grid">
+		   		<div class="col-md-6 service-top1">
+		   			<div class=" ser-grid">	
+		   				<a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-user"> </a>
+		   			</div>
+		   			<div  class="ser-top">
+		   				<h4>Titulo Primario</h4>
+		   				<p>descripion de servicio titulo secundario  </p>
+		   		    </div>
+					<div class="clearfix"> </div>
+		   	   </div>
+				<div class="col-md-6 service-top1">
+		   			<div class=" ser-grid">	
+		   				<a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-leaf"> </a>
+		   			</div>
+		   			<div  class="ser-top">
+		   				<h4>Titulo Primario</h4>
+		   				<p>descripion de servicio titulo secundario  </p>
+		   		    </div>
+					<div class="clearfix"> </div>
+		   		</div>
+		   	<div class="clearfix"> </div>
+		 </div>
+		 <div class="services-grid">
+			   	<div class="col-md-6 service-top1">
+			   		<div class=" ser-grid">	
+			   			<a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-cog"> </a>
+			   		</div>
+			   		<div  class="ser-top">
+			   			<h4>Titulo Primario</h4>
+			   				<p>descripion de servicio titulo secundario</p>
+			   		</div>
+					<div class="clearfix"> </div>
+			   	</div>
+				<div class="col-md-6 service-top1">
+			   		<div class=" ser-grid">	
+			   			<a href="#" class="hi-icon hi-icon-archive glyphicon glyphicon-file"> </a>
+			   		</div>
+			   		<div  class="ser-top">
+			   			<h4>Titulo Primario</h4>
+			   			<p>descripion de servicio titulo secundario</p>
+			   		</div>
+					<div class="clearfix"> </div>
+			   	</div>
+		   	  <div class="clearfix"> </div>
+		 	</div>
+		</div>
+	</div>
+<!--//services-->
+<!--features-->
+		<div class="content-middle">
+			<div class="container">
+				<div class="mid-content">
+					<h3>Caracteristicas</h3>
+					<p>Caracteristicas de nuestra empresa, y sus beneficios.</p>
+					<a class="hvr-sweep-to-right more-in" href="single.html">Mas</a>
+				</div>
+			</div>
+		</div>
+<!--//features-->
+
+<!-- project --->
+	<div class="project">
+		<div class="container">
+			<h3>Proyectos</h3>
+				<div class="project-top">
+					<div class="col-md-3 project-grid">
+						<div class="project-grid-top">
+							 <a href="single.html" class="mask"><img src="images/ga.jpg" class="img-responsive zoom-img" alt=""/></a>
+							 <div class="col-md1">
+								 <div class="col-md2">
+									 <div class="col-md3">
+									 	<span class="star"> 4.5</span>
+									 </div>
+									 <div class="col-md4">
+									 	<strong>Propiedad Titulo</strong>
+									 	<small>50 Visitas</small>
+									 </div>
+									 <div class="clearfix"> </div>
+								 </div>
+								 <p>2, 3, 4 BHK, 1 Est</p>
+								 <p class="cost">Bs.65,000</p>
+								 <a href="single.html" class="hvr-sweep-to-right more">Detalles</a>
+							 </div>
+						</div>
+					</div>
+					<div class="col-md-3 project-grid">
+						<div class="project-grid-top">
+							  <a href="single.html" class="mask"><img src="images/ga1.jpg" class="img-responsive zoom-img" alt=""/></a>
+							 <div class="col-md1">
+								 <div class="col-md2">
+									 <div class="col-md3">
+									 	<span class="star"> 4.5</span>
+									 </div>
+									 <div class="col-md4">
+									 	<strong>Propiedad Titulo</strong>
+									 	<small>50 Visitas</small>
+									 </div>
+									 <div class="clearfix"> </div>
+								 </div>
+								 <p>2, 3, 4 BHK, 1 Est</p>
+								 <p class="cost">Bs.65,000</p>
+								 <a href="single.html" class="hvr-sweep-to-right more">Detalles</a>
+							 </div>
+						</div>
+					</div>
+					<div class="col-md-3 project-grid">
+						<div class="project-grid-top">
+							  <a href="single.html" class="mask"><img src="images/ga2.jpg" class="img-responsive zoom-img" alt=""/></a>
+							 <div class="col-md1">
+								 <div class="col-md2">
+									 <div class="col-md3">
+									 	<span class="star"> 4.5</span>
+									 </div>
+									 <div class="col-md4">
+									 	<strong>Propiedad Titulo</strong>
+									 	<small>50 Visitas</small>
+									 </div>
+									 <div class="clearfix"> </div>
+								 </div>
+								 <p>2, 3, 4 BHK, 1 Est</p>
+								 <p class="cost">Bs.65,000</p>
+								 <a href="single.html" class="hvr-sweep-to-right more">Detalles</a>
+							 </div>
+						</div>
+					</div>
+					<div class="col-md-3 project-grid">
+						<div class="project-grid-top">
+							  <a href="single.html" class="mask"><img src="images/ga3.jpg" class="img-responsive zoom-img" alt=""/></a>
+							 <div class="col-md1">
+								 <div class="col-md2">
+									 <div class="col-md3">
+									 	<span class="star"> 4.5</span>
+									 </div>
+									 <div class="col-md4">
+									 	<strong>Propiedad Titulo</strong>
+									 	<small>50 Visitas</small>
+									 </div>
+									 <div class="clearfix"> </div>
+								 </div>
+								 <p>2, 3, 4 BHK, 1 Est</p>
+								 <p class="cost">Bs.65,000</p>
+								 <a href="single.html" class="hvr-sweep-to-right more">Detalles</a>
+							 </div>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>				
+		</div>
+	</div>
+<!--//project-->
+
+
+<!--footer-->
+<div class="footer">
+	<div class="container">
+		<div class="footer-top-at">
+			<div class="col-md-3 amet-sed">
+				<h4>Enlaces de Interes</h4>
+				<ul class="nav-bottom">
+					<li><a href="about.html">Nosotros</a></li>
+					<li><a href="blog.html">Blog</a></li>
+					<li><a href="mobile_app.html">Aplicaciones</a></li>
+					<li><a href="terms.html">Terminos y Condiciones</a></li>
+					<li><a href="privacy.html">Politicas</a></li>	
+					<li><a href="blog.html">Propiedades</a></li>
+					
+				</ul>	
+			</div>
+			<div class="col-md-3 amet-sed ">
+				<h4>Propiedades</h4>
+					<ul class="nav-bottom">
+						<li><a href="single.html">Apartemanetos</a></li>
+						<li><a href="single.html">Casas</a></li>
+						<li><a href="single.html">Galpones</a></li>
+						<li><a href="contact.html">Locales</a></li>
+					</ul>	
+			</div>
+			<div class="col-md-3 amet-sed">
+				<h4>Informacion </h4>
+				<p>Mon-Fri, 7AM-7PM </p>
+				<p>Sat-Sun, 8AM-5PM </p>
+				<p>0212-1234567</p>
+					<ul class="nav-bottom">
+						<li><a href="#">Chat en Linea</a></li>
+						<li><a href="faqs.html">Preguntas Frecuentes</a></li>
+						<li><a href="suggestion.html">Consultas</a></li>
+					</ul>	
+			</div>
+			<div class="col-md-3 amet-sed ">
+				<h4>Servicios </h4>
+				   <ul class="nav-bottom">
+						<li><a href="single.html">Residencial </a></li>
+						<li><a href="single.html">Comercial </a></li>
+						<li><a href="login.html">Login</a></li>
+						<li><a href="register.html">Registro</a></li>
+					</ul>	
+					<ul class="social">
+						<li><a href="#"><i> </i></a></li>
+						<li><a href="#"><i class="gmail"> </i></a></li>
+						<li><a href="#"><i class="twitter"> </i></a></li>
+						<li><a href="#"><i class="camera"> </i></a></li>
+						<li><a href="#"><i class="dribble"> </i></a></li>
+					</ul>
+			</div>
+		<div class="clearfix"> </div>
+		</div>
+	</div>
+	
+</div>
+<!--//footer-->
+</body>
+</html>

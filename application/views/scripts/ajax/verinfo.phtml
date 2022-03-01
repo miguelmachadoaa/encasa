@@ -1,0 +1,26 @@
+<?php 
+
+$telefono=$this->usuario['telefono'];
+$id=$this->usuario['id'];
+$movil=$this->usuario['movil'];
+$name=$this->usuario['name'];
+$lastname=$this->usuario['lastname'];
+$email=$this->usuario['email'];
+
+
+
+
+ ?>
+
+
+
+ <h3><i class="fa fa-phone " aria-hidden="true"></i> <?php echo $telefono; ?></h3>
+
+ <h3><i class="fa fa-phone " aria-hidden="true"></i> <?php echo $movil; ?></h3>
+
+ <h3><i class="fa fa-envelope-o " aria-hidden="true"> </i><?php echo $email; ?></h3>
+
+<h3><i class="fa fa-user " aria-hidden="true"></i></i> <?php echo $name.' '.$lastname; ?></h3>
+
+<h4> <a href="<?php echo $this->baseUrl('sitio/ver/empresa/').$id; ?>"><i class="fa fa-globe " aria-hidden="true"></i></i>Ver Todas las Propiedades	</a></h4>
+

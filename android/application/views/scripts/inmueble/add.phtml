@@ -1,0 +1,1141 @@
+  <div class="container" >
+
+  <ol class="breadcrumb">
+     <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a></li>
+      <li><a href="<?php echo $this->baseUrl('/inmueble/'); ?>">Inmueble</a></li>
+      
+      <li class="active">Agregar</li>
+  </ol>
+
+  
+   
+    <div class="row">
+
+
+
+<!--++++++++++++++++++++ Comienzo del formulario ++++++++++++++++++-->
+<div class="col-sm-12">
+  <form id="form_inmueble" name="form_inmueble" enctype="multipart/form-data" action="<?php echo $this->baseUrl('/inmueble/add'); ?>" method="post"><div>
+
+    <input type="hidden" id="id" name="id"  value="<?php echo time();?>">
+
+    <input type="hidden" id="usuario" name="usuario"  value="<?php echo $this->uid;?>">
+
+    <div class="row">
+
+    <div class="page-header col-sm-12">
+
+      <h1>Datos del Inmueble</h1>
+
+    </div>
+
+
+    <div class="col-sm-12">
+      
+      <h3>Propietarios del Inmueble</h3>
+
+      <div id="respuesta_propietario"></div>
+
+      <button type="button" onclick="agregarPropietario();" class="btn btn-primary">Agregar</button>
+
+      <br><br>
+
+    </div>
+
+    <div class="form-group col-sm-12">
+
+      <label for="estado" class="required">Tenencia del Usuario *</label>
+
+      <select name="tenencia" id="tenencia" class="form-control">
+
+            <option value="">--Seleccione--</option>
+
+              <option value="Propia">Propia</option>
+
+              <option value="Referido">Referido</option>
+
+              <option value="Compartida">Compartida</option>    
+
+      </select>
+
+    </div>
+
+    <div class="form-group col-sm-12">
+
+      <label for="cedula" class="required">Titulo <small>(Incluya el Tipo de Propiedad y Caracteristicas)</small></label>
+
+      <input type="text"  name="titulo" id="titulo" value="" class="form-control" placeholder="Titulo">
+
+    </div>
+
+    <div class="form-group col-sm-12">
+
+      <label for="cedula" class="required">Descripcion <small>(Incluya toda informacion reelevante de la propiedad)</small> </label>
+
+      <textarea rows="10"  name="descripcion" id="descripcion" style="width: 100%;"></textarea>
+
+    </div>
+
+    
+    <div class="form-group col-sm-6">
+
+      <label for="estado" class="required">Tipo Inmueble*</label>
+
+      <select name="tipo_inmueble" id="tipo_inmueble" class="form-control">
+
+            <option value="">--Tipo Inmueble--</option>
+
+              <option value="Apartamento">Apartamento</option>
+              <option value="Casa">Casa</option>
+              <option value="Terreno">Terreno</option>
+              <option value="Hacienda">Hacienda</option>
+              <option value="Town House">Town House</option>
+              <option value="Habitacion">Habitacion</option>
+              <option value="Local Comercial">Local Comercial</option>
+              <option value="Oficina Comercial">Oficina Comercial</option>
+              <option value="Bodega-Galpon">Galpon</option>
+              <option value="Fondo de Comercio">Fondo de Comercio</option>
+              <option value="Hotel">Hotel</option>
+              <option value="Edificio">Edificio</option>
+              <option value="Anexo">Anexo</option>
+              
+    
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6" >
+      <label for="estado" class="required">Antiguedad Años*</label>
+
+      <select name="edad_inmueble" id="edad_inmueble" class="form-control">
+
+            <option value="">--Edad--</option> <option value="En Construccion">En Construccion</option>
+
+              <option value="De 1 a 5 Años">De 1 a 5 Años</option>
+              <option value="De 5 a 10 Años">De 5 a 10 Años</option>
+              <option value="De 10 a 20 Años">De 10 a 20 Años</option>
+              <option value="De 20 a 50 Años">De 20 a 50 Años</option>
+              <option value="Mas de 50 Años">Mas de 50 Años</option>
+              
+      </select>
+    </div>
+
+        <div class="form-group col-sm-6">
+      <label for="estado" class="required">Numero de habitaciones*</label>
+      <select name="habitaciones" id="habitaciones" class="form-control">
+            <option value="">--Numero de habitaciones--</option>
+
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Mas de 10">Mas de 10</option>
+
+
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Numero de Puestos Estacionamiento*</label>
+      <select name="puestos" id="puestos" class="form-control">
+            <option value="">--Numero de Puestos--</option>
+
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Mas de 10">Mas de 10</option>
+
+
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Numero de Baños*</label>
+      <select name="banos" id="banos" class="form-control">
+            <option value="">--Numero de Baños--</option>
+
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Mas de 10">Mas de 10</option>
+
+
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Numero de Medio  Baño*</label>
+      <select name="medio_banos" id="medio_banos" class="form-control">
+            <option value="">--Medio Baño--</option>
+
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Mas de 10">Mas de 10</option>
+
+
+                
+      </select>
+    </div>
+</div>
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Precio del Inmueble</h3>
+    </div>
+
+<div class="col-sm-12">
+<div class="panel panel-default col-sm-3 col-sm-offset-1">
+  <div class="panel-heading"> Anunciar para vender</div>
+  <div class="panel-body">
+     
+    <div class="form-group col-sm-10">
+      <label for="cedula" class="required">Monto </label>
+      <input type="text"  name="monto_vender" id="monto_vender" value="" class="form-control" placeholder="Bs.">
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default col-sm-3 col-sm-offset-1">
+  <div class="panel-heading"> Anunciar para Alquilar</div>
+  <div class="panel-body">
+    
+    <div class="form-group col-sm-10">
+      <label for="cedula" class="required">Monto </label>
+      <input type="text"  name="monto_alquilar" id="monto_alquilar" value="" class="form-control" placeholder="Bs.">
+    </div>
+  </div>
+</div>
+<!--
+<div class="panel panel-default col-sm-3  col-sm-offset-1">
+  <div class="panel-heading"> Anunciar para temporada</div>
+  <div class="panel-body">
+      
+    <div class="form-group col-sm-10">
+      <label for="cedula" class="required">Monto </label>
+      <input type="text"  name="monto_temporada" id="monto_temporada" value="" class="form-control" placeholder="Bs.">
+    </div>
+  </div>
+</div>-->
+
+
+</div>
+
+<div class="form-group col-sm-12">
+      <label for="cedula" class="required">Comision </label>
+      <input type="text"  name="comision" id="comision" value="" class="form-control" placeholder="Comision">
+    </div>
+
+</div>
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Dimensiones del Inmueble</h3>
+    </div>
+
+<div class="form-group col-sm-6">
+      <label for="cedula" class="required">M2 Terreno </label>
+      <input type="text"  name="totales" id="totales" value="" class="form-control" placeholder="M2 Terreno">
+    </div>
+
+
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">M2 Contruccion </label>
+      <input type="text"  name="contruccion" id="contruccion" value="" class="form-control" placeholder="M2 Contruccion ">
+    </div>
+
+
+</div>
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Ubicacion del Inmueble</h3>
+    </div>
+
+
+    
+
+
+    <div class="form-group  col-sm-6">
+      <label for="estado" class="required">Estado  *</label>
+
+      <select name="estado" id="estado" class="form-control" onchange="cargarCiudad()">
+    
+            <option value="">--Estado--</option>
+              <?php foreach ($this->states as $state): ?>
+                <option value="<?php echo $state->id; ?>" ><?php echo utf8_encode($state->estado); ?></option>
+              <?php endforeach; ?>
+
+
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="ciudad" class="required">Ciudad  *</label>
+      <select name="ciudad" id="ciudad" class="form-control" onchange="cargarZona()">
+        <option value="">--Ciudad--</option>
+                  
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="ciudad" class="required">Zona  *</label>
+      <select name="zona" id="zona" class="form-control" >
+        <option value="">--Zona--</option>
+                    
+      </select>
+    </div>
+
+
+
+
+ 
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Codigo Postal </label>
+      <input type="text"  name="postal" id="postal" value="" class="form-control" placeholder="Codigo Postal">
+    </div>
+
+
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Calle / Avenida</label>
+      <input type="text"  name="calle" id="calle" value="" class="form-control" placeholder="Calle / Avenida">
+    </div>
+
+
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Urbanismo / Condominio</label>
+      <input type="text"  name="urbanismo" id="urbanismo" value="" class="form-control" placeholder="Urbanismo / Condominio ">
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="cedula" class="required">Direccion </label>
+      <textarea rows="10"  name="direccion" id="direccion" style="width: 100%;"></textarea>
+    </div>
+
+
+
+
+    <div class="col-sm-12">
+
+       <div class="form-group col-sm-12">
+      <label for="cedula" class="required">Selecciona Ubicacion del Inmueble </label>
+      <input class="form-control" type="text" name="coords" id="coords">
+      
+    </div>
+
+     
+      
+      <div id="map" style="height: 400px; width: 100%; "></div>
+
+
+    </div>
+
+
+
+</div>
+
+<div class="row">
+  
+<div class="page-header col-sm-12">
+      <h3>Observaciones del inmuebles</h3>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="cedula" class="required">Observaciones </label>
+      <textarea rows="10"  name="observacion" id="observacion" style="width: 100%;"></textarea>
+    </div>
+
+</div>
+
+
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Seguridad</h3>
+    </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="vigilancia" id="vigilancia" value=" Vigilancia">
+          Vigilancia
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="sseguridad" id="sseguridad" value="Sistema de Seguridad">
+        Sistema de Seguridad
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="pelectrico" id="pelectrico" value="Porton Electrico">
+        Porton Electrico
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cerca_electrica" id="cerca_electrica" value="Cerca eléctrica">
+        Cerca eléctrica
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cccseguridad" id="cccseguridad" value="Calle Cerrada con Seguridad">
+        Calle Cerrada con Seguridad
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="sstactil" id="sstactil" value="Sistema de Seguridad Tactil">
+        Sistema de Seguridad Tactil
+      </label>
+  </div>
+
+  <div class=" col-sm-4">
+      <label> Otros </label>
+        <input type="text" name="otros" id="otros" placeholder="Otros" >
+       
+  </div>
+
+</div> <!-- end row -->
+
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Servicios</h3>
+    </div>
+
+    <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="linea_tlf" id="linea_tlf" value=" Línea telefónica">
+         Línea telefónica
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="internet" id="internet" value="Internet/Wifi">
+         Internet/Wifi
+      </label>
+  </div>
+
+ <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="lavanderia" id="lavanderia" value="Area de lavandería">
+         Area de lavandería
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Gimnasio" id="Gimnasio" value="Gimnasio">
+        Gimnasio
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="salon_de_fiestas" id="salon_de_fiestas" value="Salón de Fiestas">
+         Salón de Fiestas
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="parque" id="parque" value=" Parque infantil">
+          Parque infantil
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="piscina" id="piscina" value="Piscina">
+        Piscina
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Churuata" id="Churuata" value="Churuata">
+         Churuata
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="salon_juegos" id="salon_juegos" value="Salón de juegos">
+        Salón de juegos
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cancha_deportiva" id="cancha_deportiva" value="Cancha deportiva">
+        Cancha deportiva
+      </label>
+  </div>
+
+
+</div> <!-- end row -->
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Informacion de Interes </h3>
+    </div>
+
+    <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="bdistribucion" id="bdistribucion" value=" Buena Distribucion">
+          Buena Distribucion
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cmontana" id="cmontana" value=" Clima de Montaña">
+          Clima de Montaña
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="ceconomico" id="ceconomico" value="Condominio Economico">
+         Condominio Economico
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="ccerrado" id="ccerrado" value="Conjunto Cerrado">
+         Conjunto Cerrado
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="desocupado" id="desocupado" value="Desocupado">
+         Desocupado
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="eoportunidad" id="eoportunidad" value="Excelente Oportunidad">
+         Excelente Oportunidad
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="eubicacion" id="eubicacion" value="Excelente Ubicacion">
+         Excelente Ubicacion
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="evista" id="evista" value="Excelente Vista">
+         Excelente Vista
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="mbonito" id="mbonito" value="Muy Bonito">
+         Muy Bonito
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="remodelado" id="remodelado" value="Remodelado">
+         Remodelado
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="aremodelar" id="aremodelar" value="A Remodelado">
+         A Remodelado
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="vcomprarlo" id="vcomprarlo" value="Verlo es Comprarlo">
+         Verlo es Comprarlo
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="ztranquila" id="ztranquila" value="Zona tranquila">
+         Zona tranquila
+      </label>
+  </div>
+
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="areas_verdes" id="areas_verdes" value="Areas verdes">
+        Areas verdes
+      </label>
+  </div>
+
+<div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="amueblado" id="amueblado" value=" Amueblado/a">
+         Amueblado/a
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Lobby" id="Lobby" value="Lobby">
+        Lobby
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Reservorio" id="Reservorio" value="Reservorio">
+         Reservorio
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="rio" id="rio" value="Río">
+         Río
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="bbq" id="bbq" value="Area de BBQ">
+        Area de BBQ
+      </label>
+  </div>
+ <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Quebrada" id="Quebrada" value="Quebrada">
+         Quebrada
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="terrazaa" id="terrazaa" value="Terraza Abierta">
+         Terraza Abierta
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="balcon" id="balcon" value="Balcon">
+         Balcon
+      </label>
+  </div>
+
+
+</div> <!-- end row   -->
+
+
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Cercanías</h3>
+    </div>
+
+
+     <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="abastos" id="abastos" value="Abastos">
+         Abastos
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="ccomercial" id="ccomercial" value="Centro Comercial">
+         Centro Comercial
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="panaderia" id="panaderia" value="Panadería">
+         Panadería
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="metro" id="metro" value="Metro">
+         Metro
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="taxi" id="taxi" value="Línea de taxi">
+          Línea de taxi
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="clinica" id="clinica" value="Clínica">
+        Clínica
+      </label>
+  </div>
+
+ <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="colegios" id="colegios" value="Colegio">
+         Colegio
+      </label>
+  </div>
+   
+   
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="farmacia" id="farmacia" value="Farmacia">
+         Farmacia
+      </label>
+  </div>
+   
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="epublico" id="epublico" value="Estacionamiento Publico">
+        Estacionamiento Publico
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="supermercado" id="supermercado" value="Supermercado">
+         Supermercado
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="hospital" id="hospital" value="Hospital">
+         Hospital
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="bancos" id="bancos" value=" Bancos">
+          Bancos
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="comercios" id="comercios" value=" Comercios">
+          Comercios
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="restaurant" id="restaurant" value=" Restaurant">
+          Restaurant
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="publico" id="publico" value="Transp. público">
+         Transp. público
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="autopista" id="autopista" value="Autopistas y Av.">
+         Autopistas y Av.
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="carga" id="carga" value="Facil via de Carga y Descarga">
+         Facil via de Carga y Descarga
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="peatona" id="peatona" value="Alto Transito Peatonal">
+         Alto Transito Peatonal
+      </label>
+  </div>
+
+
+
+</div>  <!-- End row -->
+ 
+
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Legal</h3>
+    </div>
+
+
+    <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="personan" id="personan" value="Persona Natural">
+         Persona Natural
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="documentop" id="documentop" value="Documento de Propiedad">
+         Documento de Propiedad
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cedulac" id="cedulac" value="Cedula de Catastro">
+         Cedula de Catastro
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="solvenciam" id="solvenciam" value="Solvencia de Municipio">
+         Solvencia de Municipio
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cedulap" id="cedulap" value="Cedula de Propietario">
+         Cedula de Propietario
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cedulaco" id="cedulaco" value="Cedula de Co-propietario">
+         Cedula de Co-propietario
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="poder" id="poder" value="Poder">
+         Poder
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="hipoteca" id="hipoteca" value="Hipoteca">
+         Hipoteca
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="liberacion" id="liberacion" value="Liberacion">
+         Liberacion
+      </label>
+  </div>
+
+   
+
+   
+</div>  <!-- End row -->
+
+
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Condiciones de Venta</h3>
+    </div>
+
+
+    <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="contado" id="contado" value="De Contado">
+         De Contado
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="credito" id="credito" value="Credito">
+         Credito
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="convenir" id="convenir" value="Convenir de las partes">
+         Convenir de las partes
+      </label>
+  </div>
+
+   
+</div>  <!-- End row -->
+
+
+
+
+
+
+
+
+    <div class="col-sm-12">
+
+    <br><br>
+      
+    <div class="carga">
+
+         <div class="row">
+           
+         </div> 
+
+    </div>
+    <div class="loader">  </div>
+
+    <div id="fileuploader"> Cargar Imagenes
+    </div>
+
+    </div>
+
+
+
+
+
+    <div class="col-sm-12">
+      
+  <dt id="buttons-label">&#160;</dt>
+    <dd id="buttons-element">
+      <fieldset id="fieldset-buttons">
+        <dl>
+          <input type="submit" name="btn_submit" id="btn_submit" value="Guardar" class="btn btn-default">
+
+          <button name="btn_cancel" id="btn_cancel" type="button" class="btn btn-danger">Cancelar</button>
+        </dl>
+
+      </fieldset>
+    </dd>
+
+    </div>
+
+</div><!-- end row -->
+
+  
+    </div>
+  </form> 
+
+
+
+</div>
+
+
+
+
+
+<!--+++<?php// echo $this->EstForm; ?> ++++++++++++++++++++ Fin  del formulario+++++++++++++++ ++++++++++++-->
+
+
+
+
+    </div> <!-- fin row -->
+    
+</div> <!-- fin container  -->
+
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <input type="hidden" name="del_modelo" id="del_modelo">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="eliminar()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="psicionModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Actualizar Posicion</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="foto_id" id="foto_id">
+                <input type="hidden" name="foto_solicitud" id="foto_solicitud">
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Nueva Posicion </label>
+                  <input type="text"  name="foto_posicion" id="foto_posicion" value="" class="form-control" placeholder="Poscion">
+                </div>
+                
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="updatePosicion()" class="btn btn-primary">Actualizar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="propietarioAddModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Agregar Propietario</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Nombre </label>
+                  <input type="text"  name="nombre_propietario" id="nombre_propietario" value="" class="form-control" placeholder="Nombre">
+                </div>
+
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Apellido </label>
+                  <input type="text"  name="apellido_propietario" id="apellido_propietario" value="" class="form-control" placeholder="Apellido">
+                </div>
+
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Fecha Nacimiento </label>
+                  <input type="text"  name="fecha_nacimiento_propietario" id="fecha_nacimiento_propietario" value="" class="form-control fecha" placeholder="Fecha de Nacimiento"> 
+                </div>
+
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Telefono </label>
+                  <input type="text"  name="telefono_propietario" id="telefono_propietario" value="" class="form-control" placeholder="Telefono">
+                </div>
+
+                 <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Email </label>
+                  <input type="text"  name="email_propietario" id="email_propietario" value="" class="form-control" placeholder="Email">
+                </div>
+
+                <div id="respuesta_modal_add" class="col-sm-12">
+                  
+                </div>
+                
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="savePropietario()" class="btn btn-primary">Guardar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+// Initialize and add the map
+function initMap() {
+ map = new google.maps.Map(document.getElementById('map'), {
+     zoom: 8,
+     center: {lat: 8, lng: -65}
+   });
+   
+   var marker=new google.maps.Marker({
+      position:map.getCenter(), 
+      map:map, 
+      draggable:true
+   });
+      
+   google.maps.event.addListener(marker,'dragend',function(event) {
+      document.getElementById("coords").value = this.getPosition().toString();
+   });
+}
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpHwisz-ifc6C95v8SOVXDfWvIOMqFlfI&callback=initMap">
+    </script>
+
+

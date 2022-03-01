@@ -1,0 +1,134 @@
+<div class="container">
+
+  <ol class="breadcrumb">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="app/noticia">Noticias</a></li>
+      <li class="active">Ver Noticia</li>
+  </ol>
+    
+   <div class="row">
+
+
+       
+   <div class="col-sm-8">
+
+        <div class="panel panel-primary ver">
+
+            <div class="panel-heading">
+
+                <h3 class="panel-title"><?php echo $this->noticias['titulo']; ?> </h3>
+
+
+
+            </div>
+
+            <div class="panel-body contenido" >
+
+
+                <img src="app/<?php echo $this->noticias['foto']; ?>">
+
+                <?php echo $this->noticias['noticia']; ?>
+                    
+
+                    
+
+
+
+            </div>
+
+            <div class="panel-footer">
+
+            <p> Publicada: <?php echo $this->noticias['date_add']; ?>   </p>  
+             <p> Autor: <?php echo $this->noticias['name'].' '.$this->noticias['lastname']; ?>   </p> 
+
+             <?php foreach ($this->etiquetas  as $tags ) { ?>
+                    <a href="app/noticia/tags/id/<?php echo $tags['id']; ?> " class="btn btn-link"> <?php echo $tags['descripcion']; ?></a>
+                <?php }
+
+              ?>      
+            
+
+                
+
+            </div>
+        </div>
+
+       
+   </div>
+
+   <div class="col-sm-4">
+
+   <div class="panel panel-primary ver">
+
+            <div class="panel-heading">
+
+                <h3 class="panel-title">Noticias Relacionadas </h3>
+
+
+
+            </div>
+
+            <div class="panel-body contenido" >
+
+            
+            <?php foreach ($this->related as $new): ?>
+
+               <div class="well row">
+                <div class="col-sm-3">
+                  <img style="max-width: 100px;" class="img img-responsive" src="app/<?php echo $new['foto']; ?>">
+                </div>
+
+                <div class="col-sm-9">
+                  <div class="col-sm-12">
+                   <b><a href="app/noticia/ver/id/<?php echo $new['id']; ?>"><?php echo $new['titulo']; ?></a>   </b>
+                  </div>
+
+                  <div class="col-sm-12">
+                    <?php echo strip_tags(substr($new['noticia'], 0,100)); ?>
+                  </div>
+                </div>
+
+
+              </div>
+
+              
+            <?php endforeach ?>
+
+           
+               
+
+                    
+
+
+
+            </div>
+
+            <div class="panel-footer">
+
+           
+
+           
+  
+            
+
+                
+
+            </div>
+        </div>
+       
+
+   </div>
+
+
+   </div>
+   
+    
+	
+	
+   
+	
+		
+    
+    
+</div>
+

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    <?php
+            // Notificar solamente errores de ejecución
+            #error_reporting(E_ERROR | E_WARNING | E_PARSE ); 
+            //error_reporting(0);
+            date_default_timezone_set('America/Caracas');
+        ?>
+        <base href="<?php echo $this->baseUrl(); ?>">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->baseUrl('/assets/img/favicon.ico'); ?>">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="<?php echo $this->baseUrl('/'); ?>favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="<?php echo $this->baseUrl('/'); ?>favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $this->baseUrl('/'); ?>favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="<?php echo $this->baseUrl('/'); ?>favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="<?php echo $this->baseUrl('/'); ?>favicon/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+        <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>-->
+        <title>EnCasa Plus</title>
+
+
+               <link href="<?php echo $this->baseUrl('/assets/css/datepicker.css'); ?>" rel="stylesheet">
+             <link href="<?php echo $this->baseUrl('/assets/plantilla/vendors/bootstrap/dist/css/bootstrap.min.css'); ?>" rel="stylesheet">
+             <link href="<?php echo $this->baseUrl('/assets/plantilla/vendors/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet">
+
+             <link href="<?php echo $this->baseUrl('/assets/plantilla/vendors/nprogress/nprogress.css'); ?>" rel="stylesheet">
+
+             <link href="<?php echo $this->baseUrl('/assets/plantilla/build/css/custom.min.css'); ?>" rel="stylesheet">
+
+             <link href="<?php echo $this->baseUrl('/assets/css/uploadfile.min.css'); ?>" rel="stylesheet">
+             <link href="<?php echo $this->baseUrl('/assets/css/jquery-ui.css'); ?>" rel="stylesheet">
+
+
+
+
+
+        <link href="<?php echo $this->baseUrl('/assets/css/style-admin.css'); ?>" rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+         </head>
+
+         <?php $auth = Zend_Auth::getInstance(); ?>
+        <?php if ($auth->hasIdentity()): ?>
+    <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a target="_blank" href="<?php echo $this->baseUrl('/'); ?>" class="site_title"> <span>EnCasa Plus</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile">
+              <div class="profile_pic">
+                
+                <img src="/assets/img/EnCasaPlus.png" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Bienvenido,</span>
+                <h2><?php echo $auth->getIdentity()->username; ?></h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+
+                  <li><a href="<?php echo $this->baseUrl('/administrador'); ?>">Administrador</a></li>
+
+
+                <?php if (isset($this->menu['administrador']['perfil'])): ?>
+                      <li><a href="<?php echo $this->baseUrl('/administrador/perfil'); ?>">Perfil</a></li>
+                    <?php endif ?>
+
+                    <?php if (isset($this->menu['administrador'][1])): ?>
+                      <!--<li><a href="<?php echo $this->baseUrl('/administrador'); ?>">Foro Inmobiliario</a></li>-->
+                    <?php endif ?>
+
+                    
+
+                    <?php if (isset($this->menu['inmueble']['aliados'])): ?>
+                      <!--<li><a href="<?php echo $this->baseUrl('/inmueble/aliados'); ?>">Inmuebles Aliados</a></li>-->
+                    <?php endif ?>
+                    
+                    <?php if (isset($this->menu['inmueble'][1])): ?>
+                      <li><a href="<?php echo $this->baseUrl('/inmueble'); ?>">Inmuebles</a></li>
+                    <?php endif ?>
+
+                    <?php if (isset($this->menu['interesados'][1])): ?>
+                         <li><a href="<?php echo $this->baseUrl('/interesados'); ?>">Interesados</a></li>
+                    <?php endif ?>
+
+                    <?php if (isset($this->menu['datos'][1])): ?>
+                      <li><a href="<?php echo $this->baseUrl('/datos'); ?>">Han Solicitado Datos</a></li>
+                    <?php endif ?>
+
+                    <?php if (isset($this->menu['estadistica'][1])): ?>
+                        <li><a href="<?php echo $this->baseUrl('/estadistica'); ?>">Estadistica</a></li>
+                    <?php endif ?>
+
+                    <?php if (isset($this->menu['ventas'][1])): ?>
+                        <li><a href="<?php echo $this->baseUrl('/ventas'); ?>">Ventas</a></li>
+                    <?php endif ?>
+
+                    <?php if (isset($this->menu['propietarios'][1])): ?>
+                        <li><a href="<?php echo $this->baseUrl('/propietarios'); ?>">Propietarios</a></li>
+                    <?php endif ?>
+                    
+                   
+                 <?php if (isset($this->menu['sliders'][1]) or isset($this->menu['noticia'][1]) or isset($this->menu['asesores'][1]) or isset($this->menu['pagina'][1]) or isset($this->menu['modulo'][1]) or isset($this->menu['servicios'][1])): ?>   
+                    
+
+                  <li><a><i class="fa fa-home"></i> CMS <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+
+
+                    <?php if (isset($this->menu['sliders'][1])): ?>
+                      <li><a href="<?php echo $this->baseUrl('/sliders'); ?>"><i class="fa fa-money "></i> Sliders</a></li>
+                    <?php endif ?>
+
+                    <?php if (isset($this->menu['noticia'][1])): ?>
+                      <li><a href="<?php echo $this->baseUrl('/noticia'); ?>"><i class="fa fa-users "></i> Noticias</a></li> 
+                    <?php endif ?>
+
+                    <?php if (isset($this->menu['asesores'][1])): ?>
+                      <li><a href="<?php echo $this->baseUrl('/asesores/list'); ?>"><i class="fa fa-copyright" aria-hidden="true"></i> Asesores</a></li>
+                    <?php endif ?>
+
+                    <?php if (isset($this->menu['pagina'][1])): ?>
+                      <li><a href="<?php echo $this->baseUrl('/pagina'); ?>"><i class="fa fa-file" aria-hidden="true"></i> Paginas</a></li>
+                    <?php endif ?>
+
+                    <?php if (isset($this->menu['modulo'][1])): ?>
+                      <li><a href="<?php echo $this->baseUrl('/modulo'); ?>"><i class="fa fa-qrcode "></i> Modulos</a></li>
+                    <?php endif ?>
+
+                    <?php if (isset($this->menu['servicios'][1])): ?>
+                        <li><a href="<?php echo $this->baseUrl('/servicios/list'); ?>"><i class="fa fa-wrench" aria-hidden="true"></i> Servicios</a></li>
+                    <?php endif ?>
+
+                    <?php if (isset($this->menu['estados'][1])): ?>
+                        <li><a href="<?php echo $this->baseUrl('/estados/'); ?>"><i class="fa fa-map-marker" aria-hidden="true"></i> Ubicaciones</a></li>
+                    <?php endif ?>
+
+                  
+                    <!--   <li><a href="<?php echo $this->baseUrl('/portafolio/list'); ?>"><i class="fa fa-suitcase" aria-hidden="true"></i> Portafolio</a></li>-->
+                      
+                    </ul>
+                  </li>
+
+
+                  <?php endif ?>
+
+                    <?php if (isset($this->menu['users'][1])): ?>
+                      <li><a href="<?php echo $this->baseUrl('/users'); ?>"><i class="fa fa-user "></i>Usuarios</a></li>
+                    <?php endif ?>
+
+                    <?php if (isset($this->menu['identidad'][1])): ?>
+                        <li><a href="<?php echo $this->baseUrl('/identidad'); ?>"><i class="fa fa-user "></i>Identidad</a></li>
+                    <?php endif ?>
+
+                </ul>
+              </div>
+             
+
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <!--<img src="images/img.jpg" alt="">--><?php echo $auth->getIdentity()->username; ?>
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  
+                    <li><a href="<?php echo $this->baseUrl('/auth/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Cerrar Session</a></li>
+                  </ul>
+                </li>
+
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+<?php endif; ?> 
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+
+              <?php echo $this->layout()->content; ?>
+     
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Diseñado y Desarrollado por <a href="http://www.maymi.com.ve">Inversiones Maymi</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+    
+        <script src="<?php echo $this->baseUrl('/assets/plantilla/vendors/jquery/dist/jquery.min.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/plantilla/vendors/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/plantilla/vendors/fastclick/lib/fastclick.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/plantilla/vendors/nprogress/nprogress.js'); ?>"></script>
+
+        <script src="<?php echo $this->baseUrl('/assets/plantilla/vendors/Chart.js/dist/Chart.min.js'); ?>"></script>
+
+        <script src="<?php echo $this->baseUrl('/assets/plantilla/build/js/custom.min.js'); ?>"></script>
+
+        <script src="<?php echo $this->baseUrl('/assets/js/bootstrap-datepicker.js'); ?>"></script>
+
+        <script src="<?php echo $this->baseUrl('/assets/js/dataTables/jquery.dataTables.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/dataTables/dataTables.bootstrap.js'); ?>"></script>
+
+        <script src="<?php echo $this->baseUrl('/assets/js/jquery.form.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/jquery.uploadfile.min.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/jquery-ui.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/upload.js'); ?>"></script>
+
+        <script src="<?php echo $this->baseUrl('/assets/js/custom-admin.js'); ?>"></script>¿
+       
+    </body>
+	
+	
+</html>

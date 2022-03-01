@@ -1,0 +1,104 @@
+
+<div class="w3l_agileits_breadcrumbs">
+   <div class="container">
+    <div class="w3l_agileits_breadcrumbs_inner">
+      <ul>
+        <li><a href="<?php echo $this->baseUrl('/areacliente'); ?>">Area Cliente</a><span>«</span></li>
+                  
+        <li>Noticias</li>
+        </ul>
+    </div>
+  </div>
+</div>    
+
+
+
+
+
+
+<!--Services-->
+<div class="options-wthree">
+    <div class="container">
+
+      <?php foreach ($this->related as $row): ?>
+
+      <div  class="row" style="padding-bottom: 15px; text-align: center;">
+
+        
+
+          <a href="<?php echo $this->baseUrl('/').$row->foto; ?>"><h4 class="media-heading"><?php echo $row->titulo; ?></h4></a>
+
+            <div class=" col-xs-12">
+              <a href="#">
+                <img class="img img-responsive"  src="<?php echo $this->baseUrl('/').$row->foto; ?>" alt="<?php echo $new['titulo']; ?>" style=" max-width: 100%; ">
+              </a>
+            </div>
+            <div class=" col-xs-12">
+              
+              <p><?php echo strip_tags(substr($row->noticia, 0, 120)).' ...' ; ?></p>
+              <p><a href="<?php echo $this->baseUrl('/blog/ver/id/').$row->id; ?>" class="btn btn-primary" role="button">Leer Mas</a>
+            </div>
+             
+        </div>
+      
+        <br>
+      
+        
+      <?php endforeach ?>
+    
+  </div>
+</div>
+
+
+
+
+
+<!--Services-->
+<div class="options-wthree">
+    <div class="container">
+    <ul>
+      <li>
+      <a href="<?php echo $this->baseUrl('/inmueble/buscar'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Ver Propiedades</h6>
+        </div>
+      </a>
+      </li>
+      <li>
+      <a href="<?php echo $this->baseUrl('/areacliente/solicitud'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-clipboard" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Solicitar Propiedad</h6>
+        </div>
+      </a>
+      </li>
+      <li>
+      <a href="<?php echo $this->baseUrl('/areacliente/missolicitudes'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-list" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Mis Solicitudes</h6>
+        </div>
+      </a>
+      </li>
+     
+     
+      <li>
+      <a href="<?php echo $this->baseUrl('/auth/logout'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Salir</h6>
+        </div>
+      </a>
+      </li>
+    </ul>
+  </div>
+</div>

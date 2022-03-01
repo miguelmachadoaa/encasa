@@ -1,0 +1,1314 @@
+<div class="container" >
+
+  <ol class="breadcrumb">
+     <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a></li>
+      <li><a href="<?php echo $this->baseUrl('/inmueble/'); ?>">Inmueble</a></li>
+      <li class="active">Agregar</li>
+  </ol>
+
+  
+   
+    <div class="row">
+
+
+
+<!--++++++++++++++++++++ Comienzo del formulario ++++++++++++++++++-->
+<div class="col-sm-12">
+  <form id="form_inmueble" name="form_inmueble" enctype="multipart/form-data" action="<?php echo $this->baseUrl('/inmueble/edit'); ?>" method="post"><div>
+
+    <input type="hidden" id="id" name="id"  value="<?php echo $this->inmueble->id;?>">
+
+    <div class="row">
+      
+
+
+    
+
+    <div class="page-header col-sm-12">
+      <h1>Datos del Inmueble</h1>
+    </div>
+    <div class="col-sm-12"></div>
+
+    <div class="col-sm-12">
+      
+      <h3>Propietarios del Inmueble</h3>
+      <div id="respuesta_propietario">
+        
+        <?php 
+
+          $ObjPropietario = new Application_Model_DbTable_Propietario();
+
+        $res=$ObjPropietario->fetchAll('id_propiedad="'.$this->inmueble->id.'"');
+
+         ?>
+
+         <?php if (count($res)>0): ?>
+           
+        
+         <table class="table">
+            <tr>
+              <td>Nombre</td>
+              <td>Apellido</td>
+              <td>Fecha de Nacimiento </td>
+              <td>Telefono</td>
+              <td>Email</td>
+              <td>Acciones</td>
+            </tr>
+
+          <?php foreach ($res as $propietario): ?>
+
+            <tr id="<?php echo $propietario->id; ?>" >
+              <td><?php echo $propietario->nombre_propietario; ?></td>
+              <td><?php echo $propietario->apellido_propietario; ?></td>
+              <td><?php echo $propietario->fecha_nacimiento_propietario; ?></td>
+              <td><?php echo $propietario->telefono_propietario; ?></td>
+              <td><?php echo $propietario->email_propietario; ?></td>
+              <td>
+                <button type="button" onclick="eliminarPropietario('<?php echo $propietario->id ?>');" class="btn danger">Eliminar</button>
+              </td>
+              
+            </tr>
+
+            
+          <?php endforeach ?>
+          </table>
+
+           <?php endif ?>
+
+
+
+      </div>
+
+      <button type="button" onclick="agregarPropietario();" class="btn btn-primary">Agregar</button>
+      <br><br>
+    </div>
+
+
+    <div class="form-group col-sm-12">
+      <label for="estado" class="required">Tenencia del Usuario *</label>
+      <select name="tenencia" id="tenencia" class="form-control">
+
+            <option value="">--Seleccione--</option>
+
+              <option selected value="<?php echo $this->inmueble->tenencia;?>"><?php echo $this->inmueble->tenencia;?></option>
+                            <option value="Propia">Propia</option>
+              <option value="Referido">Referido</option>
+              <option value="Compartida">Compartida</option>            
+    
+      </select>
+
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="cedula" class="required">Titulo <small>(Incluya el Tipo de Propiedad y Caracteristicas)</small></label>
+      <input type="text"  name="titulo" id="titulo" value="<?php echo $this->inmueble->titulo;?>" class="form-control" placeholder="Titulo">
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="cedula" class="required">Descripcion <small>(Incluya toda informacion reelevante de la propiedad)</small> </label>
+      <textarea rows="10"  name="descripcion" id="descripcion" style="width: 100%;"><?php echo $this->inmueble->descripcion;?></textarea>
+    </div>
+
+    
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Tipo Inmueble*</label>
+      <select name="tipo_inmueble" id="tipo_inmueble" class="form-control">
+            <option value="">--Tipo Inmueble--</option>
+
+              <option selected value="<?php echo $this->inmueble->tipo_inmueble;?>"><?php echo $this->inmueble->tipo_inmueble;?></option>
+                            <option value="Apartamento">Apartamento</option>
+              <option value="Casa">Casa</option>
+              <option value="Terreno">Terreno</option>
+              <option value="Hacienda">Hacienda</option>
+              <option value="Town House">Town House</option>
+              <option value="Habitacion">Habitacion</option>
+              <option value="Local Comercial">Local Comercial</option>
+              <option value="Oficina Comercial">Oficina Comercial</option>
+              <option value="Bodega-Galpon">Galpon</option>
+              <option value="Fondo de Comercio">Fondo de Comercio</option>
+              <option value="Hotel">Hotel</option>
+              <option value="Edificio">Edificio</option>
+              <option value="Anexo">Anexo</option>
+              
+    
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6" >
+      <label for="estado" class="required">Antiguedad Años*</label>
+      <select name="edad_inmueble" id="edad_inmueble" class="form-control">
+            <option value="">--Edad--</option> <option value="En Construccion">En Construccion</option>
+              <option selected value="<?php echo $this->inmueble->edad_inmueble;?>"><?php echo $this->inmueble->edad_inmueble;?></option>
+              <option value="De 1 a 5 Años">De 1 a 5 Años</option>
+              <option value="De 5 a 10 Años">De 5 a 10 Años</option>
+              <option value="De 10 a 20 Años">De 10 a 20 Años</option>
+              <option value="De 20 a 50 Años">De 20 a 50 Años</option>
+              <option value="Mas de 50 Años">Mas de 50 Años</option>
+      </select>
+    </div>
+
+        <div class="form-group col-sm-6">
+      <label for="estado" class="required">Numero de habitaciones*</label>
+      <select name="habitaciones" id="habitaciones" class="form-control">
+            <option value="">--Numero de habitaciones--</option>
+
+              <option selected value="<?php echo $this->inmueble->habitaciones;?>"><?php echo $this->inmueble->habitaciones;?></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Mas de 10">Mas de 10</option>
+
+
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Numero de Puestos Estacionamiento*</label>
+      <select name="puestos" id="puestos" class="form-control">
+            <option value="">--Numero de Puestos--</option>
+
+              <option  selected value="<?php echo $this->inmueble->puestos;?>"><?php echo $this->inmueble->puestos;?></option>
+              <option  value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Mas de 10">Mas de 10</option>
+
+
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Numero de Baños*</label>
+      <select name="banos" id="banos" class="form-control">
+            <option value="">--Numero de Baños--</option>
+
+              <option selected value="<?php echo $this->inmueble->banos;?>"><?php echo $this->inmueble->banos;?></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Mas de 10">Mas de 10</option>
+
+
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Numero de Medio  Baño*</label>
+      <select name="medio_banos" id="medio_banos" class="form-control">
+            <option value="">--Medio Baño--</option>
+
+              <option selected value="<?php echo $this->inmueble->medio_banos;?>"><?php echo $this->inmueble->medio_banos;?></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="Mas de 10">Mas de 10</option>
+
+
+                
+      </select>
+    </div>
+</div>
+
+
+<?php  if (isset($this->acceso['inmueble']['precio'])){ ?>
+
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Precio del Inmueble</h3>
+    </div>
+
+<div class="col-sm-12">
+<div class="panel panel-default col-sm-3 col-sm-offset-1">
+  <div class="panel-heading"> Anunciar para vender</div>
+  <div class="panel-body">
+     
+    <div class="form-group col-sm-10">
+      <label for="cedula" class="required">Monto </label>
+      <input type="text"  name="monto_vender" id="monto_vender" value="<?php echo $this->inmueble->monto_vender;?>" class="form-control" placeholder="Bs.">
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default col-sm-3 col-sm-offset-1">
+  <div class="panel-heading"> Anunciar para Alquilar</div>
+  <div class="panel-body">
+    
+    <div class="form-group col-sm-10">
+      <label for="cedula" class="required">Monto </label>
+      <input type="text"  name="monto_alquilar" id="monto_alquilar" value="<?php echo $this->inmueble->monto_alquilar;?>" class="form-control" placeholder="Bs.">
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default col-sm-3  col-sm-offset-1">
+  <div class="panel-heading"> Anunciar para temporada</div>
+  <div class="panel-body">
+      
+    <div class="form-group col-sm-10">
+      <label for="cedula" class="required">Monto </label>
+      <input type="text"  name="monto_temporada" id="monto_temporada" value="<?php echo $this->inmueble->monto_temporada;?>" class="form-control" placeholder="Bs.">
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+<div class="form-group col-sm-12">
+      <label for="cedula" class="required">Comision  </label>
+      <input type="text"  name="comision" id="comision" value="<?php echo $this->inmueble->comision;?>" class="form-control" placeholder="Comision">
+    </div>
+
+</div>
+
+<?php } ?>
+
+
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Dimensiones del Inmueble</h3>
+    </div>
+
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">M2 Contruccion </label>
+      <input type="text"  name="contruccion" id="contruccion" value="<?php echo $this->inmueble->contruccion;?>" class="form-control" placeholder="Estado">
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">M2 Totales </label>
+      <input type="text"  name="totales" id="totales" value="<?php echo $this->inmueble->totales;?>" class="form-control" placeholder="Estado">
+    </div>
+
+
+
+</div>
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Ubicacion del Inmueble</h3>
+    </div>
+
+
+    <div class="form-group  col-sm-6">
+      <label for="estado" class="required">Estado  *</label>
+
+      <select name="pais" id="pais" class="form-control" onchange="cargarEstado()">
+    
+            <option value="">--Pais--</option>
+            
+
+              <?php foreach ($this->paises as $pais): ?>
+                <option value="<?php echo $pais->id; ?>" <?php if($this->inmueble->id_pais==$pais->id){ echo 'Selected'; } ?>  ><?php echo utf8_encode($pais->pais); ?></option>
+              <?php endforeach; ?>
+
+
+      </select>
+    </div>
+
+      <div class="form-group  col-sm-6">
+      <label for="estado" class="required">Estado  *</label>
+
+      <select name="estado" id="estado" class="form-control" onchange="cargarCiudad()">
+    
+            <option value="">--Estado--</option>
+            <option value="<?php echo $this->inmueble->id_estado;?>" selected><?php echo $this->inmueble->estado;?></option>
+
+              <?php foreach ($this->states as $state): ?>
+                <option value="<?php echo $state->id; ?>" ><?php echo utf8_encode($state->estado); ?></option>
+              <?php endforeach; ?>
+
+
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="ciudad" class="required">Ciudad  *</label>
+      <select name="ciudad" id="ciudad" class="form-control" onchange="cargarZona()" >
+        <option value="">--Ciudad--</option>
+        <option value="<?php echo $this->inmueble->id_ciudad;?>" selected><?php echo $this->inmueble->ciudad;?></option>
+                    <?php foreach ($this->cities as $cities): ?>
+                    <option value="<?php echo $cities->id; ?>" ><?php echo utf8_encode($cities->ciudad); ?></option>
+                    <?php endforeach; ?>
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="municipio" class="required">Zonas  *</label>
+      <select name="zona" id="zona" class="form-control" >
+        <option value="">--Zonas--</option>
+        <option value="<?php echo $this->inmueble->id_zona;?>" selected><?php echo $this->inmueble->zona;?></option>
+                    <?php foreach ($this->zonas as $zona): ?>
+                    <option value="<?php echo $zona->id; ?>" ><?php echo utf8_encode($zona->zona); ?></option>
+                    <?php endforeach; ?>
+      </select>
+    </div>
+
+
+     <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Calle / Avenida</label>
+      <input type="text"  name="calle" id="calle" value="<?php echo $this->inmueble->calle;?>" class="form-control" placeholder="Calle / Avenida">
+    </div>
+
+
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Urbanismo / Condominio</label>
+      <input type="text"  name="urbanismo" id="urbanismo" value="<?php echo $this->inmueble->urbanismo;?>"" class="form-control" placeholder="Urbanismo / Condominio ">
+    </div>
+
+    
+
+
+ 
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Codigo Postal </label>
+      <input type="text"  name="postal" id="postal" value="<?php echo $this->inmueble->postal;?>" class="form-control" placeholder="Codigo Postal">
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="cedula" class="required">Direccion </label>
+      <textarea rows="10"  name="direccion" id="direccion" style="width: 100%;"><?php echo $this->inmueble->direccion;?></textarea>
+    </div>
+
+
+    <div class="col-sm-12">
+
+       <div class="form-group col-sm-12">
+      <label for="cedula" class="required">Selecciona Ubicacion del Inmueble </label>
+      <input class="form-control" type="text" name="coords" id="coords" value="<?php echo $this->inmueble->coords;?>">
+      
+    </div>
+
+     
+      
+      <div id="map" style="height: 400px; width: 100%; "></div>
+
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+<div class="row">
+  
+<div class="page-header col-sm-12">
+      <h3>Observaciones del inmuebles</h3>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="cedula" class="required">Observaciones </label>
+      <textarea rows="10"  name="observacion" id="observacion" style="width: 100%;"><?php echo $this->inmueble->observacion;?></textarea>
+    </div>
+
+
+
+
+</div>
+
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Seguridad</h3>
+    </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="vigilancia" id="vigilancia" value=" Vigilancia" <?php if ($this->inmueble->vigilancia!=''): ?> checked <?php endif ?>>
+          Vigilancia
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="sseguridad" id="sseguridad" value="Sistema de Seguridad" <?php if ($this->inmueble->sseguridad!=''): ?> checked <?php endif ?> >
+        Sistema de Seguridad
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="pelectrico" id="pelectrico" value="Porton Electrico" <?php if ($this->inmueble->pelectrico!=''): ?> checked <?php endif ?>>
+        Porton Electrico
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cerca_electrica" id="cerca_electrica" value="Cerca eléctrica" <?php if ($this->inmueble->cerca_electrica!=''): ?> checked <?php endif ?>>
+        Cerca eléctrica
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cccseguridad" id="cccseguridad" value="Calle Cerrada con Seguridad" <?php if ($this->inmueble->cccseguridad!=''): ?> checked <?php endif ?>>
+        Calle Cerrada con Seguridad
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="sstactil" id="sstactil" value="Sistema de Seguridad Tactil" <?php if ($this->inmueble->sstactil!=''): ?> checked <?php endif ?>>
+        Sistema de Seguridad Tactil
+      </label>
+  </div>
+
+  <div class=" col-sm-4">
+      <label> Otros </label>
+        <input type="text" name="otros" id="otros" placeholder="Otros" value="<?php echo $this->inmueble->otros; ?>" >
+       
+  </div>
+
+
+
+
+
+</div> <!-- end row -->
+
+
+
+
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Servicios</h3>
+    </div>
+
+    <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="linea_tlf" id="linea_tlf" value=" Línea telefónica" <?php if ($this->inmueble->linea_tlf!=''): ?> checked <?php endif ?>>
+         Línea telefónica
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="internet" id="internet" value="Internet/Wifi" <?php if ($this->inmueble->internet!=''): ?> checked <?php endif ?>>
+         Internet/Wifi
+      </label>
+  </div>
+
+ <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="lavanderia" id="lavanderia" value="Area de lavandería" <?php if ($this->inmueble->lavanderia!=''): ?> checked <?php endif ?>>
+         Area de lavandería
+      </label>
+  </div>
+
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Gimnasio" id="Gimnasio" value="Gimnasio" <?php if ($this->inmueble->Gimnasio!=''): ?> checked <?php endif ?>>
+        Gimnasio
+      </label>
+  </div>
+
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="salon_de_fiestas" id="salon_de_fiestas" value="Salón de Fiestas" <?php if ($this->inmueble->salon_de_fiestas!=''): ?> checked <?php endif ?>>
+         Salón de Fiestas
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="parque" id="parque" value=" Parque infantil" <?php if ($this->inmueble->parque!=''): ?> checked <?php endif ?>>
+          Parque infantil
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="piscina" id="piscina" value="Piscina" <?php if ($this->inmueble->piscina!=''): ?> checked <?php endif ?>>
+        Piscina
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Churuata" id="Churuata" value="Churuata" <?php if ($this->inmueble->Churuata!=''): ?> checked <?php endif ?>>
+         Churuata
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="salon_juegos" id="salon_juegos" value="Salón de juegos" <?php if ($this->inmueble->salon_juegos!=''): ?> checked <?php endif ?>>
+        Salón de juegos
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cancha_deportiva" id="cancha_deportiva" value="Cancha deportiva" <?php if ($this->inmueble->cancha_deportiva!=''): ?> checked <?php endif ?>>
+        Cancha deportiva
+      </label>
+  </div>
+
+
+</div> <!-- end row -->
+
+
+
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Informacion de Interes </h3>
+    </div>
+
+
+
+    <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="bdistribucion" id="bdistribucion" value=" Buena Distribucion" <?php if ($this->inmueble->bdistribucion!=''): ?> checked <?php endif ?>>
+          Buena Distribucion
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cmontana" id="cmontana" value=" Clima de Montaña" <?php if ($this->inmueble->cmontana!=''): ?> checked <?php endif ?>>
+          Clima de Montaña
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="ceconomico" id="ceconomico" value="Condominio Economico" <?php if ($this->inmueble->ceconomico!=''): ?> checked <?php endif ?>>
+         Condominio Economico
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="ccerrado" id="ccerrado" value="Conjunto Cerrado" <?php if ($this->inmueble->ccerrado!=''): ?> checked <?php endif ?>>
+         Conjunto Cerrado
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="desocupado" id="desocupado" value="Desocupado" <?php if ($this->inmueble->desocupado!=''): ?> checked <?php endif ?>>
+         Desocupado
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="eoportunidad" id="eoportunidad" value="Excelente Oportunidad" <?php if ($this->inmueble->eoportunidad!=''): ?> checked <?php endif ?>>
+         Excelente Oportunidad
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="eubicacion" id="eubicacion" value="Excelente Ubicacion" <?php if ($this->inmueble->eubicacion!=''): ?> checked <?php endif ?>>
+         Excelente Ubicacion
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="evista" id="evista" value="Excelente Vista" <?php if ($this->inmueble->evista!=''): ?> checked <?php endif ?>>
+         Excelente Vista
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="mbonito" id="mbonito" value="Muy Bonito" <?php if ($this->inmueble->mbonito!=''): ?> checked <?php endif ?>>
+         Muy Bonito
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="remodelado" id="remodelado" value="Remodelado" <?php if ($this->inmueble->remodelado!=''): ?> checked <?php endif ?>>
+         Remodelado
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="aremodelar" id="aremodelar" value="A Remodelado" <?php if ($this->inmueble->aremodelar!=''): ?> checked <?php endif ?>>
+         A Remodelado
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="vcomprarlo" id="vcomprarlo" value="Verlo es Comprarlo" <?php if ($this->inmueble->vcomprarlo!=''): ?> checked <?php endif ?>>
+         Verlo es Comprarlo
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="ztranquila" id="ztranquila" value="Zona tranquila" <?php if ($this->inmueble->ztranquila!=''): ?> checked <?php endif ?>>
+         Zona tranquila
+      </label>
+  </div>
+
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="areas_verdes" id="areas_verdes" value="Areas verdes" <?php if ($this->inmueble->areas_verdes!=''): ?> checked <?php endif ?>>
+        Areas verdes
+      </label>
+  </div>
+
+
+
+<div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="amueblado" id="amueblado" value=" Amueblado/a" <?php if ($this->inmueble->amueblado!=''): ?> checked <?php endif ?>>
+         Amueblado/a
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Lobby" id="Lobby" value="Lobby" <?php if ($this->inmueble->Lobby!=''): ?> checked <?php endif ?>>
+        Lobby
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Reservorio" id="Reservorio" value="Reservorio" <?php if ($this->inmueble->Reservorio!=''): ?> checked <?php endif ?>>
+         Reservorio
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="rio" id="rio" value="Río" <?php if ($this->inmueble->rio!=''): ?> checked <?php endif ?>>
+         Río
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="bbq" id="bbq" value="Area de BBQ" <?php if ($this->inmueble->bbq!=''): ?> checked <?php endif ?>>
+        Area de BBQ
+      </label>
+  </div>
+ <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Quebrada" id="Quebrada" value="Quebrada" <?php if ($this->inmueble->Quebrada!=''): ?> checked <?php endif ?>>
+         Quebrada
+      </label>
+  </div>
+
+  <?php if (isset($this->inmueble->terrazaa)): ?>
+    
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="terrazaa" id="terrazaa" value="Terraza Abierta" <?php if ($this->inmueble->terrazaa!=''): ?> checked <?php endif ?>>
+         Terraza Abierta
+      </label>
+  </div>
+  <?php endif ?>
+
+  <?php if (isset($this->inmueble->balcon)): ?>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="balcon" id="balcon" value="Balcon" <?php if ($this->inmueble->balcon!=''): ?> checked <?php endif ?> >
+         Balcon
+      </label>
+  </div>
+
+  <?php endif ?>
+
+
+  
+
+  
+
+
+</div> <!-- end row   -->
+
+
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Cercanías</h3>
+    </div>
+
+
+     <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="abastos" id="abastos" value="Abastos" <?php if ($this->inmueble->abastos!=''): ?> checked <?php endif ?>>
+         Abastos
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="ccomercial" id="ccomercial" value="Centro Comercial" <?php if ($this->inmueble->ccomercial!=''): ?> checked <?php endif ?>>
+         Centro Comercial
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="panaderia" id="panaderia" value="Panadería" <?php if ($this->inmueble->panaderia!=''): ?> checked <?php endif ?>>
+         Panadería
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="metro" id="metro" value="Metro" <?php if ($this->inmueble->metro!=''): ?> checked <?php endif ?>>
+         Metro
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="taxi" id="taxi" value="Línea de taxi" <?php if ($this->inmueble->taxi!=''): ?> checked <?php endif ?>>
+          Línea de taxi
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="clinica" id="clinica" value="Clínica" <?php if ($this->inmueble->clinica!=''): ?> checked <?php endif ?>>
+        Clínica
+      </label>
+  </div>
+
+ <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="colegios" id="colegios" value="Colegio" <?php if ($this->inmueble->colegios!=''): ?> checked <?php endif ?>>
+         Colegio
+      </label>
+  </div>
+   
+   
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="farmacia" id="farmacia" value="Farmacia" <?php if ($this->inmueble->farmacia!=''): ?> checked <?php endif ?>>
+         Farmacia
+      </label>
+  </div>
+   
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="epublico" id="epublico" value="Estacionamiento Publico" <?php if ($this->inmueble->epublico!=''): ?> checked <?php endif ?>>
+        Estacionamiento Publico
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="supermercado" id="supermercado" value="Supermercado" <?php if ($this->inmueble->supermercado!=''): ?> checked <?php endif ?>>
+         Supermercado
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="hospital" id="hospital" value="Hospital" <?php if ($this->inmueble->hospital!=''): ?> checked <?php endif ?>>
+         Hospital
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="bancos" id="bancos" value=" Bancos" <?php if ($this->inmueble->bancos!=''): ?> checked <?php endif ?>>
+          Bancos
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="comercios" id="comercios" value=" Comercios" <?php if ($this->inmueble->comercios!=''): ?> checked <?php endif ?>>
+          Comercios
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="restaurant" id="restaurant" value=" Restaurant" <?php if ($this->inmueble->restaurant!=''): ?> checked <?php endif ?>>
+          Restaurant
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="publico" id="publico" value="Transp. público" <?php if ($this->inmueble->publico!=''): ?> checked <?php endif ?>>
+         Transp. público
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="autopista" id="autopista" value="Autopistas y Av." <?php if ($this->inmueble->autopista!=''): ?> checked <?php endif ?>>
+         Autopistas y Av.
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="carga" id="carga" value="Facil via de Carga y Descarga" <?php if ($this->inmueble->carga!=''): ?> checked <?php endif ?>>
+         Facil via de Carga y Descarga
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="peatona" id="peatona" value="Alto Transito Peatonal" <?php if ($this->inmueble->peatona!=''): ?> checked <?php endif ?>>
+         Alto Transito Peatonal
+      </label>
+  </div>
+
+
+
+</div>  <!-- End row -->
+
+
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Legal</h3>
+    </div>
+
+
+    <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="personan" id="personan" value="Persona Natural" <?php if ($this->inmueble->personan!=''): ?> checked <?php endif ?>>
+         Persona Natural
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="documentop" id="documentop" value="Documento de Propiedad"  <?php if ($this->inmueble->documentop!=''): ?> checked <?php endif ?>>
+         Documento de Propiedad
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cedulac" id="cedulac" value="Cedula de Catastro"  <?php if ($this->inmueble->cedulac!=''): ?> checked <?php endif ?>>
+         Cedula de Catastro
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="solvenciam" id="solvenciam" value="Solvencia de Municipio"  <?php if ($this->inmueble->solvenciam!=''): ?> checked <?php endif ?>>
+         Solvencia de Municipio
+      </label>
+  </div>
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cedulap" id="cedulap" value="Cedula de Propietario"  <?php if ($this->inmueble->cedulap!=''): ?> checked <?php endif ?>>
+         Cedula de Propietario
+      </label>
+  </div>
+
+  <?php if (isset($this->inmueble->cedulaco)): ?>
+    
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cedulaco" id="cedulaco" value="Cedula de Co-propietario"  <?php if ($this->inmueble->cedulaco!=''): ?> checked <?php endif ?>>
+         Cedula de Co-propietario
+      </label>
+  </div>
+
+  <?php endif ?>
+
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="poder" id="poder" value="Poder"  <?php if ($this->inmueble->poder!=''): ?> checked <?php endif ?>>
+         Poder
+      </label>
+  </div>
+
+  <?php if (isset($this->inmueble->hipoteca)): ?>
+    
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="hipoteca" id="hipoteca" value="Hipoteca"  <?php if ($this->inmueble->hipoteca!=''): ?> checked <?php endif ?>>
+         Hipoteca
+      </label>
+  </div>
+
+  <?php endif ?>
+
+  <?php if (isset($this->inmueble->liberacion)): ?>
+
+
+   <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="liberacion" id="liberacion" value="Liberacion"   <?php if ($this->inmueble->liberacion!=''): ?> checked <?php endif ?>>
+         Liberacion
+      </label>
+  </div>
+  <?php endif ?>
+
+   
+
+   
+</div>  <!-- End row -->
+ 
+
+
+<div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Condiciones de Venta</h3>
+    </div>
+  <?php if (isset($this->inmueble->contado)): ?>
+
+    <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="contado" id="contado" value="De Contado" <?php if ($this->inmueble->contado!=''): ?> checked <?php endif ?>>
+         De Contado
+      </label>
+  </div>
+
+  <?php endif ?>
+
+
+  <?php if (isset($this->inmueble->credito)): ?>
+<div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="credito" id="credito" value="Credito" <?php if ($this->inmueble->credito!=''): ?> checked <?php endif ?>>
+         Credito
+      </label>
+  </div>
+  <?php endif ?>
+    
+
+  <?php if (isset($this->inmueble->convenir)): ?>
+<div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="convenir" id="convenir" value="Convenir de las partes" <?php if ($this->inmueble->convenir!=''): ?> checked <?php endif ?>>
+         Convenir de las partes
+      </label>
+  </div>
+  <?php endif ?>
+   
+
+   
+
+   
+</div>  <!-- End row -->
+
+
+    <div class="col-sm-12">
+
+    <br><br>
+      
+         <div class="carga">
+
+           <div class="row">
+          
+
+              <?php foreach ($this->fotos as $foto): ?>
+
+             
+             <div class="col-sm-6 col-md-4" id="<?php echo $foto->id; ?>">
+                <div class="thumbnail">
+                  <img style="max-width: 12em;  max-height: 10em;"  class="img img-responsive" src="<?php echo $this->baseUrl('assets/images/'.$foto->foto); ?>" alt="...">
+                  <div class="caption">
+                    
+                    <div class="col-sm-3"><?php if ($foto->posicion=='1'){ ?>
+                      <button style="float: right;" onclick="principal('<?php echo $foto->id; ?>')" type="button" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+
+                    <?php }else { ?>
+
+                       <button style="float: right;" onclick="principal('<?php echo $foto->id; ?>')" type="button"  class="btn btn-default" role="button"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+
+                   <?php  } ?></div>
+                    <div class="col-sm-3"><button onclick="borrar('<?php echo $foto->id; ?>','fotos')" type="button"  class="btn btn-danger" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>
+
+                    <div class="col-sm-6">
+                      <h4>Posicion: <span class="badge" onclick="cambiarPosicion('<?php echo $foto->id; ?>', '<?php echo $foto->posicion; ?>');"><?php echo $foto->posicion; ?></span></h4> 
+                    </div>
+
+    
+
+
+                     
+                      
+                    
+                  </div>
+                </div>
+              </div>
+            
+                          
+              <?php endforeach ?>
+              
+             
+           </div> 
+
+        </div>
+    <div class="loader">  </div>
+
+    <div id="fileuploader"> Cargar Imagenes
+    </div>
+
+    </div>
+
+
+    <div class="col-sm-12">
+      
+  <dt id="buttons-label">&#160;</dt>
+    <dd id="buttons-element">
+      <fieldset id="fieldset-buttons">
+        <dl>
+          <input type="submit" name="btn_submit" id="btn_submit" value="Guardar" class="btn btn-default">
+
+          <button name="btn_cancel" id="btn_cancel" type="button" class="btn btn-danger">Cancelar</button>
+        </dl>
+
+      </fieldset>
+    </dd>
+
+    </div>
+
+</div><!-- end row -->
+
+  
+    </div>
+  </form> 
+
+
+
+</div>
+
+
+
+<!--+++<?php// echo $this->EstForm; ?> ++++++++++++++++++++ Fin  del formulario+++++++++++++++ ++++++++++++-->
+
+
+    </div> <!-- fin row -->
+    
+</div> <!-- fin container  -->
+
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <input type="hidden" name="del_modelo" id="del_modelo">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="eliminar()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="psicionModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Actualizar Posicion</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="foto_id" id="foto_id">
+                <input type="hidden" name="foto_solicitud" id="foto_solicitud">
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Nueva Posicion </label>
+                  <input type="text"  name="foto_posicion" id="foto_posicion" value="" class="form-control" placeholder="Poscion">
+                </div>
+                
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="updatePosicion()" class="btn btn-primary">Actualizar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div id="propietarioAddModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Agregar Propietario</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Nombre </label>
+                  <input type="text"  name="nombre_propietario" id="nombre_propietario" value="" class="form-control" placeholder="Nombre">
+                </div>
+
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Apellido </label>
+                  <input type="text"  name="apellido_propietario" id="apellido_propietario" value="" class="form-control" placeholder="Apellido">
+                </div>
+
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Fecha Nacimiento </label>
+                  <input type="text"  name="fecha_nacimiento_propietario" id="fecha_nacimiento_propietario" value="" class="form-control fecha" placeholder="Fecha de Nacimiento"> 
+                </div>
+
+                <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Telefono </label>
+                  <input type="text"  name="telefono_propietario" id="telefono_propietario" value="" class="form-control" placeholder="Telefono">
+                </div>
+
+                 <div class="form-group col-sm-12">
+                  <label for="cedula" class="required">Email </label>
+                  <input type="text"  name="email_propietario" id="email_propietario" value="" class="form-control" placeholder="Email">
+                </div>
+
+                <div id="respuesta_modal_add" class="col-sm-12">
+                  
+                </div>
+                
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="savePropietario()" class="btn btn-primary">Guardar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php 
+
+if ($this->inmueble->coords==NULL || $this->inmueble->coords=='') {
+  
+  $lat=8;
+  $lng=-65;
+
+}else{
+
+  $coords=str_replace(array('(',')'),'',$this->inmueble->coords );
+  $partes=explode(',', $coords);
+
+  //echo $coords.'<br>';
+
+ // var_dump($partes);
+
+
+    $lat=$partes[0];
+  $lng=$partes[1];
+
+
+}
+
+ ?>
+
+
+<script>
+// Initialize and add the map
+function initMap() {
+ map = new google.maps.Map(document.getElementById('map'), {
+     zoom: 8,
+     center: {lat: <?php echo $lat ?>, lng: <?php echo $lng ?>}
+   });
+   
+   var marker=new google.maps.Marker({
+      position:map.getCenter(), 
+      map:map, 
+      draggable:true
+   });
+      
+   google.maps.event.addListener(marker,'dragend',function(event) {
+      document.getElementById("coords").value = this.getPosition().toString();
+   });
+}
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpHwisz-ifc6C95v8SOVXDfWvIOMqFlfI&callback=initMap">
+    </script>
+
+
+

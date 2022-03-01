@@ -1,0 +1,65 @@
+  <!-- breadcrumbs -->
+<div class="w3l_agileits_breadcrumbs">
+   <div class="container">
+    <div class="w3l_agileits_breadcrumbs_inner">
+      <ul>
+        <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a><span>«</span></li>
+                  
+        <li>Mensajes</li>
+        </ul>
+    </div>
+  </div>
+</div>    
+<!-- //breadcrumbs -->
+
+
+<!-- Doctors -->
+<div class="blog" id="blog">
+  <div class="container">
+  
+    <h4 class="tittle-w3layouts">Mensajes</h4>
+
+    <?php foreach ($this->contactos as $row): ?>
+
+      <div class="row ">
+          <div class="col-sm-12">
+
+            <div class="well" style="margin: 1em;">
+            <p>
+              <b>Propiedad:</b> <a href=" <?php    echo $this->baseUrl('inmueble/ver/id/').$row->id_inmueble; ?>">   <?php echo   $row->titulo.' - '. $row->tipo_inmueble; ?>  </a>
+            </p>
+
+            <p>
+              <b>Nombre:</b> <?php echo $row->nombre; ?>
+            </p>
+
+            <p>
+              <b>Email:</b> <?php echo $row->mail; ?>
+            </p>
+
+            <p>
+              <b>Teléfono:</b> <?php echo $row->telefono; ?>
+            </p>
+
+            <p>
+              <b>Mensaje:</b> <?php echo $row->mensaje; ?>
+            </p>
+
+            <p>
+              <b>Fecha:</b> <?php echo $row->fecha; ?>
+            </p>
+            
+
+            </div>
+
+          </div>
+        </div>
+      
+    <?php endforeach ?>
+
+
+  </div>
+</div>
+
+<!-- //Doctors --> 
+

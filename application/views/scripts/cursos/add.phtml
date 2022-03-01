@@ -1,0 +1,42 @@
+<div class="container">
+    <h1 class="page-header">Registro de Cursos</h1>
+    <div style="position: absolute; z-index: 9999; <?php echo ($this->auth->getIdentity()->role === 'administrador') ? 'display:block;' : 'display:none;'; ?>">
+    </div>
+    <div class="row">
+
+<?php echo $this->CursosForm; ?> 
+
+
+
+
+    
+</div>
+<script>
+    
+    $('#s_home_state').change(function() {
+                    $('#s_home_city').html('<option>cargando...</option>');
+                    return loadCities($(this).val(), $('#s_home_city'));
+                });
+
+                function loadCities(state_id, select, opt) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "<?php echo $this->url(array('controller' => 'ajax', 'action' => 'cities')); ?>",
+                        data: {'state_id': state_id},
+                        dataType: 'json',
+                        success: function(data) {
+                            var options = '<option value="">--seleccione--</option>';
+                            select.empty();
+                            $.each(data.cities, function() {
+                                options += '<option value="' + this.id + '"';
+                                if (opt == this.id)
+                                    options += 'selected="selected"';
+                                options += '>' + this.name + '</option>';
+                            });
+                            select.append(options);
+                        }
+                    });
+                    return;
+                }
+
+</script>

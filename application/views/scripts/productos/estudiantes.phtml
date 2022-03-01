@@ -1,0 +1,219 @@
+<div class="container">
+    
+    <h1 class="page-header">Participante Registrados</h1>
+
+
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    
+    <div class="well form-inline">
+
+        
+        <div class="form-group">
+            <select id="f_grado" name="f_grado" class="form-control ">
+                <option value="">--Grado de Instrucción--</option>
+                <?php foreach ($this->grado as $grado): ?>
+                <option value="<?php echo $grado->id; ?>" <?php echo (isset($this->params['f_grado']) && $this->params['f_grado'] == $grado->id) ? 'selected' : ''; ?>><?php echo utf8_encode($grado->descripcion); ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
+            <div class="form-group">
+                <select id="f_state" name="f_state" class="form-control">
+                    <option value="">--Estado--</option>
+                    <?php foreach ($this->states as $state): ?>
+                    <option value="<?php echo $state->id; ?>" <?php echo (isset($this->params['f_state']) && $this->params['f_state'] == $state->id) ? 'selected' : ''; ?>><?php echo utf8_encode($state->state); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select id="f_city" name="f_city" class="form-control">
+                    <option value="">--Ciudad--</option>
+                    <?php foreach ($this->cities as $cities): ?>
+                    <option value="<?php echo $cities->id; ?>" <?php echo (isset($this->params['f_city']) && $this->params['f_city'] == $cities->id) ? 'selected' : ''; ?>><?php echo utf8_encode($cities->city); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+
+
+            <div class="form-group">
+            <select id="f_profession" name="f_profession" class="form-control">
+                <option value="">--Profesión--</option>
+                <?php foreach ($this->professions as $profession): ?>
+                <option value="<?php echo $profession->id; ?>" <?php echo (isset($this->params['f_profession']) && $this->params['f_profession'] == $profession->id) ? 'selected' : ''; ?>><?php echo utf8_encode($profession->profession); ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    
+        <?php if ($this->auth->getIdentity()->role == 'administrador'): ?>
+
+        <?php endif; ?>
+
+        <div class="form-group">
+            <a id="btn-filter" data-url="<?php echo $this->baseUrl('index.php/index/estudiantes'); ?>" class="btn btn-default"><span class="glyphicon glyphicon-filter"></span> Filtrar</a>
+            <a href="app/index.php/index/estudiantes"  class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Reiniciar</a>
+        </div>
+        
+    </div>
+    
+    <div class="pull-right">
+    <a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'add')); ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> Agregar</a>
+
+        <a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'export','f_profession' => @$this->params['f_profession'], 'f_grado' => @$this->params['f_grado'], 'f_state' => @$this->params['f_state'], 'f_city' => @$this->params['f_city'])); ?>" target="_blank" class="btn btn-link"><span class="glyphicon glyphicon-export"></span> Exportar PDF</a>
+    </div>
+    
+    <div class="pull-left">
+        <strong>Total:</strong> <?php echo $this->paginator->getTotalItemCount(); ?> registros
+    </div>
+
+    
+        <div class="col-lg-4 col-lg-offset-2">
+            <input type="search" id="search" value="" class="form-control" placeholder="Buscar...">
+        </div>
+   
+    <br><br>
+    <table class="table table-hover table-striped" id="tb_estudiantes">
+        <thead style="backgroun"><tr>
+            <th>Id</th>
+             <th>Cedula</th>
+            <th>Nombre y Apellido</th>
+            <th>Dirección </th>
+            <th>Estado</th>
+            <th>Ciudad</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Grado de Instrucción</th>
+             <th>Grado de Profesión</th>
+            <th>Foto</th>
+            <th class="text-center" width="12%">Acción</th>
+        </tr></thead><tbody>
+        <?php foreach ($this->paginator as $row): ?>
+
+            <tr>
+                <td><?php echo $row->id; ?></td>
+                <td><?php echo $row->cedula; ?></td>
+                <td><?php echo implode(' ', array($row->nombre, $row->apellido)); ?></td>
+                <td><?php echo utf8_encode($row->direccion); ?></td>
+                <td><?php echo utf8_encode($row->estado); ?></td>
+                <td><?php echo utf8_encode($row->ciudad); ?></td>
+                <td><?php echo utf8_encode($row->fecha_nac); ?></td>
+                <td><?php echo utf8_encode($row->grado);?></td>
+                <td><?php echo utf8_encode($row->profesion);?></td>
+                <td><?php echo "<a class='img' href=/app/".$row->foto.">Ver Imagen</a>"; ?></td>
+               
+                <td class="text-center">
+                    <div id="actiongroup" class="btn-group">
+                        
+                        <a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'detail', 'id' => $row->id)); ?>" target="_blank" class="btn btn-default" title="Ver detalles"><span class="glyphicon glyphicon-zoom-in"></span></a>
+
+                        <a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'edit', 'id' => $row->id)); ?>" class="btn btn-info" title="Editar"><span class="glyphicon glyphicon-edit"></span> </a>
+
+                        <button type="button" data-id="<?php echo $row->id; ?>" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash"></span></button>
+                        
+
+                    </div>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody></table>
+    
+    <?php echo ($this->paginator->count() > 1) ? $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml') : ''; ?>
+    
+</div>
+
+<div id="approveModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Aprobar Miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro desea realizar esta acción?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary approve">Aceptar</button>
+                <form id="formApprove" name="formApprove" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'approve')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="rejectModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Rehazar Miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro desea realizar esta acción?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger reject">Aceptar</button>
+                <form id="formReject" name="formReject" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'reject')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="pendingModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Cambiar estatus de miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea cambiar el estatus del miembro a pendiente?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary pending">Aceptar</button>
+                <form id="formPending" name="formPending" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'pending')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea eliminar el miembro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger delete">Borrar</button>
+                <form id="formDelete" name="formDelete" method="POST" action="<?php echo $this->url(array('controller' => 'index', 'action' => 'delete')); ?>">
+                    <input type="hidden" id="id" name="id" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

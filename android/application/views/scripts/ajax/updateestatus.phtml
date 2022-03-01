@@ -1,0 +1,40 @@
+
+<?php 
+
+$estatus=$this->inmueble['estatus'];
+$id=$this->inmueble['id'];
+
+
+ ?>
+ <?php if ($estatus=="activo"): ?>
+                    <div style="display: inline-block;" class="<?php echo $id; ?>estatus"> <span class=" label label-primary " onclick="cambiarEstatus('<?php echo $id; ?>', '<?php echo $estatus; ?>');">Activa</span></div> 
+
+                <?php endif ?>
+
+                <?php if ($estatus=="pendiente"): ?>
+                    <div style="display: inline-block;" class="<?php echo $id; ?>estatus"> <span class=" label label-default " onclick="cambiarEstatus('<?php echo $id; ?>', '<?php echo $estatus; ?>');">Pendiente</span></div> 
+
+                <?php endif ?>
+
+                <?php if ($estatus=="vendida"): ?>
+                    <div style="display: inline-block;" class="<?php echo $id; ?>estatus"> <span class=" label label-success " onclick="cambiarEstatus('<?php echo $id; ?>', '<?php echo $estatus; ?>');">Vendida</span></div> 
+
+                <?php endif ?>
+
+                <?php if ($estatus=="suspendida"): ?>
+                    <div style="display: inline-block;" class="<?php echo $id; ?>estatus"> <span class=" label label-warning " onclick="cambiarEstatus('<?php echo $id; ?>', '<?php echo $estatus; ?>');">Suspendida</span></div> 
+
+                <?php endif ?>
+
+                <?php if ($estatus=="eliminada"): ?>
+                    <div style="display: inline-block;" class="<?php echo $id; ?>estatus"> <span class=" label label-danger " onclick="cambiarEstatus('<?php echo $id; ?>', '<?php echo $estatus; ?>');">Eliminada</span></div> 
+
+                <?php endif ?>
+
+
+
+
+
+
+
+

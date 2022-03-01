@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <base href="<?php echo $this->baseUrl(); ?>">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->baseUrl('/assets/img/favicon.ico'); ?>">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+        <title>M&M International Group</title>
+        <link href="<?php echo $this->baseUrl('/assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
+        <link href="<?php echo $this->baseUrl('/assets/css/font-awesome.min.css'); ?>" rel="stylesheet">
+        <link href="<?php echo $this->baseUrl('/assets/css/style-admin.css'); ?>" rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+
+
+    </head>
+    <body>
+
+
+
+
+
+
+
+        <?php $auth = Zend_Auth::getInstance(); ?>
+        <?php if ($auth->hasIdentity()): ?>
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"><img src="<?php echo $this->baseUrl('/assets/img/logo150x80.png'); ?>" alt="invmaymi.com.ve" style="max-height: 30px;"></a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="<?php echo $this->baseUrl('/users'); ?>">Usuarios</a></li>
+                         
+							<li><a href="<?php echo $this->baseUrl('/noticia'); ?>">Noticias</a></li>
+                            <li><a href="<?php echo $this->baseUrl('/pagina'); ?>">Paginas</a></li>
+							<li><a href="<?php echo $this->baseUrl('/categoria'); ?>">Categorias</a></li>
+							<li><a href="<?php echo $this->baseUrl('/sliders'); ?>">Sliders</a></li>
+                            <li><a href="<?php echo $this->baseUrl('/portafolio'); ?>">Portafolio</a></li>
+                           <li><a href="<?php echo $this->baseUrl('/modulo'); ?>">Modulos</a></li>
+                           
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a>Usted ingresó como: <?php echo $auth->getIdentity()->username; ?></a></li>
+                            <li><a href="<?php echo $this->baseUrl('/auth/logout'); ?>"><span class="glyphicon glyphicon-off"></span> Cerrar sesión</a></li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php echo $this->layout()->content; ?>
+    
+        <script src="<?php echo $this->baseUrl('/assets/js/jquery-2.1.1.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/gmaps.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/smoothscroll.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/custom-admin.js'); ?>"></script>¿
+       
+    </body>
+	
+	
+</html>

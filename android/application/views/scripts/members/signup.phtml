@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <base href="<?php echo $this->baseUrl(); ?>">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Consulta | Cencamon de Venezuela</title>
+		
+		<link href="http://fonts.googleapis.com/css?family=Dosis:700" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
+
+		
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->baseUrl('app/assets/img/favicon.png'); ?>">
+        
+		<link href="<?php echo $this->baseUrl('/assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
+        <link href="<?php echo $this->baseUrl('/assets/css/bootstrap-theme.min.css'); ?>" rel="stylesheet">
+        <link href="<?php echo $this->baseUrl('/assets/css/bootstrap-datetimepicker.css'); ?>" rel="stylesheet">
+        <link href="<?php echo $this->baseUrl('/assets/css/bootstrapValidator.css'); ?>" rel="stylesheet">
+		  <link href="<?php echo $this->baseUrl('/assets/css/main.css'); ?>" rel="stylesheet">
+		    <link href="<?php echo $this->baseUrl('/assets/css/styles.css'); ?>" rel="stylesheet">
+		
+        <link href="<?php echo $this->baseUrl('/assets/css/site.css'); ?>" rel="stylesheet">
+        <link href="<?php echo $this->baseUrl('/assets/css/cencamon.css'); ?>" rel="stylesheet">
+		
+    </head>
+
+  <body>
+
+	
+		<style type="text/css">div.socialicons{float:left;display:block;margin-right: 10px;line-height: 1;}div.socialiconsv{line-height: 1;}div.socialicons p{margin-bottom: 0px !important;margin-top: 0px !important;padding-bottom: 0px !important;padding-top: 0px !important;}div.social4iv{background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #aaa;border-radius: 3px 3px 3px 3px;box-shadow: 3px 3px 3px #DDDDDD;padding: 3px;position: fixed;text-align: center;top: 55px;width: 68px;display:none;}div.socialiconsv{padding-bottom: 5px;}</style>
+
+
+        <div id="fb-root"></div>
+        <script>
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=509044169196412&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+		
+	
+		
+		
+<header class="clearfix" id="top">
+    <div class="container_12">
+		<div class="logo grid_12">
+			<div class="redes_sociales_superior">
+                 <a href="http://www.facebook.com/pages/Centro-de-Capacitacion-del-Montacarguista-CA/357871377564317" target="_blank" title="S&iacute;guenos en Facebook" alt="S&iacute;guenos en Facebook">
+                        <img src="app/assets/img/facebook32.png" border="0">
+                </a>
+                <a href="http://twitter.com/centromontacarg" target="_blank" title="S&iacute;guenos en Twitter" alt="S&iacute;guenos en Twitter">
+                        <img src="app/assets/img/twitter32.png" border="0">
+                </a>
+                <a href="https://plus.google.com/u/0/117520592204621009042/about" target="_blank" title="Agreganos a tus circulos en Google+" alt="Agreganos a tus circulos en Google+">
+                        <img src="app/assets/img/googleplus32.png" border="0">
+                </a>
+                 <a href="?feed=rss" target="_blank" title="Sigue nuestro RSS" alt="Sigue nuestro RSS">
+                        <img src="app/assets/img/rss32.png" border="0">
+                </a>
+			</div>          
+                <a href="http://www.cencamon.com.ve/">
+					<img src="<?php echo $this->baseUrl('/assets/img/logo.png') ?>" alt="CENCAMON | Centro de Capacitación del Montacarguista C.A." />
+					<span class="hidden">CENCAMON | Centro de Capacitación del Montacarguista C.A.</span>
+					</a>              
+		</div>
+      
+		<!-- Comienza el Menu -->
+
+
+		
+
+                <nav class="main_menu container_12 clearfix">
+				
+				<ul id="menu-main" class="sf-menu">
+					
+					<?php $i='current-menu-item'; foreach ($this->menuItems as $menu) {
+
+                if($menu['meta_value']==0){
+				
+				
+				
+					
+                  $i++;
+                
+                //primer menu
+                $id=$menu['ID']; 
+				$objId=$this->wp->fetchAll('post_id = ' .(int)$id);
+				
+				 foreach($objId as $sd){
+					if($sd['meta_key']=='_menu_item_object_id'){
+					$pid = $sd->meta_value;
+					}
+				}//end foreach
+				
+				?>
+                
+                <li id="menu-item-<?php echo $id?>" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-<?php echo $id?>"><a href="<?php echo "../cencamon.com.ve/?page_id=".$pid; ?>">
+                <?php if($menu['post_excerpt']==""){echo utf8_encode($menu['post_name']);}else{echo utf8_encode($menu['post_excerpt']);} ?></a>
+                
+                  <?php $ban=0;
+                  foreach ($this->menuItems2 as $mn) {
+                    $id2=$mn['ID']; 
+                    if($id==(int)$mn['meta_value']){
+					
+						$objId=$this->wp->fetchAll('post_id = ' .(int)$id2);
+						 foreach($objId as $sd){
+					if($sd['meta_key']=='_menu_item_object_id'){
+					$pid2 = $sd->meta_value;
+							}
+						}//end foreach
+                       
+
+                      if ($ban==0) {
+                        ?><ul class="sub-menu">
+                       <li id="menu-item-<?php echo $id2?>" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-<?php echo $id2?>"><a href="<?php echo "../cencamon.com.ve/?page_id=".$pid2; ?>">
+                        <?php echo utf8_encode($mn['post_excerpt']); ?></a><?php
+                      $ban=1;
+                      }else{
+                        ?><li id="menu-item-<?php echo $id2?>" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-<?php echo $id2?>"><a href="<?php echo "../cencamon.com.ve/?page_id=".$pid2; ?>">
+                        <?php echo utf8_encode($mn['post_excerpt']); ?></a><?php
+
+                      }
+					  $ban2=0;
+                  foreach ($this->menuItems3 as $m) {
+					$id3=$m['ID'];
+					
+					if($id2==$m['meta_value']){
+					
+						$objId=$this->wp->fetchAll('post_id = ' .(int)$id3);
+						 foreach($objId as $sd){
+					if($sd['meta_key']=='_menu_item_object_id'){
+					$pid3 = $sd->meta_value;
+							}
+						}//end foreach
+					
+					if ($ban2==0) {
+                        ?><ul class="sub-menu">
+                       <li id="menu-item-<?php echo $id3?>" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-<?php echo $id3?>"><a href="<?php echo "../cencamon.com.ve/?page_id=".$pid3; ?>">
+                        <?php echo utf8_encode($m['post_excerpt']); ?></a><li><?php
+                      $ban2=1;
+                      }else{
+                        ?><li id="menu-item-<?php echo $id3?>" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-<?php echo $id3?>"><a href="<?php echo "../cencamon.com.ve/?page_id=".$pid3; ?>">
+                        <?php echo utf8_encode($m['post_excerpt']); ?></a><li><?php
+
+                      };
+					 }
+				  }echo "<li>";
+				   if($ban2!=0){
+                        echo "</ul>";
+                }
+     
+                    }
+      }
+
+				if($ban!=0){
+                        echo "</ul>";
+					}
+						}
+             echo "</li>";} ?>
+
+                    </ul>
+                </nav>
+				
+		
+		
+		
+		
+		
+		
+		
+				
+				<!-- Fin del Menu -->            
+    </div>
+</header>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+
+
+	<section id="pagetitle" class="None"  name="Principio">
+		<div class="page_bottom">
+			<div class="container_12">
+				<div class="grid_6">
+					<h1>Consulta</h1>
+				</div>
+				<div class="grid_6 extratitle">
+					Ingrese Su Cedula de Identidad Para Consultar sus Certificaciones...   
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+	
+	
+	
+	
+	
+	
+		<section id="contentarea" class="container_12">
+				<div class="col-md-8">
+					
+					
+					<label class="title-label"><h2>Ingrese el N° de Cédula<h2> </label>
+                            <div class="input-group parent-search">
+								<input type="text" id="buscar" name="buscar" class="form-control" onkeypress="return isNumberKey(event);" placeholder="ej: 12345678" required="">
+									<div class="input-group-btn">
+										<button id="btn_buscar" class="btn btn-default" type="button">Buscar</button>
+									</div>
+							</div>
+					
+					<div id="resultado" ></div>
+					
+					
+					 
+				</div>
+		  
+			<aside class="col-md-4">
+			
+				<!-- begin generated sidebar [pages] -->
+
+				
+				<div id="text-8" class="widget scg_widget pages widget_text">			
+					<div class="textwidget">
+						<a class="twitter-timeline" href="https://twitter.com/centromontacarg" data-widget-id="355334112074153985">Tweets por @centromontacarg</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					</div>
+				</div>
+				
+				<div id="text-9" class="widget scg_widget pages widget_text">
+					<div class="textwidget">
+						<div class="fb-like-box" data-href="http://www.facebook.com/pages/Centro-de-Capacitacion-del-Montacarguista-CA/357871377564317" data-width="300" data-show-faces="true" data-stream="false" data-header="true" data-height="320"></div>
+						<div id="fb-root">
+						</div>
+						<script>(function(d, s, id) {
+							var js, fjs = d.getElementsByTagName(s)[0];
+							if (d.getElementById(id)) return;
+							js = d.createElement(s); js.id = id;
+							js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+							fjs.parentNode.insertBefore(js, fjs);
+							}(document, 'script', 'facebook-jssdk'));
+						</script>
+					</div>
+				</div>
+		<!-- end generated sidebar -->
+
+			</aside>
+		</section>
+	</div>
+</div>
+			
+	
+	
+
+        
+		
+<!-- +++++++++++++++   COMIENZO DEL FOOTER  +++++++++++++++++++++++    -->
+
+
+<footer>
+
+			<section id="totop">
+				<div class="container_12">
+					<div class="grid_12">
+						 <a href="#Principio"></a>
+					</div>
+				</div>
+			</section>
+			
+			<section id="footer_additional" class="clearfix">
+				<div class="footer_additional_gradient">
+					<div class="container_12">   
+					</div>
+				</div>
+			</section> 
+
+	<section id="footer_widgets" class="clearfix">
+		<div class="footer_widgets_gradient">
+			<div class="container_12"> 
+
+				<aside class="grid_3">
+					<div id="text-4" class="widget widget_text">
+					<h4  class="widgettitle">Nosotros</h4>			
+						<div class="textwidget">
+							El Centro de Capacitación del Montacarguista, C.A. se distingue por ser  una reconocida
+							organización empresarial, que se dedica a prestar servicios  especializados en materia 
+							de montacargas, plantas eléctricas, fabricaciones mecánicas, así como en el área de 
+							diseño, simulación virtual automotriz y mantenimiento industrial, los cuales incluyen 
+							capacitación, reparación y mantenimiento, así como la certificación de equipos...
+							<br/><br/>
+								<a href='?page_id=1002' title='Leer más'>Leer más </a>
+						</div>
+					</div>    
+				</aside>
+   
+				<aside class="grid_3">		
+					<div id="nav_menu-1" class="widget widget_nav_menu">
+						<h4  class="widgettitle">Servicios</h4>
+							<div class="menu-capacitaciones-y-servicios-container">
+								<ul id="menu-capacitaciones-y-servicios" class="menu">
+									<li id="menu-item-1404" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1404">
+										<a title="Montacargas" href="http://www.cencamon.com.ve/servicios/montacargas/">Montacargas</a>
+									</li>
+									<li id="menu-item-1403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1403">
+									<a title="Plantas Eléctricas" href="http://www.cencamon.com.ve/servicios/plantas-electricas/">Plantas Eléctricas</a>
+									</li>
+									<li id="menu-item-1402" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1402">
+									<a title="Payloaders" href="http://www.cencamon.com.ve/servicios/payloaders/">Payloaders</a>
+									</li>
+									<li id="menu-item-1401" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1401">
+									<a title="Mantenimiento Industrial" href="http://www.cencamon.com.ve/servicios/mantenimiento-industrial/">Mantenimiento Industrial</a>
+									</li>
+									<li id="menu-item-1405" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1405">
+									<a title="Diseño y Simulación Virtual Automotriz" href="http://www.cencamon.com.ve/servicios/diseno-y-simulacion-virtual-automotriz/">Diseño y Simulación Virtual Automotriz</a>
+									</li>
+									<li id="menu-item-1406" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1406">
+									<a title="Fabricaciones Mecánicas" href="http://www.cencamon.com.ve/servicios/fabricaciones-mecanicas/">Fabricaciones Mecánicas</a>
+									</li>
+								</ul>
+							</div>
+					</div>    
+			</aside>
+   
+    
+			<aside class="grid_3">
+				<div id="text-5" class="widget widget_text">
+						<h4  class="widgettitle">Contacto</h4>			
+							<div class="textwidget">Av. Miranda, Edificio Josar, Piso 7, Ofic. 71, frente a CANTV-Centro. Maracay, Estado Aragua
+							<br/><br/>
+						<h4 class="widgettitle">Teléfonos</h4>
+							+58 (0243) 511.66.71.
+							<br/>
+							+58 (0414) 450.99.26.
+							<br/><br/>
+						<h4 class="widgettitle">Correo Electrónico </h4>
+							centrodecapacitacionm@gmail.com</div>
+				</div>    
+			</aside>
+   
+    
+			<aside class="grid_3">
+					<div id="text-6" class="widget widget_text">
+					<h4  class="widgettitle">Síguenos</h4>	
+						<div class="textwidget">
+							<div class="redes_footer">
+								<div class="div_redes">
+									<a href="http://www.facebook.com/pages/Centro-de-Capacitacion-del-Montacarguista-CA/357871377564317" target="_blank" title="Síguenos en Facebook" alt="Siguenos en Facebook">
+									<img src="app/assets/img/facebook74.png"></a>
+								</div>
+								<div class="div_redes">
+									<a href="http://twitter.com/centromontacarg" target="_blank" title="Siguenos en Twitter" alt="Síguenos en Twitter">
+									<img src="app/assets/img/twitter74.png"></a>
+								</div>
+								<div style="clear:both;"></div>
+								<div class="div_redes">
+									<a href="https://plus.google.com/u/0/117520592204621009042/about" target="_blank" title="Agreganos a tus circulos en Google+" alt="Agreganos a tus circulos en Google+">
+									<img src="app/assets/img/googleplus74.png"></a>
+								</div>
+								<div class="div_redes">
+									<a href="?feed=rss" target="_blank" title="Sigue nuestro RSS" alt="Sígue nuestro RSS">
+									<img src="app/assets/img/rss74.png"></a>
+								</div>
+									<div style="clear:both;"></div>
+							</div>
+						</div>
+					</div>   
+			</aside>
+   
+    
+        
+		</div>
+	</div>
+	</section> 
+  
+  <div class="footer_light">
+    <div class="container_12">
+		<p class="grid_12">© 2012 Centro de Capacitación del Montacarguista C.A. | Desarrollado por 
+			<a href='http://www.heureka.com.ve' title='Heureka...Soluciones Comerciales en Internet.'>
+				<img src='app/assets/img/logo_heureka.png' alt='Heureka...Soluciones Comerciales en Internet' title='Heureka...Soluciones Comerciales en Internet'/>
+			</a>
+		</p>
+		
+    <nav class="container_12 clearfix">
+		<ul id="menu-social" class="menu">
+			<li id="menu-item-1162" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1162">
+				<a title="Inicio" href="http://www.cencamon.com.ve/">Inicio</a>
+			</li>
+			<li id="menu-item-1159" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1159">
+				<a title="Nosotros" href="http://www.cencamon.com.ve/nosotros/">Nosotros</a>
+			</li>
+			<li id="menu-item-1158" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1158">
+				<a title="Servicios" href="http://www.cencamon.com.ve/servicios/">Servicios</a>
+			</li>
+			<li id="menu-item-1161" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-78 current_page_item menu-item-1161">
+				<a title="Contacto" href="http://www.cencamon.com.ve/contacts/">Contacto</a>
+			</li>
+			<li id="menu-item-1160" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1160">
+				<a title="Sitemap" href="http://www.cencamon.com.ve/sitemap/">Sitemap</a>
+			</li>
+		</ul>
+	</nav>    
+	
+
+		<div id="fb-root"></div>
+    
+    </div>
+  </div>
+</footer>
+
+
+
+<!--  ++++++++++++++++++++++++++  FIN DEL FOOTER   +++++++++++++++++++++++++++++   -->
+
+       
+	   
+
+        <script src="<?php echo $this->baseUrl('/assets/js/jquery-1.11.1.min.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/moment.min.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/bootstrap-datetimepicker.min.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/bootstrap-datetimepicker.es.js'); ?>"></script>
+        <script src="<?php echo $this->baseUrl('/assets/js/bootstrapValidator.js'); ?>"></script>
+		<script src="<?php echo $this->baseUrl('/assets/js/superfish.js'); ?>"></script>
+		<script src="<?php echo $this->baseUrl('/assets/js/modernizr.min.js'); ?>"></script>
+	
+		 <script src="<?php echo $this->baseUrl('/assets/js/st.js'); ?>"></script>
+
+       
+        <script>
+		$(function(){
+		$('#btn_buscar').click(function() {
+        $('#resultado').html('Buscando...');
+        var dato=$('#buscar').val();
+        var url="app/ajax/getcertificados/id/"+dato;
+       // alert(url);
+        $('#resultado').load(url);
+
+                    //return loadCities($(this).val(), $('#f_city'));
+
+                })
+				
+				});
+        </script>
+    </body>
+</html>

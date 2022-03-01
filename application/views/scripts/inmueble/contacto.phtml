@@ -1,0 +1,166 @@
+<div class="container-fluid" ng-controller="modulosCtrl">
+    <h1 class="page-header">Contactos
+
+<div class="pull-right">
+                    <a href="<?php echo $this->baseUrl('/modulo/add'); ?>" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Agregar</a>
+                </div>
+
+    </h1>
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
+    <div class="row">
+  <div class="col-sm-12">
+
+    <a href="<?php echo $this->baseUrl('/inmueble'); ?>" class="btn btn-primary"> < Volver al aviso </a>
+    <a href="<?php echo $this->baseUrl('/inmueble/ver/id/').$this->id; ?>" class="btn btn-primary"> Ver Aviso </a>
+    
+    
+    <br><br><br>
+  </div>
+</div>
+
+<?php $ObjFotos = new Application_Model_DbTable_Fotos(); ?>
+    <?php  $ObjViews= new Application_Model_DbTable_Views(); ?>
+    <?php $ObjDatos = new Application_Model_DbTable_Datos(); ?>
+    <?php $ObjContacto = new Application_Model_DbTable_Contacto(); ?>
+<div class="row well inmueble">
+            <div class="col-sm-2">
+           <?php $foto=$ObjFotos->getsSolicitudUna($this->inmueble->id);  ?>  
+           <img class="img img-responsive" src="<?php echo $this->baseUrl('/assets/images/').$foto->foto; ?>">
+              
+            </div>
+            <div class="col-sm-6">
+                <a target="_blank" href="<?php echo $this->baseUrl('/inmueble/ver/id/').$this->inmueble->id; ?>"><h4><?php echo $this->inmueble->titulo;  ?></h4></a>
+                <p><?php if ($this->inmueble->monto_vender) {  echo $this->inmueble->monto_vender; }   ?></p>
+                <p><?php  echo $this->inmueble->name.' '.$this->inmueble->lastname;   ?> - <?php echo $this->inmueble->fecha;  ?></p>
+
+            </div>
+            <div class="col-sm-1">
+                <a href="<?php echo $this->baseUrl('/inmueble/estadistica/id/').$this->inmueble->id; ?>"><i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                <?php $views=$ObjViews->fetchAll('id_inmueble="'.$this->inmueble->id.'"'); ?>
+                <?php echo count($views); ?></a>
+            </div>
+            <div class="col-sm-1">
+                <a href="<?php echo $this->baseUrl('/inmueble/datos/id/').$this->inmueble->id; ?>"><i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+                <?php $datos=$ObjDatos->fetchAll('id_inmueble="'.$this->inmueble->id.'"'); ?>
+                <?php echo count($datos); ?></a>
+            </div>
+            <div class="col-sm-1">
+                <a href="<?php echo $this->baseUrl('/inmueble/contacto/id/').$this->inmueble->id; ?>"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                <?php $contact=$ObjContacto->fetchAll('id_inmueble="'.$this->inmueble->id.'"'); ?>
+                <?php echo count($contact); ?></a>
+            </div>
+            <div class="col-sm-1">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                   <i class="fa fa-th" aria-hidden="true"></i>
+                    
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a onclick="del('<?php echo $this->inmueble->id; ?>')" href="#">Eliminar</a></li>
+                    <li><a href="<?php echo $this->baseUrl('/inmueble/edit/id/').$this->inmueble->id; ?>">Editar</a></li>
+                    
+                    <li><a href="<?php echo $this->baseUrl('/inmueble/ver/id/').$this->inmueble->id; ?>">Ver</a></li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+    
+    <table class="table table-striped">
+        <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Telefono</th>
+           
+            <th>Titulo</th>
+            <th>Mensaje</th>
+            <th>Fecha</th>
+            
+            <th width="150px">
+                Accion
+            </th>
+        </tr>
+       
+        <?php foreach ($this->contactos as $row): ?>
+        <tr id="<?php echo $row->id; ?>">
+            <td><?php echo $row->nombre; ?></td>
+            <td><?php echo $row->mail; ?></td>
+            <td><?php echo $row->telefono; ?></td>
+            
+            <td><?php echo $this->inmueble->titulo; ?></td>
+            <td><?php echo $row->mensaje; ?></td>
+            <td><?php echo $row->fecha; ?></td>
+            
+
+            <td>
+                
+                <div class="btn-group pull-right">
+
+                    
+                    <a href="<?php echo $this->baseUrl('/modulo/edit/id/').$row->id; ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> </a>
+
+                    <button type="button" onclick="del(<?php echo $row->id; ?>)"  class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash"></span> </button>
+
+                    <?php if ($row->estatus){ ?>
+
+                      <button type="button"  onclick="desactivarModulo(<?php echo $row->id; ?> )"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-up"></span> </button>  
+
+                    <?php }else{ ?>
+
+                        <button type="button" onclick="activarModulo(<?php echo $row->id; ?>)"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-down"></span> </button>  
+
+                    <?php } ?>
+
+                    
+                </div>
+                
+                
+                
+                
+            </td>
+
+
+        </tr>
+        <?php endforeach; ?>
+
+
+
+        
+    </table>
+
+    
+
+
+
+
+
+</div> <!-- End Container--> 
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="deleteModulo()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>

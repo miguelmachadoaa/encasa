@@ -1,0 +1,106 @@
+<div class="container-fluid" ng-controller="modulosCtrl">
+    <h1 class="page-header">Marcas
+
+<div class="pull-right">
+                    <a href="<?php echo $this->baseUrl('/marcas/add'); ?>" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Crear Marca</a>
+                </div>
+
+    </h1>
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+	
+	 
+    
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+           
+            <th>Titulo</th>
+            <th>Descripcion</th>
+            <th>Imagen</th>
+            
+            <th width="150px">
+                Accion
+            </th>
+        </tr>
+       
+        <?php foreach ($this->marcas as $row): ?>
+        <tr id="<?php echo $row->id; ?>">
+            <td><?php echo $row->id; ?></td>
+            
+            <td><?php echo $row->titulo; ?></td>
+            <td><?php echo $row->descripcion; ?></td>
+            <td><img src="<?php echo $this->baseUrl($row->imagen); ?>" class="img img-responsive" width="90px"> </td>
+
+            <td>
+                
+                <div class="btn-group pull-right">
+
+                    
+                    <a href="<?php echo $this->baseUrl('/marcas/edit/id/').$row->id; ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> </a>
+
+                    <button type="button" onclick="del(<?php echo $row->id; ?>)"  class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash"></span> </button>
+
+                    <?php if ($row->estatus){ ?>
+
+                      <button type="button"  onclick="desactivarMarca(<?php echo $row->id; ?> )"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-up"></span> </button>  
+
+                    <?php }else{ ?>
+
+                        <button type="button" onclick="activarMarca(<?php echo $row->id; ?>)"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-down"></span> </button>  
+
+                    <?php } ?>
+
+                    
+                </div>
+                
+                
+                
+                
+            </td>
+
+
+        </tr>
+        <?php endforeach; ?>
+
+
+
+        
+    </table>
+    
+    <?php echo ($this->paginator->count() > 1) ? $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml') : ''; ?>
+    
+
+
+
+
+
+</div> <!-- End Container--> 
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="deleteMarca()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>

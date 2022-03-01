@@ -1,0 +1,76 @@
+            <!--gallery-starts-->
+              
+              <h1 class="page-header">Identidad
+
+                <div class="pull-right">
+                    <a href="<?php echo $this->baseUrl('/identidad/edit'); ?>" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Editar</a>
+                </div>
+
+              </h1>
+
+              <table class="table table-striped">
+                  <thead>
+                      <tr>
+                          <td><b>  Campo </b></td>
+                          <td><b>   Valor</b> </td>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                          <td><b>Cotizacion del Dolar:</b></td>
+                          <td><?php echo $this->identidad['dolar']; ?></td>
+                      </tr>
+
+                      <tr>
+                          <td><b>Nombre:</b></td>
+                          <td><?php echo $this->identidad['nombre']; ?></td>
+                      </tr>
+
+                      <tr>
+                          <td><b>Titulo:</b></td>
+                          <td><?php echo $this->identidad['titulo']; ?></td>
+                      </tr>
+
+                      <tr>
+                          <td><b>Direccion:</b></td>
+                          <td><?php echo $this->identidad['direccion']; ?></td>
+                      </tr>
+
+                      <tr>
+                          <td><b>Telefono:</b></td>
+                          <td><?php echo $this->identidad['telefono']; ?></td>
+                      </tr>
+
+                      <tr>
+                          <td><b>Email:</b></td>
+                          <td><?php echo $this->identidad['email']; ?></td>
+                      </tr>
+
+                      <tr>
+                          <td><b>Logo:</b></td>
+                          <td><img src="<?php echo $this->baseUrl($this->identidad['logo']); ?>"></td>
+                      </tr>
+
+                      <tr>
+                          <td><b>Metatags:</b></td>
+                          <td><?php echo $this->identidad['palabras']; ?></td>
+                      </tr>
+
+                      <tr>
+                          <td><b>Descripcion:</b></td>
+                          <td><?php echo $this->identidad['descripcion']; ?></td>
+                      </tr>
+
+                      
+
+                     
+                  </tbody>
+
+
+              </table>
+
+
+
+
+
+            <!--gallery-starts-->  

@@ -1,0 +1,8 @@
+<?php if (isset($this->parroquias)): ?>
+	<option value="">--Zonas--</option>
+<?php foreach ($this->parroquias as $parroquia): ?>
+
+	<option value="<?php echo $parroquia->id; ?>"><?php echo utf8_encode($parroquia->zona) ; ?></option>
+	
+<?php endforeach ?>	
+<?php endif ?>

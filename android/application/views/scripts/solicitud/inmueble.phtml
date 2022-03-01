@@ -1,0 +1,972 @@
+
+<section class="page-crumb">
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+        <ol class="breadcrumb">
+                    <li><a href="<?php echo $this->baseUrl('/'); ?>">Home</a>
+                    </li>
+                    <li><a href="<?php echo $this->baseUrl('/solicitud'); ?>">Solicitudes</a>
+                    </li>
+                    <li class="active">Inmuebles</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+  </div>
+</section>
+
+
+<section class="service-w3ls">
+  <h3 class="text-center w3layouts w3 w3l w3ls agileits-w3layouts agile w3-agile">Solicitud Online</h3>
+  <p class="text-center w3layouts w3 w3l w3ls agileits-w3layouts agile w3-agile">Formulario de Solicitud de valoracion online para Bienes Inmuebles.</p> 
+  <div class="container"> 
+        <!-- Service Panels -->
+        <div class="row">
+
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+
+        <form id="form_inmueble" name="form_inmueble" enctype="multipart/form-data" action="<?php echo $this->baseUrl('/solicitud/inmueble'); ?>" method="post"><div>
+
+    <input type="hidden" id="id" name="id"  value="<?php echo time();?>">
+
+    <div class="row">
+      
+
+
+    
+
+    <div class="page-header col-sm-12">
+      <h1>Datos del Solicitante</h1>
+    </div>
+    <div class="col-sm-12"></div>
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Nombres *</label>
+      <input type="text"  name="nombres" id="nombres" value="" class="form-control" placeholder="Nombres">
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Apellidos *</label>
+      <input type="text"  name="apellidos" id="apellidos" value="" class="form-control" placeholder="Apellidos">
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Cedula de Identidad </label>
+      <input type="text"  name="cedula" id="cedula" value="" class="form-control" placeholder="Ej: V-00000000">
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Tipo Inmueble*</label>
+      <select name="tipo_inmueble" id="tipo_inmueble" class="form-control">
+            <option value="">--Tipo Inmueble--</option>
+
+              <option value="Apartamento">Apartamento</option>
+              <option value="Casa">Casa</option>
+              <option value="Town House">Town House</option>
+              <option value="Quinta">Quinta</option>
+              <option value="Edificio">Edificio</option>
+              <option value="Galpon">Galpon</option>
+              <option value="Local Comercial">Local Comercial</option>
+              <option value="Oficina">Oficina</option>
+              <option value="Estacionamiento">Estacionamiento</option>
+              <option value="Terreno">Terreno</option>
+    
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Telefono Local *</label>
+      <input type="text"  name="tlf" id="tlf" value="" class="form-control" placeholder="Telefono ">
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Telefono Movil *</label>
+      <input type="text"  name="tlf_movil" id="tlf_movil" value="" class="form-control" placeholder="Telefono  Movil">
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Email *</label>
+      <input type="text"  name="email" id="email" value="" class="form-control" placeholder="Correo Electronico">
+    </div>
+
+    </div><!-- end row -->
+
+    <div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Dirección del Inmueble a Valorar</h3>
+    </div>
+<div class="col-sm-12"></div>
+
+
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Estado </label>
+      <input type="text"  name="estado" id="estado" value="" class="form-control" placeholder="Estado">
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Ciudad </label>
+      <input type="text"  name="ciudad" id="ciudad" value="" class="form-control" placeholder="Ciudad">
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="cedula" class="required">Direccion </label>
+      <textarea rows="10"  name="direccion" id="direccion" style="width: 100%;"></textarea>
+    </div>
+
+    </div><!-- end row -->
+
+    <div class="row">
+
+<div class="col-sm-12"></div>
+    <div class="page-header col-sm-12">
+      <h3>Datos del Inmueble</h3>
+    </div>
+
+<div class="col-sm-12"></div>
+
+    <div class="form-group col-sm-6">
+      <label for="cedula" class="required">Nombre del Inmueble</label>
+      <input type="text"  name="nombre_inmueble" id="nombre_inmueble" value="" class="form-control" placeholder="Nombre del Inmueble">
+    </div>
+
+     <div class="form-group col-sm-6" >
+      <label for="estado" class="required">Antiguedad Años*</label>
+      <select name="edad_inmueble" id="edad_inmueble" class="form-control">
+            <option value="">--Edad--</option>
+
+            <?php for ($i=1; $i <100 ; $i++) { ?>
+
+              <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+
+            <?php } ?>      
+                
+      </select>
+    </div>
+
+
+<div class="form-group col-sm-6">
+      <label for="cedula" class="required">Area Construccion (m2) </label>
+      <input type="text"  name="construccion_inmueble" id="construccion_inmueble" value="" class="form-control" placeholder="Cantidad">
+    </div>
+
+
+<div class="form-group col-sm-6">
+      <label for="cedula" class="required">Area Terreno (m2)</label>
+      <input type="text"  name="terreno_inmueble" id="terreno_inmueble" value="" class="form-control" placeholder="Area Terreno ">
+    </div>
+
+
+
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Tenencia terreno*</label>
+      <select name="tenencia_inmueble" id="tenencia_inmueble" class="form-control">
+           <option value="">--Tenencia terreno--</option>
+
+              <option value="Propia">Propia</option>
+              <option value="Ejido">Ejido</option>
+              <option value="Inti">Inti</option>
+              <option value="Baldio">Baldio</option>    
+              <option value="No Aplica">No Aplica</option>    
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Usos*</label>
+      <select name="uso_bien" id="uso_bien" class="form-control">
+           <option value="">--Usos--</option>
+
+              <option value="Residencial">Residencial</option>
+              <option value="Comercial">Comercial</option>
+              <option value="Industrial">Industrial</option>
+              <option value="Educacional">Educacional</option>    
+              <option value="Salud">Salud</option>    
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Topografia*</label>
+      <select name="topografia" id="topografia" class="form-control">
+           <option value="">--Topografia--</option>
+
+              <option value="Plana">Plana</option>
+              <option value="Inclinada">Inclinada</option>
+              <option value="Irregular">Irregular</option>  
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Mejoras al Inmueble*</label>
+      <select name="mejoras" id="mejoras" class="form-control">
+           <option value="">--Mejoras--</option>
+
+              <option value="Sustanciales">Sustanciales</option>
+              <option value="Parciales">Parciales</option>
+              <option value="Sin Mejoras">Sin Mejoras</option>  
+                
+      </select>
+    </div>
+
+
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Estado de Conservacion*</label>
+      <select name="conservacion" id="conservacion" class="form-control">
+            <option value="">--Estado de Conservacion--</option>
+
+              <option value="Excelente">Excelente</option>
+              <option value="Muy Bueno">Muy Bueno</option>
+              <option value="Bueno">Bueno</option>
+              <option value="Intermedio">Intermedio</option>
+              <option value="Regular">Regular</option>
+              <option value="Deficiente">Deficiente</option>
+              <option value="Malo">Malo</option>
+              <option value="Muy Malo">Muy Malo</option>
+              <option value="Pesimo">Pesimo</option>
+
+
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Condiciones Fisicas*</label>
+      <select name="condiciones_fisicas" id="condiciones_fisicas" class="form-control">
+            <option value="">--Condiciones Fisicas--</option>
+
+              <option value="Nuevo">Nuevo</option>
+              <option value="Regular">Regular</option>
+              <option value="Reparaciones Sencillas">Reparaciones Sencillas</option>
+              <option value="Reparaciones Importantes">Reparaciones Importantes</option>
+              <option value="A Ser Demolido">A Ser Demolido</option>
+
+
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Calidad de los Acabados*</label>
+      <select name="acabados" id="acabados" class="form-control">
+            <option value="">--Calidad de los Acabados--</option>
+
+              <option value="Excelente">Excelente</option>
+              <option value="Muy Bueno">Muy Bueno</option>
+              <option value="Bueno">Bueno</option>
+              <option value="Intermedio">Intermedio</option>
+              <option value="Regular">Regular</option>
+              <option value="Deficiente">Deficiente</option>
+              <option value="Malo">Malo</option>
+              <option value="Muy Malo">Muy Malo</option>
+              <option value="Pesimo">Pesimo</option>
+
+
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Numero de pisos*</label>
+      <select name="pisos" id="pisos" class="form-control">
+            <option value="">--Numero de pisos--</option>
+
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="+10">+10</option>
+
+
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Numero de habitaciones*</label>
+      <select name="habitaciones" id="habitaciones" class="form-control">
+            <option value="">--Numero de habitaciones--</option>
+
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="+10">+10</option>
+
+
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Numero de Baños*</label>
+      <select name="banos" id="banos" class="form-control">
+            <option value="">--Numero de Baños--</option>
+
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="+10">+10</option>
+
+
+                
+      </select>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="estado" class="required">Numero de Puestos Estacionaiento*</label>
+      <select name="puestos" id="puestos" class="form-control">
+            <option value="">--Numero de Puestos--</option>
+
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="+10">+10</option>
+
+
+                
+      </select>
+    </div>
+    <div class="col-sm-12"></div>
+
+    </div> <!-- end row -->
+
+
+    <div class="row">
+
+  <div class="page-header row">
+      <h3>Caractristicas Generales del Inmueble</h3>
+    </div>
+
+    <div class="col-sm-12"></div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="sala" id="sala" value="Sala / Comedor">
+        Sala / Comedor
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="rodapie" id="rodapie" value="Rodapie Vinyl">
+        Rodapie Vinyl
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="cable" id="cable" value="Tv por Cable">
+        Tv por Cable
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="piso_de_granito" id="piso_de_granito" value="Piso de Granito">
+         Piso de Granito
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="rodapie_ceramica" id="rodapie_ceramica" value="Rodapie Ceramica">
+        Rodapie Ceramica
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="kictchenette" id="kictchenette" value="Kictchenette">
+        Kictchenette
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="EstacTechado" id="EstacTechado" value="Estac. Techado">
+         Estac. Techado 
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="BanodeServicio" id="BanodeServicio" value="Baño de Servicio">
+         Baño de Servicio
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="SemiAmoblado" id="SemiAmoblado" value="Semi-Amoblado">
+         Semi-Amoblado 
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Porcelanato" id="Porcelanato" value="Porcelanato">
+         Porcelanato
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="RodapieMadera" id="RodapieMadera" value="Rodapie Madera">
+        Rodapie Madera 
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="CavaCuarto" id="CavaCuarto" value="Cava Cuarto">
+        Cava Cuarto
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="RejaSeguridad" id="RejaSeguridad" value="Reja Seguridad">
+        Reja Seguridad
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Parquet" id="Parquet" value="Parquet">
+         Parquet
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="ParedesCeramica" id="ParedesCeramica" value="Paredes Cerámica">
+        Paredes Cerámica
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Alfombra" id="Alfombra" value="Alfombra">
+         Alfombra
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="VentanasRomanilla" id="VentanasRomanilla" value="Ventanas Romanilla">
+        Ventanas Romanilla
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="GasDirecto" id="GasDirecto" value="Gas Directo">
+        Gas Directo
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="HabDeServicio" id="HabDeServicio" value="Hab. De Servicio">
+        Hab. De Servicio 
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Lavadero" id="Lavadero" value="Lavadero">
+         Lavadero
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="PuertaMadEntamb" id="PuertaMadEntamb" value="Puerta Mad. Entamb">
+        Puerta Mad. Entamb 
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="TerrazaCubierta" id="TerrazaCubierta" value="Terraza Cubierta">
+         Terraza Cubierta
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Paredesfrisoesponj" id="Paredesfrisoesponj" value="Paredes friso esponj ">
+        Paredes friso esponj 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Maletero" id="Maletero" value="Maletero">
+         Maletero
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="AscensordeCarga" id="AscensordeCarga" value="Ascensor de Carga">
+        Ascensor de Carga  
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="AguasServidas" id="AguasServidas" value="Aguas Servidas">
+        Aguas Servidas
+      </label>
+  </div>
+
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Paredesdefrisorustico" id="Paredesdefrisorustico" value="Paredes de friso rustico">
+        Paredes de friso rustico
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="TanquedeAgua" id="TanquedeAgua" value="Tanque de Agua ">
+        Tanque de Agua 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Ventanafijaaluminio" id="Ventanafijaaluminio" value="Ventana fija aluminio ">
+        Ventana fija aluminio 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="PisodeCeramica" id="PisodeCeramica" value="Piso de Cerámica ">
+        Piso de Cerámica 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Ventanascorrederas" id="Ventanascorrederas" value="Ventanas correderas ">
+         Ventanas correderas 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="EstructuraConcreto" id="EstructuraConcreto" value="Estructura Concreto">
+         Estructura Concreto
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Banera" id="Banera" value="Bañera">
+        Bañera
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="EstructuraMetalica" id="EstructuraMetalica" value="Estructura Metálica">
+        Estructura Metálica 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="EstructuraenMamposteria" id="EstructuraenMamposteria" value="Estructura en Mamposteria">
+        Estructura en Mamposteria
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="ParedesMachiembrado" id="ParedesMachiembrado" value="Paredes Machiembrado">
+        Paredes Machiembrado
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="EstructuraenMadera" id="EstructuraenMadera" value="Estructura en Madera ">
+         Estructura en Madera 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="PinturaCaucho" id="PinturaCaucho" value="Pintura Caucho">
+        Pintura Caucho 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="PuertadeAluminio" id="PuertadeAluminio" value="Puerta de Aluminio">
+        Puerta de Aluminio
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="CieloRaso" id="CieloRaso" value="Cielo Raso  ">
+        Cielo Raso  
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="PuertaHierro" id="PuertaHierro" value="Puerta Hierro ">
+         Puerta Hierro 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="AireAcondicionado" id="AireAcondicionado" value="Aire Acondicionado ">
+         Aire Acondicionado 
+      </label>
+  </div>
+
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="TerrazaDescubierta" id="TerrazaDescubierta" value="Terraza Descubierta">
+         Terraza Descubierta 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="AguasBlancas" id="AguasBlancas" value="Aguas Blancas ">
+         Aguas Blancas 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Vestier" id="Vestier" value="Vestier">
+          Vestier 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="LineaTelefonica" id="LineaTelefonica" value="Línea Teléfonica ">
+         Línea Teléfonica  
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Estudio" id="Estudio" value="Estudio">
+         Estudio 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="SistemascontraIncendios" id="SistemascontraIncendios" value="Sistemas contra Incendios">
+          Sistemas contra Incendios 
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="SaladeConferencias" id="SaladeConferencias" value="Sala de Conferencias">
+         Sala de Conferencias
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="AcometidaElectrica" id="AcometidaElectrica" value="Acometida Eléctrica">
+          Acometida Eléctrica
+      </label>
+  </div>
+
+  </div><!-- end row -->
+
+
+  <div class="row">
+
+  <div class="page-header row">
+      <h3>Areas Comunes</h3>
+    </div>
+
+
+    <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="ParqueInfantil" id="ParqueInfantil" value="Parque Infantil ">
+          Parque Infantil 
+      </label>
+  </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Gimnasio" id="Gimnasio" value="Gimnasio">
+           Gimnasio
+      </label>
+  </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Cancha" id="Cancha" value="Cancha">
+           Cancha
+      </label>
+  </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="SaladeFiestas" id="SaladeFiestas" value="Sala de Fiestas">
+          Sala de Fiestas
+      </label>
+  </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="CallePrivada" id="CallePrivada" value="Calle Privada ">
+          Calle Privada 
+      </label>
+  </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="VigilanciaPrivada" id="VigilanciaPrivada" value="Vigilancia Privada">
+          Vigilancia Privada
+      </label>
+  </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Jardines" id="Jardines" value="Jardines">
+           Jardines
+      </label>
+  </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="areadeBBQ" id="areadeBBQ" value="Área de BBQ">
+           Área de BBQ
+      </label>
+  </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="EscalerasdeEmergencia" id="EscalerasdeEmergencia" value="Escaleras de Emergencia">
+          Escaleras de Emergencia
+      </label>
+  </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Caminerias" id="Caminerias" value="Caminerías">
+           Caminerías
+      </label>
+  </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="CastBombonasgas" id="CastBombonasgas" value="Cast. Bombonas gas">
+          Cast. Bombonas gas
+      </label>
+  </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="AscensorPrivado" id="AscensorPrivado" value="Ascensor Privado">
+          Ascensor Privado
+      </label>
+  </div>
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Piscina" id="Piscina" value="Piscina">
+           Piscina
+      </label>
+  </div>
+
+  <div class="checkbox col-sm-4">
+      <label>
+        <input type="checkbox" name="Sauna" id="Sauna" value="Sauna">
+            Sauna
+      </label>
+  </div>
+
+
+<div class="col-sm-12"></div>
+
+</div><!-- end row -->
+
+<div class="row">
+
+    <div class="form-group col-sm-12">
+      <label for="cedula" class="required">Observaciones y Comentarios </label>
+      <textarea rows="10"  name="observacion_bien" id="observacion_bien" style="width: 100%;"></textarea>
+    </div>
+
+    <div class="col-sm-12">
+      
+         <div class="carga"> </div>
+    <div class="loader">  </div>
+
+    <div id="fileuploader"> Cargar Imagenes
+    </div>
+
+    </div>
+
+
+    <div class="col-sm-12">
+      
+  <dt id="buttons-label">&#160;</dt>
+    <dd id="buttons-element">
+      <fieldset id="fieldset-buttons">
+        <dl>
+          <input type="submit" name="btn_submit" id="btn_submit" value="Guardar" class="btn btn-default">
+
+          <button name="btn_cancel" id="btn_cancel" type="button" class="btn btn-danger">Cancelar</button>
+        </dl>
+
+      </fieldset>
+    </dd>
+
+    </div>
+
+</div><!-- end row -->
+
+  
+    </div>
+  </form> 
+
+  </div><!--  fin col-sm-6 -->
+
+
+
+
+
+    </div>  
+  </div>
+</section>  
+
+<section class="service-agile">
+  <div class="container">
+    <h3 class="text-center agileits agileinfo wthree w3-agileits">Avaluos</h3>
+    <p class="text-center agileits agileinfo wthree w3-agileits">Un avalúo es la estimación del valor de un bien mueble o inmueble expresado en cifras monetarias de acuerdo a criterios, herramientas y a metodologías científicas adecuadas tomando en cuenta las condiciones físicas, características, ubicación, uso, conservación, mantenimiento, operatividad, funcionamiento, y de una indagación y análisis de mercado, para la fecha en que se realiza dicha estimación.  .</p> 
+        <!-- Service Tabs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <ul id="myTab" class="nav nav-tabs nav-justified">
+                    <?php $j=0; ?>
+                    <?php foreach ($this->avaluos as $ava): ?>
+
+                      <?php if ( $j!=0): ?>
+                        <li class=""><a href="#service-<?php echo $ava->id; ?>" data-toggle="tab"> <?php echo $ava->titulo; ?></a>
+                        </li>
+                        <?php $j++; ?>
+                      <?php endif ?>
+
+                      <?php if ($j==0): ?>
+                        <li class="active"><a href="#service-<?php echo $ava->id; ?>" data-toggle="tab"> <?php echo $ava->titulo; ?></a>
+                        </li>
+                        <?php $j++; ?>
+                      <?php endif ?>
+                       
+                    <?php endforeach ?>
+
+                    
+                </ul>
+
+                <div id="myTabContent" class="tab-content">
+                    
+                    <?php $j=0; ?>
+                    <?php foreach ($this->avaluos as $ava): ?>
+
+                      <?php if ( $j!=0): ?>
+
+                      <div class="tab-pane fade" id="service-<?php echo $ava->id; ?>">
+                        <h4><?php echo $ava->titulo; ?></h4>
+                        <img class="img " alt="<?php echo $ava->titulo; ?>" title="<?php echo $ava->titulo; ?>" src="<?php echo $this->baseUrl($ava->imagen); ?>">
+                        <?php echo $ava->descripcion; ?>
+                    </div>
+
+                        
+                        <?php $j++; ?>
+                      <?php endif ?>
+
+                      <?php if ($j==0): ?>
+
+                      <div class="tab-pane fade active in" id="service-<?php echo $ava->id; ?>">
+                      
+                        <h4><?php echo $ava->titulo; ?></h4>
+                        <img class="img " alt="<?php echo $ava->titulo; ?>" title="<?php echo $ava->titulo; ?>" src="<?php echo $this->baseUrl($ava->imagen); ?>">
+                        <?php echo $ava->descripcion; ?>
+                        
+                    </div>
+
+
+                        
+                        <?php $j++; ?>
+                      <?php endif ?>
+                       
+                    <?php endforeach ?>
+
+
+
+                   
+                    
+            </div>
+        </div>
+        <hr>
+  </div>  
+</section>  

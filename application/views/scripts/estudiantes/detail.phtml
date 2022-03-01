@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Detalles de Registro</title>
+    </head>
+  
+    <body>
+        <div style="text-align: center; font-weight: bold;">
+            Cencamon.
+            Centro de Capacitación de Montacarguistas, C.A.
+           
+        </div>
+        <br>
+
+       <?php $i=0; foreach ($this->mrow as $mrow): $i++; ?>
+        <table border="0">
+                <thead><tr>
+                <th colspan="2" style="font-weight: bold;">Datos Personales<hr></th>
+            </tr></thead>
+            <tbody><tr>
+                <td><strong>Nombres y Apellido:</strong> <?php echo utf8_encode(ucwords($mrow->nombre))." "; echo utf8_encode(ucwords($mrow->apellido)); ?><br></td><td></td>
+            </tr>
+            <tr>
+                <td><strong>N° de Cédula / Pasaporte:</strong> <?php echo $mrow->cedula; ?><br></td><td></td>
+                
+            </tr>
+            <tr>
+                <td><strong>Fecha de Nacimiento:</strong> <?php echo $mrow->fecha_nac; ?><br></td><td></td>
+                
+            </tr>
+
+            <tr>
+                <td><strong>Teléfono Celular:</strong> <?php echo $mrow->tlf; ?><br></td>
+                <td></td>
+                
+            </tr>
+
+             <tr>
+             <td><strong>Email:</strong> <?php echo $mrow->email; ?><br></td>
+
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td><strong>Grado de Instrucción:</strong> <?php echo utf8_encode($mrow->grado); ?><br></td>
+                <td></td>
+            </tr>
+           
+            <tr>
+                <td colspan="2" style="font-weight: bold;">Datos de Residencia<hr><br></td>
+            </tr>
+            <tr>
+                <td><strong>Estado:</strong> <?php echo utf8_encode($mrow->estado); ?><br></td>
+                <td><strong>Ciudad:</strong> <?php echo utf8_encode($mrow->ciudad); ?><br></td>
+            </tr>
+            <tr>
+                <td><strong>Dirección:</strong> <?php echo utf8_encode(ucfirst ($mrow->direccion)); ?> <br></td>
+                <td></td>
+            </tr>
+            
+            
+            <tr>
+                <td colspan="2"></td>
+            </tr>
+        </tbody> </table>
+     
+        <?php endforeach; ?>
+		<table border="0"><tbody>
+
+         <tr>
+            <td colspan="2" style="font-weight: bold;">Certificaciones Obtenidas<hr><br></td>
+        </tr>
+
+
+        <?php $i=0; foreach ($this->asignado as $asignado): $i++; 
+        ?>
+        
+            <tr>
+                <td><strong>Descripción:</strong> <?php echo utf8_encode(ucwords($asignado->curso));?><br></td>
+                <td><strong>Duración:</strong> <?php echo ucwords($asignado->duracion); ?> Horas<br></td>
+            </tr>
+
+            <tr>
+                <td><strong>Fecha de Certificación:</strong> <?php echo $asignado->fecha_cap; ?><br></td>
+                <td><strong>Fecha de Vencimiento:</strong> <?php echo $asignado->fecha_ven; ?><br></td>
+            </tr>
+            <tr>
+                <td   ><strong>Estatus:</strong> <?php
+                if($asignado->status==1){echo "Vigente";}else{echo "Vencida";}
+             ?></td>
+			 <td><strong>Codigo:</strong> <?php echo $asignado->codigo; ?><br></td>
+            
+            </tr>
+			<tr>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+			<tr>
+                <td colspan="2"><hr/></td>
+            </tr>
+         
+     
+        <?php endforeach; ?>
+   
+
+
+
+
+
+  </tbody> </table>
+
+    </body>
+</html>

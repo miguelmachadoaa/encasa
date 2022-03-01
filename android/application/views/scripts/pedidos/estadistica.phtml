@@ -1,0 +1,287 @@
+<div class="container">
+    
+    <h1 class="page-header">
+	
+		Pedidos Registrados
+	
+		<div class="pull-right col-xs-3 col-md-3 col-sm-5">
+			<!--<a href="<?php echo $this->url(array('controller' => 'pedidos', 'action' => 'add')); ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Agregar</a>
+
+			<a href="<?php echo $this->url(array('controller' => 'pedidos', 'action' => 'export','f_profession' => @$this->params['f_profession'], 'f_grado' => @$this->params['f_grado'], 'f_state' => @$this->params['f_state'], 'f_city' => @$this->params['f_city'])); ?>" target="_blank" class="btn btn-link"><span class="glyphicon glyphicon-export"></span> Exportar PDF</a>-->
+		</div>
+	
+	
+	</h1>
+
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    
+	<div class="row">
+	
+		<div class="well form-inline col-xs-12 col-md-12">
+
+        <form id="form_fecha" name="form_fecha"  action="wake/pedidos/estadistica" method="post">
+        
+        
+            <div class="form-group col-sm-5">
+
+                <label for="fecha_nac" class="required">Desde</label>
+
+                <input type="text" name="inicio" id="inicio" value="<?php echo $this->inicio; ?>" class="form-control fecha" placeholder="Desde">
+
+            </div>
+        
+
+            <div class="form-group col-sm-5">
+
+                <label for="fecha_nac" class="required">Hasta</label>
+
+                <input type="text" name="fin" id="fin" value="<?php echo $this->fin; ?>" class="form-control fecha" placeholder="Hasta">
+                
+            </div>
+
+          
+
+
+        <div class="form-group  col-sm-2">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            
+        </div>
+
+
+        </form>
+        
+		</div>
+	
+	</div>
+	
+    <?php //var_dump($this->masVendidos); ?>
+
+    <div class="row">
+        
+
+
+ <div class="panel panel-default">
+        <div class="panel-heading"> Mas Vendidos</div>
+
+        <div class="panel-body">
+            
+            <table class="table table-hover table-striped" id="tb_mas_vendidos">
+                <thead style="backgroun"><tr>
+                    <th>Id</th>
+                     <th >Codigo</th>
+                    <th>Descripcion</th>
+                    <th class="hidden-xs">Cantidad </th>
+                    <th>Total </th>
+                    
+                </tr></thead><tbody>
+
+                <?php $total=0; ?>
+                <?php foreach ($this->masVendidos as $row): ?>
+                
+                    <?php $total=$total+$row->total_ventas; ?>
+
+                    <tr>
+                        <td><?php echo $row->id; ?></td>
+                        <td ><?php echo $row->codigo; ?></td>
+                        <td><?php echo $row->descripcion; ?></td>
+                        <td class="hidden-xs"><?php echo $row->cantidad; ?></td>
+
+                        <td class="hidden-xs"><b><?php echo $row->total_ventas; ?></b></td>
+
+                       
+                        
+                    </tr>
+                <?php endforeach; ?>
+
+                <tr>
+                        <td></td>
+                        <td ></td>
+                        <td></td>
+                        <td class="hidden-xs"><b>Total Ventas<b></td>
+
+                        <td class="hidden-xs"><b><?php echo $total; ?><b></td>
+
+                       
+                        
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>
+
+   <div class="row">
+       
+     <div class="panel panel-default">
+        <div class="panel-heading"> Tipos de Pago</div>
+
+        <div  class="panel-body">
+            
+            <table class="table table-hover table-striped" id="tb_best_clientes">
+                <thead style="backgroun"><tr>
+                    <th>Tipo Pago</th>
+                    <th>Cantidad</th>                    
+                </tr></thead><tbody>
+                <?php foreach ($this->tipodepago as $tp): ?>
+                
+               
+
+                    <tr>
+                        
+                        <td ><?php echo $tp->tipo_pago; ?></td>
+                        <td><?php echo $tp->cantidad; ?></td>
+
+                       
+                        
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+   </div>
+
+
+	
+
+     <div class="panel panel-default">
+        <div class="panel-heading"> Mejores Vendedores</div>
+
+        <div  class="panel-body">
+            
+            <table class="table table-hover table-striped" id="tb_best_clientes">
+                <thead style="backgroun"><tr>
+                    <th>Nombre</th>
+                     <th >Telefono</th>
+                    <th>Total</th>                    
+                </tr></thead><tbody>
+                <?php foreach ($this->bestClientes as $best): ?>
+                
+               
+
+                    <tr>
+                        <td><?php echo $best->nombre; ?></td>
+                        <td ><?php echo $best->tlf; ?></td>
+                        <td><?php echo $best->total; ?></td>
+
+                       
+                        
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+		
+    
+
+<div class="row">
+    
+    <a name="btn_cancel" href="wake/pedidos" id="btn_cancel" type="button" class="btn btn-danger">volver</a>
+</div>
+
+
+
+
+
+    
+</div>
+
+<div id="approveModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Aprobar Miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro desea realizar esta acción?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary approve">Aceptar</button>
+                <form id="formApprove" name="formApprove" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'approve')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="rejectModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Rehazar Miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro desea realizar esta acción?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger reject">Aceptar</button>
+                <form id="formReject" name="formReject" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'reject')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="pendingModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Cambiar estatus de miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea cambiar el estatus del miembro a pendiente?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary pending">Aceptar</button>
+                <form id="formPending" name="formPending" method="POST" action="<?php echo $this->url(array('controller' => 'members', 'action' => 'pending')); ?>">
+                    <input type="hidden" id="mid" name="mid" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar Producto</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea eliminar el Producto?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger delete">Borrar</button>
+                <form id="formDelete" name="formDelete" method="POST" action="<?php echo $this->url(array('controller' => 'productos', 'action' => 'delete')); ?>">
+                    <input type="hidden" id="id" name="id" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

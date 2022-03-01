@@ -1,0 +1,71 @@
+<div class="container">
+
+  <ol class="breadcrumb">
+      <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a></li>
+      <li><a href="<?php echo $this->baseUrl('/validador'); ?>">Validacion</a></li>
+      <li class="active">Ver Detalle</li>
+  </ol>
+    
+   <div class="row">
+
+   <h1 class="page-header">Detalles de la Solicitud de Validacion</h1>
+
+   <br> 
+
+   <table class="table table-striped table-responsive"> 
+      <tr>  
+      <th > Campo </th>
+      <th> Detalle </th>
+
+      </tr>
+
+      <tr>  
+        <th> Id </th>
+        <td> <?php echo $this->presupuesto['id']; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Número de Informe DPT </th>
+        <td> <?php echo $this->presupuesto['dpt']; ?>  </td>
+      </tr>
+
+      <tr>  
+        <th> Código de Validación Tirex CVT </th>
+        <td> <?php echo $this->presupuesto['cvt']; ?>  </td>
+      </tr>
+
+      
+
+      <tr>  
+        <th> Email </th>
+        <td> <?php echo $this->presupuesto['email']; ?>  </td>
+      </tr>
+      
+
+     
+      <tr>  
+        <th> Fecha </th>
+        <td> <?php echo $this->presupuesto['fecha']; ?>  </td>
+      </tr>
+
+
+    </table>
+
+
+       
+ 
+
+   
+
+   </div>
+   
+    
+	
+	
+   
+	
+		
+    
+    
+</div>
+

@@ -1,0 +1,264 @@
+<div class="container-fluid" >
+    <h1 class="page-header"> Inmuebles Aliados
+             <?php  if (isset($this->acceso['inmueble']['add'])): ?>
+                <div class="pull-right">
+                    <a href="<?php echo $this->baseUrl('/inmueble/add'); ?>" class="btn btn-default"><i class="fa fa-home" aria-hidden="true"></i>Agregar</a>
+                </div>
+            <?php endif ?>
+                
+
+    </h1>
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
+    <?php $ObjFotos = new Application_Model_DbTable_Fotos(); ?>
+    <?php  $ObjViews= new Application_Model_DbTable_Views(); ?>
+    <?php $ObjDatos = new Application_Model_DbTable_Datos(); ?>
+    <?php $ObjContacto = new Application_Model_DbTable_Contacto(); ?>
+
+
+
+    <div class="row" >
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Inmuebles</h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    
+
+                    <!-- start project list -->
+        <table class="table table-striped projects" id="tb_estudiantes">
+            <thead>
+                <tr>
+                    <th style="width: 5%">#</th>
+                    <th style="width: 50%">Nombre del Inmueble</th>
+                    <th style="width: 7%">Comision</th>
+                    <th style="width: 7%">condiciones</th>
+                    <th style="width: 7%">Activar</th>
+                    <th style="width: 15%">#Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php $ObjFotos = new Application_Model_DbTable_Fotos(); ?>
+            <?php foreach ($this->inmuebles as $row): ?>
+            <?php $foto=$ObjFotos->fetchRow('id_solicitud="'.$row->id.'"');  ?>  
+
+                <tr id="<?php   echo $row->id; ?>">
+                    <td>
+                        <img src="<?php echo $this->baseUrl('/assets/images/300/').$foto->foto; ?>" class="avatar" alt="Avatar">
+                    </td>
+                    <td >
+                        <a target="_blank" href="<?php echo $this->baseUrl('/inmueble/ver/id/').$row->id; ?>"><h4 style="margin: 0px 0px;"><?php echo utf8_encode($row->titulo);  ?></h4></a>
+
+                        <small><?php if ($row->monto_vender) {   echo $row->monto_vender; }   ?> - Ubicacion: <?php  echo $row->estado.', '.$row->ciudad.', '.$row->zona;   ?> </small><br> 
+
+                        <small><?php  echo $row->name.' '.$row->lastname;   ?> - <?php echo substr($row->fecha, 8,2).'/'.substr($row->fecha, 5,2).'/'.substr($row->fecha, 0,4);   ?> </small><br> 
+
+                       
+                        
+                        
+
+                    </td>
+                    <td class="actividad">
+                    
+                    <?php  if (isset($this->acceso['inmueble']['estadistica'])){ ?>
+
+                         <?php echo $row->comision.'%'; ?>
+                    <?php } ?>   
+                        
+
+                    </td>
+                    
+                    <td class="actividad">  
+
+                    <?php  if (isset($this->acceso['inmueble']['datos'])){ ?>
+
+                   
+                     <?php echo $row->condiciones; ?>
+
+                    <?php } ?>                      
+
+                    
+
+                    </td>
+
+                    <td class="actividad">
+<?php 	$ObjNegocio = new Application_Model_DbTable_Negocio(); ?>
+                    <?php  if (isset($this->acceso['inmueble']['datos'])){ ?>
+
+                    <?php $respuesta=$ObjNegocio->buscar($row->id, $row->id_compartido, $this->uid);	 ?>
+
+                    <?php if (	isset($respuesta['id'])){ ?>
+
+                    	 <select id="negocio<?php echo $row->id ?>" onchange="negocio('<?php echo $row->id ?>', '<?php echo $row->id_compartido ?>')">
+                        <option value="desactivado" <?php if ($respuesta['tipo']=='desactivado'){ echo 'selected';} ?> >Desactivado</option>
+                        <option <?php if ($respuesta['tipo']=='normal'){ echo 'selected';} ?> value="normal">Normal</option>
+                        <option <?php if ($respuesta['tipo']=='destacado'){ echo 'selected';} ?> value="destacado" >Destacado</option>
+                    </select>
+
+                    	
+                    <?php }else{ ?>
+
+                    	 <select id="negocio<?php echo $row->id ?>" onchange="negocio('<?php echo $row->id ?>', '<?php echo $row->id_compartido ?>')">
+                        <option value="desactivado">Desactivado</option>
+                        <option value="normal">Normal</option>
+                        <option value="destacado" >Destacado</option>
+                    </select>
+
+                    <?php } ?>
+
+                   
+
+                    <?php } ?>  
+    
+                        
+
+                    </td>
+                    
+                    
+
+
+                          <td>
+                           
+                    
+
+                    <a class="btn btn-danger btn-sm" target="_blank" href="<?php echo $this->baseurl('inmueble/detalle/id/').$row->id; ?>" href="#">pdf</a>
+
+                          </td>
+                        </tr>
+
+                            
+                          <?php endforeach ?>
+
+                      </tbody>
+                    </table>
+                    <!-- end project list -->
+
+                  </div>
+                </div>
+              </div>
+            </div>
+	
+	 
+
+    
+
+
+
+
+
+</div> <!-- End Container--> 
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <input type="hidden" name="del_modelo" id="del_modelo">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="eliminar()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="TipoModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Tipo de Publicacion</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <select id="tipo_edit" name="tipo_edit" class="form-control" > 
+                        <option value="normal">Normal</option>
+                        <option value="destacada">Destacada</option>
+                </select>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button"  onclick="updateTipo();" class="btn btn-primary ">Actualizar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="EstatusModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Estatus de la Publicacion</h4>
+            </div>
+            <div class="modal-body">
+                <input  class="form-control" type="hidden" name="del_id" id="del_id">
+                <select id="estatus_edit" name="estatus_edit" class="form-control"> 
+                        <option value="activo">Activo</option>
+                        <option value="pendiente">Pendiente</option>
+                        <option value="vendida">Vendida</option>
+                        <option value="suspendida">Suspendida</option>
+                        <option value="eliminada">Eliminada</option>
+                </select>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="updateEstatus();"  class="btn btn-primary">Actualizar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="CompartirModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Condiciones de Negocio</h4>
+            </div>
+            <div class="modal-body">
+                <input  class="form-control" type="hidden" name="compartir_id" id="compartir_id">
+                <div class="form-group col-sm-12">
+                    <label for="cedula" class="required">Comision <small>(Comision ofrecida en el negocio)</small> </label>
+                    <input type="text"  name="comision_negocio" id="comision_negocio" value="" class="form-control" placeholder="Titulo">
+                </div>
+
+                <div class="form-group col-sm-12">
+                    <label for="cedula" class="required">Condiciones  </label>
+                    <textarea rows="10"  name="condicion_negocio" id="condicion_negocio" style="width: 100%;"></textarea>
+                </div>
+                
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="compartirNegocio();"  class="btn btn-primary">Compartir</button>
+                
+            </div>
+        </div>
+    </div>
+</div>

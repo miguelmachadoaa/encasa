@@ -1,0 +1,66 @@
+
+<div class="w3l_agileits_breadcrumbs">
+   <div class="container">
+    <div class="w3l_agileits_breadcrumbs_inner">
+      <ul>
+        <li><a href="<?php echo $this->baseUrl('/'); ?>">Home</a><span>«</span></li>
+                  
+        <li>Area Cliente</li>
+        </ul>
+    </div>
+  </div>
+</div>    
+
+
+<div class="appointment">
+   <div class="container">
+  <div class="form-agileits">
+  <h3>Enviar una Solicitud </h3>
+  <p>Ingresa la informacion de su solicitud y nuestros agentes le informaran de las propiedades que mas se ajustan</p>
+  <form action="<?php echo $this->baseUrl('/areacliente/postsolicitud/') ?>" method="post">
+    
+    <h3>Ubicacion</h3>
+
+    <input  class="name" type="text" name="departamento" id="departamento" placeholder="Departamento" required=""/>
+
+    <input  class="name" type="text" name="ciudad" id="ciudad" placeholder="Ciudad" required=""/>
+
+    <input  class="name" type="text" name="zona" id="zona" placeholder="Zona" required=""/>
+
+    <h3>Caracteristicas</h3>
+
+    <input style="width: 100%" class="name" type="number" step="1" min="1"  name="habitaciones" id="habitaciones" placeholder="Nro. Habitaciones" required=""/>
+
+    <input style="width: 100%" class="name" type="number" step="1" min="1"  name="banos" id="banos" placeholder="Nro. Baños" required=""/>
+
+    <select class="form-control" id="tipo" name="tipo" >
+      <option value="Casa">Casa</option>
+      <option value="Apartamento">Apartamento</option>
+      <option value="Terreno">Terreno</option>
+      <option value="Edificio">Edificio</option>
+      <option value="Comercio">Comercio</option>
+    </select>
+
+
+    <h3>Precio</h3>
+
+
+  <input style="width: 100%"  class="name" type="number" step="1" min="1"  name="desde" id="desde" placeholder=" Desde" required=""/>
+
+  <input style="width: 100%" class="name" type="number" step="1" min="1"  name="hasta" id="hasta" placeholder="Hasta" required=""/>
+    
+  <h3>Notas</h3>
+
+  <textarea class="form-control" name="notas"  id="notas" cols="30" rows="10"></textarea>
+
+
+    
+     <input type="submit" value="Enviar Solicitud">
+  </form>
+  </div>
+  
+  
+  </div>
+  
+  <div class="clearfix"> </div>
+</div>

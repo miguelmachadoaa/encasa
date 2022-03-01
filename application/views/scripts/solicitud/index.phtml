@@ -1,0 +1,116 @@
+
+<section class="page-crumb">
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+        <ol class="breadcrumb">
+                    <li><a href="<?php echo $this->baseUrl('/'); ?>">Home</a>
+                    </li>
+                    <li class="active">Servicios</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+  </div>
+</section>
+
+
+<section class="service-w3ls">
+  <h3 class="text-center w3layouts w3 w3l w3ls agileits-w3layouts agile w3-agile">Servicios</h3>
+  <p class="text-center w3layouts w3 w3l w3ls agileits-w3layouts agile w3-agile">Ponemos a su disposicion los siguientes servicios.</p> 
+  <div class="container"> 
+        <!-- Service Panels -->
+        <div class="row">
+      <?php foreach ($this->modulos as $ser): ?>
+
+        <div class="col-lg-4 col-md-4 col-sm-6 serv-w3ls">
+        <div class="thumbnail">
+          <div class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a">
+            <img class="img img-modulo " alt="<?php echo $ser->titulo; ?>" title="<?php echo $ser->titulo; ?>" src="<?php echo $this->baseUrl($ser->imagen); ?>">
+            <!--<a href="#set-5" class="hi-icon hi-icon-mobile"><?php echo $ser->imagen ?></a>-->
+          </div>
+          <h4 class="text-center"><?php echo $ser->titulo ?></h4>
+          <p class="serv-p1"><?php echo $ser->descripcion ?></p>
+        </div>
+      </div>
+
+        
+      <?php endforeach ?>
+
+
+    </div>  
+  </div>
+</section>  
+
+<section class="service-agile">
+  <div class="container">
+    <h3 class="text-center agileits agileinfo wthree w3-agileits">Avaluos</h3>
+    <p class="text-center agileits agileinfo wthree w3-agileits">Un avalúo es la estimación del valor de un bien mueble o inmueble expresado en cifras monetarias de acuerdo a criterios, herramientas y a metodologías científicas adecuadas tomando en cuenta las condiciones físicas, características, ubicación, uso, conservación, mantenimiento, operatividad, funcionamiento, y de una indagación y análisis de mercado, para la fecha en que se realiza dicha estimación.  .</p> 
+        <!-- Service Tabs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <ul id="myTab" class="nav nav-tabs nav-justified">
+                    <?php $j=0; ?>
+                    <?php foreach ($this->avaluos as $ava): ?>
+
+                      <?php if ( $j!=0): ?>
+                        <li class=""><a href="#service-<?php echo $ava->id; ?>" data-toggle="tab"> <?php echo $ava->titulo; ?></a>
+                        </li>
+                        <?php $j++; ?>
+                      <?php endif ?>
+
+                      <?php if ($j==0): ?>
+                        <li class="active"><a href="#service-<?php echo $ava->id; ?>" data-toggle="tab"> <?php echo $ava->titulo; ?></a>
+                        </li>
+                        <?php $j++; ?>
+                      <?php endif ?>
+                       
+                    <?php endforeach ?>
+
+                    
+                </ul>
+
+                <div id="myTabContent" class="tab-content">
+                    
+                    <?php $j=0; ?>
+                    <?php foreach ($this->avaluos as $ava): ?>
+
+                      <?php if ( $j!=0): ?>
+
+                      <div class="tab-pane fade" id="service-<?php echo $ava->id; ?>">
+                        <h4><?php echo $ava->titulo; ?></h4>
+                        <img class="img " alt="<?php echo $ava->titulo; ?>" title="<?php echo $ava->titulo; ?>" src="<?php echo $this->baseUrl($ava->imagen); ?>">
+                        <?php echo $ava->descripcion; ?>
+                    </div>
+
+                        
+                        <?php $j++; ?>
+                      <?php endif ?>
+
+                      <?php if ($j==0): ?>
+
+                      <div class="tab-pane fade active in" id="service-<?php echo $ava->id; ?>">
+                      
+                        <h4><?php echo $ava->titulo; ?></h4>
+                        <img class="img " alt="<?php echo $ava->titulo; ?>" title="<?php echo $ava->titulo; ?>" src="<?php echo $this->baseUrl($ava->imagen); ?>">
+                        <?php echo $ava->descripcion; ?>
+                        
+                    </div>
+
+
+                        
+                        <?php $j++; ?>
+                      <?php endif ?>
+                       
+                    <?php endforeach ?>
+
+
+
+                   
+                    
+            </div>
+        </div>
+        <hr>
+  </div>  
+</section>  

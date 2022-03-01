@@ -1,0 +1,171 @@
+ <?php $mes = array('01' =>'Enero' , '02' =>'Febrero' ,'03' =>'Marzo' ,'04' =>'Abril' ,'05' =>'Mayo' ,'06' =>'Junio' ,'07' =>'Julio' ,'08' =>'Agosto' ,'09' =>'Septiembre' ,'10' =>'Octubre' ,'11' =>'Noviembre' , '12' =>'Diciembre'); ?>
+
+         <!-- page content -->
+        <div class="" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Escritorio</h3>
+              </div>
+
+              <!--div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div-->
+            </div>
+            
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Foro  Inmobiliario</h2>
+                   
+                    
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                   <?php $ObjFotos = new Application_Model_DbTable_Fotos(); ?>
+
+                    <?php foreach ($this->inmuebles as $inm): ?>
+                        <?php $foto=$ObjFotos->fetchRow('id_solicitud="'.$inm->id.'"');  ?>  
+                      <div class="row inmueble_list" style="border-bottom: 2px solid #ddd; padding-top: 1em; padding-bottom: 1em;">
+ 
+                      <div class="col-sm-12"> 
+                          <img src="<?php echo $this->baseUrl('assets/img/').$inm->imagen_usuario; ?>" class="avatar" alt="Avatar">
+                          <h4>  <butoon class="btn btn-link" onclick="usuariomostrar('<?php echo $inm->id_usuario; ?>')"  href="<?php echo $this->baseUrl('/user/ver/id/').$inm->id; ?>"><?php echo utf8_encode($inm->name.' '.$inm->lastname);  ?></butoon> <small> Publico este inmueble el dia <?php echo  substr($inm->fecha, 8, 2); ?> de <?php echo $mes[substr($inm->fecha, 5,2)]; ?></small> </h4> 
+                      </div>
+                     
+
+                      
+                      <div class="col-sm-11">
+                      <p>  <a target="_blank" href="<?php echo $this->baseUrl('/inmueble/ver/id/').$inm->id; ?>"><?php echo utf8_encode($inm->titulo);  ?></a></p>   
+                      <p><?php echo $inm->descripcion; ?> </p> 
+                      <p> <?php echo $inm->estado; ?> - <?php echo $inm->ciudad; ?></p>
+
+                        
+                      </div>
+                      <div class="col-sm-1">    
+                        <img src="<?php echo $this->baseUrl('assets/images/300/').$foto->foto; ?>" class="avatar" alt="Avatar">
+                      </div>
+
+                       <div class="col-sm-12">
+                        <div class="col-sm-4">
+                          <small>Precio de Venta Bs.: <?php  echo number_format($inm->monto_vender, 2, ',', '.') ;   ?></small>
+                          
+                        </div>
+                        <div class="col-sm-4">
+                          <small> Costo M2: <?php  echo  number_format($inm->monto_vender/$inm->contruccion, 2, ',', '.'); ?></small>
+                          
+                        </div>
+                        <div class="col-sm-4">
+                          <small> Promedio M2 Zona: <?php  echo number_format($inm->monto_vender/$inm->contruccion, 2, ',', '.');   ?></small>
+                          
+                        </div>
+                      </div>
+
+                    </div>
+
+                      
+                    <?php endforeach ?>
+
+                    
+                    
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Solicitudes  Pendientes</h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                  <?php foreach ($this->solicitudes as $solicitud): ?>
+
+                      <div class="row solicitud" id="<?php echo 'solicitud'.$solicitud->id; ?>">
+  <div class="col-sm-3">
+    <img  src="<?php echo $this->baseUrl('assets/img/').$solicitud->imagen; ?>" class="img img-responsive" alt="<?php echo $solicitud->name.' '.$solicitud->lastname; ?>">
+  </div>
+  <div class="col-sm-9">
+    <table>
+      <tr>
+        <td colspan="2"><b><?php echo $solicitud->name.' '.$solicitud->lastname; ?></b></td>
+        
+      </tr>
+      
+      <tr>
+        <td><i class="fa fa-envelope" aria-hidden="true"></i></td>
+        <td><?php echo $solicitud->email; ?></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-phone" aria-hidden="true"></i></td>
+        <td><?php echo $solicitud->telefono; ?></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-mobile" aria-hidden="true"></i></td>
+        <td><?php echo $solicitud->movil; ?></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
+        <td><?php echo $solicitud->state; ?></td>
+      </tr>
+
+      
+
+    </table>
+    <br>
+    <div class="col-sm-12">
+    <button onclick="confirmaralianza('<?php echo $solicitud->id; ?>')" class="btn btn-success">Confirmar </button>
+    <button onclick="rechazaralianza('<?php echo $solicitud->id; ?>')" class="btn btn-danger">Rechazar </button>
+  </div>
+  </div>
+
+  <hr>  
+</div>
+                    
+                  <?php endforeach ?>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+
+
+<div id="usuarioModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Detalle de Usuario</h4>
+            </div>
+            <div class="modal-body usuariobody">
+                <div class="row">
+                  
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>

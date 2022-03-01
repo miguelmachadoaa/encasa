@@ -1,0 +1,185 @@
+
+<?php 
+
+$dolar=5000;
+$estado=$this->presupuesto['estado'];
+
+$ciudad=$this->presupuesto['ciudad'];
+
+$zona=$this->presupuesto['zona'];
+
+$inm_usuario=$this->presupuesto['usuario'];
+
+ ?>  
+
+
+
+<!-- //banner -->
+<!-- breadcrumbs -->
+<div class="w3l_agileits_breadcrumbs">
+   <div class="container">
+    <div class="w3l_agileits_breadcrumbs_inner">
+      <ul>
+        <li><a href="<?php echo $this->baseUrl('/'); ?>">Home</a><span>«</span></li>
+                  
+        <li>Todas las propiedades</li>
+        </ul>
+    </div>
+  </div>
+</div>    
+<!-- //breadcrumbs -->
+<!-- blog -->
+  <div class="blog" style="padding: 0;">
+      <!-- container -->
+      <div class="container" style="padding: 0;">
+      
+     
+        <div class="col-md-12 blog-top-left-grid" style="padding:0; margin:0">
+          <div class="left-blog left-single">
+            <div class="blog-left">
+              <div class="single-left-left">
+                
+
+
+
+
+
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <?php $i=0; ?>
+    <?php $active='active'; ?>
+
+    <?php foreach ($this->fotos as $foto): ?>
+
+      <li data-target="#carousel-example-generic" data-slide-to="<?php echo $i; ?>" class="<?php echo $active ?>"></li>
+
+      <?php $i++; ?>
+      <?php $active=''; ?>
+      
+    <?php endforeach ?>
+    
+   
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+
+    <?php $active='active'; ?>
+
+    <?php foreach ($this->fotos as $foto): ?>
+
+      <div class="item <?php echo $active ?>">
+      <img src="<?php echo $this->baseUrl('/../assets/images/').$foto->foto; ?>" alt="...">
+      <div class="carousel-caption">
+      
+      </div>
+    </div>
+
+      <?php $active=''; ?>
+
+      
+    <?php endforeach ?>
+
+
+
+
+   
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+              </div>
+              <div class="blog-left-bottom" style="padding: 1em;">
+
+                <p><?php echo $this->presupuesto['titulo']; ?></p>
+                <p><span><a href="<?php echo $this->baseUrl('/inmueble/buscar/').'f_estado/'.$this->presupuesto['id_estado'];?>"><?php echo utf8_encode($this->presupuesto['estado'])?></a> / 
+      <a href="<?php echo $this->baseUrl('/inmueble/buscar/f_ciudad/').$this->presupuesto['id_ciudad']; ?>"><?php echo utf8_encode($this->presupuesto['ciudad']);?></a> / 
+      <?php echo utf8_encode($this->presupuesto['zona']);?> / <?php $this->presupuesto['direccion']; ?></span></p>
+      <p>Bs. <?php echo number_format($this->presupuesto['monto_vender']*$dolar, 2, ',', '.'); ?>  -  <?php echo $this->presupuesto['tipo_inmueble']; ?></p>
+
+
+                <p>   <?php echo $this->presupuesto['descripcion']; ?>
+                </p>
+              </div>
+              <div class="blog-left-bottom left-bottom" style="padding: 1em;">
+                <p> 
+
+                <h4>Estatus: Desocupado</h4>
+
+          <p><span class="">Habitaciones </span>: <span class="two"><?php echo $this->presupuesto['habitaciones']; ?> </span></p>
+
+          <p>  <span class="">Baños </span>: <span class="two"><?php echo $this->presupuesto['banos']; ?></span></p>
+
+          <p><span class="">Construccion</span>: <span class="two"><?php echo $this->presupuesto['contruccion']; ?> M2</span></p>
+
+          <p><span class="">Terreno </span>:<span class="two"> <?php echo $this->presupuesto['totales']; ?></span></p>
+
+          <p><span class="">Antiguedad</span> : <span class="two"><?php echo $this->presupuesto['edad_inmueble']; ?> Años</span></p>
+
+          <p><span class="">Precio </span>:<span class="two">Bs. <?php echo number_format($this->presupuesto['monto_vender']*$dolar, 2, ',', '.'); ?> </span></p>  
+
+              
+
+                </p>
+              </div>
+            </div>
+
+
+            <div class="right-side" style="padding: 1em;">
+
+               <!--<a href="contact.html" class="hvr-sweep-to-right more" >Contact Builder</a> -->
+               <div id="info_contacto"></div>
+            <button class="btn btn-default " onclick="verinfo('<?php echo $inm_usuario ?>')">Ver Informacion de Contacto</button>  
+
+          </div>
+
+
+
+
+
+
+
+            
+            <div class="opinion" style="padding: 1em; margin-bottom: 7em;">
+              <h3>Solicitar Informacion</h3>
+              <form action="#" method="post">
+                <input type="hidden" name="id" id="id" value="<?php echo $this->presupuesto['id'] ?>">
+                <input type="text" name="solicitud_nombre" id="solicitud_nombre" placeholder="Nombre" required="">
+                <input type="text" name="solicitud_tlf" id="solicitud_tlf" placeholder="Telefono" required="">
+                <input type="email" name="solicitud_email" id="solicitud_email" placeholder="Email" required="">
+                <textarea name="solicitud_mensaje" id="solicitud_mensaje" placeholder="Message" required="">Hola, estoy interesado en esta propiedad <?php echo $this->presupuesto['titulo']; ?> que he visto en En Casa Plus   y quisiera que me contacten para recibir más información</textarea>
+                <input onclick="solicitar()" class="btn btn-default" name="btn_info" id="btn_info" type="button" value="Solicitar">
+              </form>
+
+               <div class="respuesta"></div>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+      <!-- //container -->
+  </div>
+  <!-- //blog -->
+
+
+
+
+
+
+
+
+

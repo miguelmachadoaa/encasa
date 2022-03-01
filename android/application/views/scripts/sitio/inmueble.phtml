@@ -1,0 +1,847 @@
+<div class="container ver">
+<hr>
+
+<?php 
+$estado=$this->presupuesto['estado'];
+$ciudad=$this->presupuesto['ciudad'];
+$zona=$this->presupuesto['zona'];
+$inm_usuario=$this->presupuesto['usuario'];
+
+ ?>  
+
+<div class="row "> 
+  <div class="col-sm-12"> 
+
+ 
+
+      
+      <h3 class="tittle "><?php echo $this->presupuesto['titulo']; ?></h3>
+      <h3 class="tittle "> <span><a href="<?php echo $this->baseUrl('/inmueble/buscar/').'f_estado/'.$this->presupuesto['id_estado'];?>"><?php echo utf8_encode($this->presupuesto['estado'])?></a> / 
+      <a href="<?php echo $this->baseUrl('/inmueble/buscar/f_ciudad/').$this->presupuesto['id_ciudad']; ?>"><?php echo utf8_encode($this->presupuesto['ciudad']);?></a> / 
+      <?php echo utf8_encode($this->presupuesto['zona']);?> / <?php $this->presupuesto['direccion']; ?></span> </h3>
+      <h3 class="tittle ">Bs. <?php echo number_format($this->presupuesto['monto_vender'], 2, ',', '.'); ?>  -  <?php echo $this->presupuesto['tipo_inmueble']; ?> </h3>
+
+
+      
+
+  </div>
+  
+</div>  
+</div>
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-8" style="text-align: -webkit-center;">
+
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+
+    <ol class="carousel-indicators">
+           <?php $i=0; ?>
+           <?php foreach ($this->fotos as $foto): ?>
+
+            <?php if ($i!=0): ?>
+              <li data-target="#carousel-example-generic" data-slide-to="<?php echo $i; ?>"></li>
+              <?php $i++; ?>
+            <?php endif ?>
+
+            <?php if ($i==0): ?>
+          
+              <li data-target="#carousel-example-generic" data-slide-to="<?php echo $i; ?>" class="active"></li>
+              <?php $i++; ?>
+              
+            <?php endif ?>
+
+    <?php endforeach ?>
+
+        </ol>
+
+        <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+                   <?php $i=0; ?>
+           <?php foreach ($this->fotos as $foto): ?>
+
+            <?php if ($i!=0): ?>
+              <div class="item">
+            <img src="<?php echo $this->baseUrl('/assets/images/').$foto->foto; ?>" alt="...">
+            <div class="carousel-caption">
+              
+            </div>
+          </div>
+              <?php $i++; ?>
+            <?php endif ?>
+
+            <?php if ($i==0): ?>
+          
+            <div class="item active">
+            <img src="<?php echo $this->baseUrl('/assets/images/').$foto->foto; ?>" alt="...">
+            <div class="carousel-caption">
+            </div>
+          </div>
+              <?php $i++; ?>
+              
+            <?php endif ?>
+
+    <?php endforeach ?>
+
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Prev</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Sig</span>
+        </a>
+      </div> <!-- Fin de Carusel -->
+
+        <br>
+
+          </div> <!-- fin de col-8 -->
+
+
+    <div class="col-sm-4">
+
+
+        <div class="col-sm-12"> 
+        
+        <div class="list-group">
+          <button type="button" class="list-group-item"><b>Descripcion</b></button>
+          <button type="button" class="list-group-item">
+            <?php echo $this->presupuesto['descripcion']; ?> 
+          </button>
+            
+        </div>
+
+      </div>
+
+       
+
+         <div class="col-sm-12 well" id="info_contacto">
+           
+           <button class="btn btn-default " onclick="verinfo('<?php echo $inm_usuario ?>')">Ver Informacion de Contacto</button>
+         </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="row"> 
+
+    
+
+
+
+        <div class="col-sm-12">
+
+        <h3 class="page-header tittle_detalle"> Informacion <span>General</span>   </h3>
+       
+          
+          <div class="col-sm-3 detalle"><i class="fa fa-home " aria-hidden="true"></i> <?php echo $this->presupuesto['tipo_inmueble']; ?></div>
+
+          <div class="col-sm-3 detalle"> Bs. <?php echo number_format((int)$this->presupuesto['monto_vender'], 2, ',', '.');; ?></div>
+
+          <div class="col-sm-3 detalle">  <?php echo $this->presupuesto['contruccion']; ?>  M2 de Costrucción </div>
+
+          <div class="col-sm-3 detalle">   <?php echo $this->presupuesto['totales']; ?> M2 Totales</div>
+
+
+          <div class="col-sm-3 detalle"> <i class="fa fa-bed " aria-hidden="true"></i> <?php echo $this->presupuesto['habitaciones']; ?> Habitaciones</div>
+
+          <div class="col-sm-3 detalle"> <i class="fa fa-shower " aria-hidden="true"></i><?php echo $this->presupuesto['banos']; ?> Baños</div>
+
+          <div class="col-sm-3 detalle"><i class="fa fa-car " aria-hidden="true"></i> <?php echo $this->presupuesto['puestos']; ?> Puestos Estacionamiento</div> 
+
+          <div class="col-sm-3 detalle"><i class="fa fa-calendar " aria-hidden="true"></i> Antiguedad <?php echo $this->presupuesto['edad_inmueble']; ?>  </div>
+
+            <br>  <br>  
+      </div>
+
+
+
+<div class="row"> 
+
+    <div class="col-sm-12"> 
+
+        <h3 class="page-header tittle_detalle"> Seguridad</h3>
+
+
+   
+       
+
+        <?php   if (!is_null($this->presupuesto['vigilancia']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['vigilancia']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['sseguridad']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+
+            <?php echo $this->presupuesto['sseguridad']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['pelectrico']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['pelectrico']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['cerca_electrica']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['cerca_electrica']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['cccseguridad']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['cccseguridad']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['otros']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['otros']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+
+
+
+<div class="page-header col-sm-12">
+        <h3 class="page-header tittle_detalle">  <span>Servicios</span>   </h3>
+
+     
+    </div>
+
+
+
+
+
+
+
+         <?php   if (!is_null($this->presupuesto['linea_tlf']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['linea_tlf']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['internet']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['internet']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['lavanderia']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['lavanderia']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['Gimnasio']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['Gimnasio']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['salon_de_fiestas']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['salon_de_fiestas']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['parque']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['parque']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['piscina']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['piscina']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['Churuata']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['Churuata']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['salon_juegos']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['salon_juegos']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['cancha_deportiva']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['cancha_deportiva']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+
+
+
+
+
+
+
+
+
+<div class="page-header col-sm-12">
+      
+        <h3 class="page-header tittle_detalle"> Informacion <span>de Interes</span>   </h3>
+
+    </div>
+
+
+
+
+
+
+
+
+       <?php   if (!is_null($this->presupuesto['bdistribucion']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['bdistribucion']; ?> 
+          </div>
+         
+       <?php  } ?>
+          <?php   if (!is_null($this->presupuesto['cmontana']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['cmontana']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['ceconomico']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['ceconomico']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['ccerrado']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['ccerrado']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['desocupado']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['desocupado']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['eoportunidad']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['eoportunidad']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['eubicacion']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['eubicacion']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['evista']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['evista']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['mbonito']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['mbonito']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['remodelado']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['remodelado']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['aremodelar']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['aremodelar']; ?> 
+          </div>
+         
+       <?php  } ?>
+             <?php   if (!is_null($this->presupuesto['vcomprarlo']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['vcomprarlo']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['ztranquila']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['ztranquila']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['areas_verdes']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['areas_verdes']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['amueblado']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['amueblado']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['Lobby']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['Lobby']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['Reservorio']) ) {?>
+
+          <i class="fa fa-check " aria-hidden="true"></i>
+          <div class="col-sm-3 detalle">
+            <?php echo $this->presupuesto['Reservorio']; ?> 
+          </div>
+         
+       <?php  } ?>
+            <?php   if (!is_null($this->presupuesto['rio']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['rio']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['bbq']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['bbq']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['Quebrada']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['Quebrada']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+
+
+
+
+ <div class="page-header col-sm-12">
+
+        <h3 class="page-header tittle_detalle"> Cercanías    </h3>
+
+    </div>
+
+
+
+
+
+
+       <?php   if (!is_null($this->presupuesto['abastos']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['abastos']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['ccomercial']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['ccomercial']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['panaderia']) ) {?>
+
+          
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['panaderia']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+          <?php   if (!is_null($this->presupuesto['metro']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+
+            <?php echo $this->presupuesto['metro']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+          <?php   if (!is_null($this->presupuesto['taxi']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['taxi']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+          <?php   if (!is_null($this->presupuesto['clinica']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['clinica']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+          <?php   if (!is_null($this->presupuesto['colegios']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['colegios']; ?> 
+          </div>
+         
+       <?php  } ?>
+          
+        <?php   if (!is_null($this->presupuesto['farmacia']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['farmacia']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['epublico']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['epublico']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['supermercado']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['supermercado']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['hospital']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['hospital']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       <?php   if (!is_null($this->presupuesto['bancos']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['bancos']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+
+
+
+
+
+
+       <?php   if (!is_null($this->presupuesto['comercios']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['comercios']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+
+       <?php   if (!is_null($this->presupuesto['restaurant']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['restaurant']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       
+       <?php   if (!is_null($this->presupuesto['publico']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['publico']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       
+       <?php   if (!is_null($this->presupuesto['autopista']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['autopista']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       
+       <?php   if (!is_null($this->presupuesto['carga']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['carga']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       
+       <?php   if (!is_null($this->presupuesto['peatona']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['peatona']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+
+
+        <div class="page-header col-sm-12">
+        <h3 class="page-header tittle_detalle"> Condiciones <span>de Venta</span>   </h3>
+
+      
+    </div>
+
+
+       
+       <?php   if (!is_null($this->presupuesto['contado']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['contado']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       
+       <?php   if (!is_null($this->presupuesto['credito']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['credito']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       
+       <?php   if (!is_null($this->presupuesto['convenir']) ) {?>
+
+          <div class="col-sm-3 detalle">
+          <i class="fa fa-check " aria-hidden="true"></i>
+            <?php echo $this->presupuesto['convenir']; ?> 
+          </div>
+         
+       <?php  } ?>
+
+       
+
+    </div>
+
+
+      </div>
+
+
+
+  </div>  
+
+  <div class="row"> 
+
+      <div class="col-sm-12" style="min-height: 10em;"> 
+
+          
+        <h3 class="page-header tittle_detalle"> Direccion <span>del Inmueble</span>   </h3>
+
+
+          <p> <?php echo $this->presupuesto['direccion']; ?> </p>
+
+
+      </div>
+
+
+  </div>  
+
+
+
+
+
+  <div class="row"> 
+
+
+
+       <div class="col-sm-12 well" style="background: #222222;">
+            
+
+        <h3 class="page-header tittle two"> Solicita Informacion <span>del Inmueble</span>   </h3>
+
+
+             
+
+            <input type="hidden" name="id" id="id" value="<?php echo $this->id; ?>">
+
+             <div class="form-group col-sm-6">
+              
+              <input type="text"  name="nombre" id="nombre" value="" class="form-control" placeholder="Nombre">
+            </div>
+            <div class="form-group col-sm-6">
+              
+              <input type="text"  name="tlf" id="tlf" value="" class="form-control" placeholder="Telefono">
+            </div>
+            <div class="form-group col-sm-12">
+              
+              <input type="text"  name="email" id="email" value="" class="form-control" placeholder="Email">
+            </div>
+
+            <div class="form-group col-sm-12">
+               <textarea  rows="3"  name="mensaje" id="mensaje" style="width: 100%;">Hola, estoy interesado en esta propiedad que he visto en DPT Propiedades  y quisiera que me contacten para recibir más información</textarea>
+              
+            </div>
+
+            <div class="form-group col-sm-12">
+              
+               <button onclick="solicitar()" name="btn_info" id="btn_info" type="button" class="btn btn-primary">Solicitar</button>
+            </div>
+
+            <div class="respuesta"></div>
+           
+       
+
+         </div>
+
+
+
+
+
+
+
+  </div>  
+
+
+
+</div>

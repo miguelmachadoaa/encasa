@@ -1,0 +1,158 @@
+<div class="container">
+    
+    <div class="row col-xs-12 col-md-12 col-sm-12">
+	
+		<div class="pull-left col-xs-12 col-md-12 col-sm-12">
+		
+			<h1 class="page-header">
+			
+				Certificados Registrados
+				
+				<div class="pull-right col-xs-3 col-md-3 col-sm-5 agregar">
+					<a href="<?php echo $this->url(array('controller' => 'certificados', 'action' => 'add')); ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> Agregar</a>
+					<a href="<?php echo $this->url(array('controller' => 'certificados', 'action' => 'export','f_profession' => @$this->params['f_profession'], 'f_grado' => @$this->params['f_grado'], 'f_state' => @$this->params['f_state'], 'f_city' => @$this->params['f_city'])); ?>" target="_blank" class="btn btn-link"><span class="glyphicon glyphicon-export"></span> Exportar PDF</a>
+				</div>
+			
+			</h1>
+		
+		</div>
+    			
+	</div>
+
+
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    
+	<div class="row col-xs-12 col-md-12 col-sm-12">
+
+		<div class="well form-inline">
+
+        
+        <div class="form-group">
+            <select id="f_curso" name="f_curso" class="form-control ">
+                <option value="">--Curso--</option>
+                <?php foreach ($this->curso as $curso): ?>
+                <option value="<?php echo $curso->id; ?>" <?php echo (isset($this->params['f_curso']) && $this->params['f_curso'] == $curso->id) ? 'selected' : ''; ?>><?php echo utf8_encode($curso->descripcion); ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
+            <div class="form-group">
+                <select id="f_state" name="f_state" class="form-control">
+                    <option value="">--Estado--</option>
+                    <?php foreach ($this->states as $state): ?>
+                    <option value="<?php echo $state->id; ?>" <?php echo (isset($this->params['f_state']) && $this->params['f_state'] == $state->id) ? 'selected' : ''; ?>><?php echo utf8_encode($state->state); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select id="f_city" name="f_city" class="form-control">
+                    <option value="">--Ciudad--</option>
+                    <?php foreach ($this->cities as $cities): ?>
+                    <option value="<?php echo $cities->id; ?>" <?php echo (isset($this->params['f_city']) && $this->params['f_city'] == $cities->id) ? 'selected' : ''; ?>><?php echo utf8_encode($cities->city); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+
+
+            <div class="form-group">
+            <select id="f_status" name="f_status" class="form-control">
+                <option value="">--Status--</option>
+               
+                <option value="1" <?php echo (isset($this->params['f_status']) && $this->params['f_status'] == "1") ? 'selected' : ''; ?>>Vigente</option>
+                <option value="2" <?php echo (isset($this->params['f_status']) && $this->params['f_status'] == "2") ? 'selected' : ''; ?>>Vencido</option>
+               
+
+            </select>
+        </div>
+    
+  
+
+        <div class="form-group">
+            <a id="btn-filter-cert" data-url="<?php echo $this->baseUrl('index.php/certificados/index'); ?>" class="btn btn-default"><span class="glyphicon glyphicon-filter"></span> Filtrar</a>
+             <a href="app/certificados/index"  class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Reiniciar</a>
+        </div>
+        
+		</div>
+	</div>
+    
+	
+   
+	<div class="row col-xs-12 col-md-12 col-sm-12">
+   
+			<table class="table table-hover table-striped" id="tb_estudiantes">
+				<thead><tr>
+					<th>Id</th>
+					 <th>Cédula</th>
+					 <th>Código Certificación</th>
+					<th>Nombre y Apellido</th>
+					<th>Curso </th>
+					<th>Fecha de Certificación</th>
+					<th>Fecha de Vencimiento</th>
+					<th>Status</th>
+					<th class="text-center" width="17%">Acción</th>
+				</tr></thead><tbody>
+				<?php foreach ($this->members as $row): ?>
+					<tr>
+						<td><?php echo $row->id; ?></td>
+						<td><?php echo $row->cedula; ?></td>
+						<td><?php echo $row->codigo; ?></td>
+						<td><?php echo utf8_encode(ucwords(implode(' ', array($row->nombre, $row->apellido)))); ?></td>
+						<td><?php echo utf8_encode(ucwords($row->descripcion)); ?></td>
+						<td><?php echo $row->fecha_cap ?></td>
+						<td><?php echo $row->fecha_ven; ?></td>
+						<td><?php  if($row->status==1){echo "Vigente";}else{echo "Vencido";} ?></td>
+
+					   
+						<td class="text-center">
+							<div id="actiongroup" class="btn-group">
+								
+								<a href="<?php echo $this->url(array('controller' => 'certificados', 'action' => 'detail', 'id' => $row->id)); ?>" target="_blank" class="btn btn-default btn-sm" title="Ver detalles"><span class="glyphicon glyphicon-zoom-in"></span></a>
+
+								<a href="<?php echo $this->url(array('controller' => 'certificados', 'action' => 'edit', 'id' => $row->id)); ?>" class="btn btn-info btn-sm" title="Editar"><span class="glyphicon glyphicon-edit"></span> </a>
+
+								<button type="button" data-id="<?php echo $row->id; ?>" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm" title="Eliminar"><span class="glyphicon glyphicon-trash"></span></button>
+								
+
+							</div>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody></table>
+			
+			
+	</div>
+	
+</div> <!-- fin del container  -->
+
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar miembro</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea eliminar el miembro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger delete">Borrar</button>
+                <form id="formDelete" name="formDelete" method="POST" action="<?php echo $this->url(array('controller' => 'certificados', 'action' => 'delete')); ?>">
+                    <input type="hidden" id="id" name="id" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

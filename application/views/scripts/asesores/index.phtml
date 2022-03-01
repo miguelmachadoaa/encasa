@@ -1,0 +1,105 @@
+           <!--popular-->
+  <div class=" header-right">
+    <div class=" banner">
+       <div class="slider">
+          <div class="callbacks_container">
+            <ul class="rslides" id="slider">  
+
+              <?php foreach ($this->sliders as $slider): ?>
+                 <li>
+                   <div class="" style="background: url(<?php echo $this->baseUrl($slider->imagen); ?>) no-repeat;     width: 100%;    min-height: 550px;    background-size: cover;    -webkit-background-size: cover;">
+                    <div class="caption">
+                      <h3><span><?php echo $slider->titulo; ?></span></h3>
+                      <p><?php echo $slider->descripcion; ?></p>
+                    </div>
+                  </div>
+               </li>
+              <?php endforeach ?>
+
+   
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--header-bottom-->
+  <div class="banner-bottom-top">
+      <div class="container">
+      <div class="bottom-header">
+        <div class="header-bottom">
+          <div class=" bottom-head">
+            <a href="<?php echo $this->baseUrl('/inmueble/buscar/tipo/apartamento'); ?>">
+              <div class="buy-media">
+                <i class="buy"> </i>
+                <h6>Venta</h6>
+              </div>
+            </a>
+          </div>
+          <div class=" bottom-head">
+            <a href="<?php echo $this->baseUrl('/inmueble/buscar/tipo/apartamento'); ?>">
+              <div class="buy-media">
+              <i class="rent"> </i>
+              <h6>Alquiler</h6>
+              </div>
+            </a>
+          </div>
+         
+          
+          
+          <div class=" bottom-head">
+            <a href="<?php echo $this->baseUrl('/asesores'); ?>">
+              <div class="buy-media">
+              <i class="deal"> </i>
+              <h6>Comunidad</h6>
+              </div>
+            </a>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+  </div>
+  </div>
+      <!--//-->
+
+
+
+        <div class="popular-w3">
+      <div class="container" style="margin-bottom: 2em;">
+        <h2 class="tittle" style="text-align: center;
+padding: 2em;
+font-size: 2em;"> Nuestros Asesores </h2>
+        <div class="popular-grids">
+
+      
+
+        <?php foreach ($this->elementos as $asesor): ?>
+           
+
+          <div class="col-md-3 popular-grid" style="border: 1px solid rgba(0,0,0,0.1);">
+           <div class="wrap" style="height: 20em;">
+             <img style="height: 18em;" src="<?php echo $this->baseUrl($asesor->imagen); ?>" class="img-responsive" alt="<?php echo $asesor->nombre; ?>"/>
+           </div>
+            
+            <div class="popular-text" style="color: #333;
+
+text-align: center;">
+               <h4><?php echo $asesor->nombre; ?></h4>
+              <h3><?php echo $asesor->cargo; ?></h3>
+              <p><?php echo $asesor->telefono; ?> <br><?php echo $asesor->email; ?></p>
+              
+            </div>
+          </div>
+
+          
+        <?php endforeach ?>
+
+        
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!--popular-->
+

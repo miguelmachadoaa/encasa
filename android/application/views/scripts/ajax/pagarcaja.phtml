@@ -1,0 +1,80 @@
+<?php
+
+$total=$this->pedido['total']-$this->pagado['total_pagado'];
+
+
+ ?>
+
+
+ <div class="row ">
+ 	
+ 	<div class="col-sm-6">
+ 		<div class="row">
+
+            <h3><?php echo $total ?> 
+ 			<div class="pull-right">
+             <?php if ( $total==0 ): ?>
+                <button class="btn btn-danger" onclick="cerrarcaja('<?php echo $this->pedido['id']; ?>')"> Cerrar</button>
+            <?php endif ?>
+             <button class="btn btn-primary" onclick="caja()"> Volver</button>
+             <button class="btn btn-primary" onclick="pagar('<?php echo $this->pedido['id']; ?>','<?php echo $total; ?>')"> Pagar</button>
+            <button class="btn btn-primary" onclick="imprimir()"> Imprimir</button>
+
+            </div>
+ 			</h3>
+ 		</div>
+
+ 		<div class="row">
+ 			<table class="table table-responsive">
+ 				<tr>
+ 					<th>Cant</th>
+ 					<th>Descripcion</th>
+
+ 					<th>Precio</th>
+
+ 					<th>Total</th>
+
+                    <th>Accion</th>
+
+
+
+ 				</tr>
+ 				<?php foreach ($this->detalles as $detalle ): ?>
+
+                    <tr>
+                        <td><?php echo $detalle->cantidad; ?></td>
+                        <td><?php echo $detalle->descripcion; ?></td>
+
+                        <td><?php echo $detalle->precio; ?></td>
+
+                        <td><?php echo $detalle->total; ?></td>
+                        <td>
+                            <button onclick="eliminardetalle('<?php echo $detalle->id; ?>', '<?php echo $this->pedido['id']; ?>')" class="btn btn-danger">eliminar</button>
+                        </td>
+
+                    </tr>
+                    
+                <?php endforeach ?>
+ 			</table>
+ 		</div>
+ 	</div>
+
+ 	<div class="col-sm-6">
+
+    <?php foreach ($this->productos as $pro): ?>
+
+        <button onclick="agregardetalle('<?php echo $this->pedido['id']; ?>','<?php echo  $pro->id; ?>', '1', '<?php echo  $pro->precio; ?>')"   class="btn btn-sq btn-primary">
+                <br/>
+                <span class="titulo" > <?php echo  $pro->descripcion; ?> </span>
+                <br/>
+               <span class="total">Bs. <?php echo $pro->precio; ?></span>
+        </button>
+
+    <?php endforeach ?>
+
+
+ 		
+
+     
+ 	</div>
+ </div>

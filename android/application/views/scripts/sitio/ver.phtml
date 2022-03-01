@@ -1,0 +1,132 @@
+
+ <?php $dolar=$this->identidad['dolar']; ?>
+  <h3 style="margin-top: 0.8em;"><span><?php echo $this->pagina['titulo']; ?></span></h3> 
+  <!---->
+<!--banner-->
+
+   
+      <div class="" style="height: : 5em !important; width: 100%; padding: 2em 4em; background: #35b3bf;
+    color: #fff;">
+
+        <div class="row" style="height: : 5em !important;">
+          <div class="col-sm-3" style="height: : 5em !important;"> 
+              <img class="img img-responsive" src="<?php echo  $this->baseUrl('assets/img/'.$this->usuario['imagen']); ?> "> 
+
+          </div>
+          <div class="col-sm-9" style="height: : 5em !important;">
+            <h1><?php echo $this->usuario['name'].' '.$this->usuario['lastname']; ?></h1>
+            <h3><?php echo $this->usuario['email']; ?></h3>
+            <h3><?php echo $this->usuario['telefono']; ?></h3>
+            <h3><?php echo $this->usuario['movil']; ?></h3>
+          </div>
+        </div>
+
+        </div>
+    
+  <div class="clearfix"> </div>
+    <!--initiate accordion-->
+     
+
+
+<div class=" banner-buying" style="    background: url(<?php echo $this->baseUrl($this->pagina['imagen']); ?>) no-repeat;    width: 100%;    min-height: 250px;    background-size: cover;    -webkit-background-size: cover;">
+  <div class=" container">
+  <h3 style="margin-top: 0.8em;"><span><?php echo $this->pagina['titulo']; ?></span></h3> 
+  <!---->
+<!--banner-->
+
+  
+  <div class="content">
+    <div class="serach-w3agile">
+      <div class="container">
+        <div class="place-grids">
+         
+           <div class="clearfix"></div>
+          <br>
+
+         <input class="filtros" type="hidden" name="f_estado" id="f_estado">
+          <input class="filtros" type="hidden" name="f_ciudad" id="f_ciudad">
+          <input class="filtros" type="hidden" name="f_zona" id="f_zona">
+        
+
+          <div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+
+      <select id="tipo_propiedad" name="tipo_propiedad" class=" col-sm-3 selectpicker form-control input-lg" data-live-search="true" title="Tipos de Propiedades">
+                        <option value="">Todo</option>
+                        <option value="Apartamento">Apartamento</option>
+              <option value="Casa">Casa</option>
+              <option value="Terreno">Terreno</option>
+              <option value="Hacienda">Hacienda</option>
+              <option value="Town House">Town House</option>
+              <option value="Habitacion">Habitacion</option>
+              <option value="Local Comercial">Local Comercial</option>
+              <option value="Oficina Comercial">Oficina Comercial</option>
+              <option value="Bodega-Galpon">Galpon</option>
+              <option value="Fondo de Comercio">Fondo de Comercio</option>
+              <option value="Hotel">Hotel</option>
+              <option value="Edificio">Edificio</option>
+              <option value="Anexo">Anexo</option>
+                    </select>
+
+      <div class="input-group input-group-lg">
+      <input style="border-radius: 0px;" type="text"  id="buscador" name="buscador" class="col-sm-9 form-control" placeholder="Buscar Propiedades">
+      <span class="input-group-btn">
+        <button id="btn_buscar" name="btn_buscar" onclick="buscar()" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+      </span>
+    </div>
+
+  </div><!-- /.col-lg-6 -->
+  </div><!-- /.row -->
+  </div><!-- /.row -->
+
+
+        </div>
+      </div>
+    </div>
+  <div class="clearfix"> </div>
+    <!--initiate accordion-->
+          
+  </div>
+</div>
+
+  
+    
+<div class="dealer-top">
+   
+      <div class="deal-top-top">
+
+        <?php $ObjFotos = new Application_Model_DbTable_Fotos(); ?>
+
+        <?php $i=0; ?>
+        <?php foreach ($this->inmuebles as $inm): ?>
+          <?php $i++; ?>
+          <?php $foto=$ObjFotos->getsSolicitudUna($inm->id);  ?>  
+          
+          <div class="col-md-3 col-sm-4  top-deal-top" style="height: 28em;">
+          <div class=" top-deal">
+            <a href="<?php echo $this->baseUrl('/inmueble/ver/id/').$inm->id; ?>" class="mask"><img src="<?php echo $this->baseUrl('/assets/images/300/').$foto->foto; ?>" class="img-responsive zoom-img" alt=""></a>
+            <div class="deal-bottom">
+              <div class="top-deal1">
+                <h5><a href="<?php echo $this->baseUrl('/inmueble/ver/id/').$inm->id; ?>"> <?php echo substr($inm->titulo, 0, 50); ?></a></h5>
+                <p style="margin: 0px;">Ubicacion: <?php echo utf8_encode($inm->zona);?></p>
+                <p style="margin: 0px;" >Precio: <?php echo number_format($inm->monto_vender*$dolar, 2, ',', '.');?> BS.</p>
+                
+              </div>
+              
+            <div class="clearfix"> </div>
+            </div>
+          </div>
+        </div>
+          
+        <?php endforeach ?>
+
+        
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    <!--popular-->
+
+
+
+
+

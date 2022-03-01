@@ -1,0 +1,121 @@
+<div class="container-fluid" ng-controller="modulosCtrl">
+    <h1 class="page-header">Solicitudes Bienes Muebles
+
+<div class="pull-right">
+                    <a href="<?php echo $this->baseUrl('/mueble/add'); ?>" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Agregar</a>
+                </div>
+
+    </h1>
+    
+    <?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+	
+	 
+    
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+           
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Movil</th>
+            <th>Email</th>
+
+            <th>Estado</th>
+
+            <th>Ciudad</th>
+
+            <th>Cantidad</th>
+
+            <th>Fecha</th>
+
+            
+            <th width="150px">
+                Accion
+            </th>
+        </tr>
+       
+                    <?php foreach ($this->muebles as $row): ?>
+        <tr id="<?php echo $row->id; ?>">
+            <td><?php echo $row->id; ?></td>
+            <td><?php echo $row->nombres.' '.$row->apellidos; ?></td>
+            
+            <td><?php echo $row->tlf; ?></td>
+            <td><?php echo $row->tlf_movil; ?></td>
+            <td><?php echo $row->email; ?></td>
+            <td><?php echo $row->estado; ?></td>
+            <td><?php echo $row->ciudad; ?></td>
+            <td><?php echo $row->cantidad; ?></td>
+            <td><?php echo $row->fecha; ?></td>
+
+
+            <td>
+                
+                <div class="btn-group pull-right">
+
+                    
+                    <a href="<?php echo $this->baseUrl('/mueble/ver/id/').$row->id; ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span> </a>
+
+                    <button type="button" onclick="del(<?php echo $row->id; ?>)"  class="btn btn-danger" title="Eliminar"><span class="glyphicon glyphicon-trash"></span> </button>
+
+                    <?php if ($row->estatus){ ?>
+
+                      <button type="button"  onclick="desactivarPresupuesto(<?php echo $row->id; ?> )"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-up"></span> </button>  
+
+                    <?php }else{ ?>
+
+                        <button type="button" onclick="activarPresupuesto(<?php echo $row->id; ?>)"  class="btn btn-default" title="Eliminar"><span class="glyphicon  glyphicon-thumbs-down"></span> </button>  
+
+                    <?php } ?>
+
+                    
+                </div>
+                
+                
+                
+                
+            </td>
+
+
+        </tr>
+        <?php endforeach; ?>
+
+
+
+        
+    </table>
+ 
+    
+
+
+
+
+
+</div> <!-- End Container--> 
+
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Eliminar</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="del_id" id="del_id">
+                <p>¿Está seguro que desea eliminar el registro?</p>
+                <p class="debug-url"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="deletePresupuesto()" class="btn btn-danger">Borrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>

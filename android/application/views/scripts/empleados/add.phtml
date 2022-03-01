@@ -1,0 +1,103 @@
+<div class="container-fluid">
+
+
+
+<?php if (count($this->messages) > 0): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php foreach ($this->messages as $message): ?>
+                <span><?php echo current($message); ?></span><br>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
+
+    <h1 class="page-header">Registro de Empleados</h1>
+    
+    <div class="row">
+
+
+
+<!--++++++++++++++++++++ Comienzo del formulario ++++++++++++++++++-->
+
+<form id="form_clientes" name="form_clientes" enctype="multipart/form-data" action="wake/empleados/add" method="post">
+
+<div>
+
+    <div class="form-group">
+        <label for="cedula" class="required">Cédula/Rif *</label>
+        <input type="text" name="cedula" id="cedula" value="" class="form-control" placeholder="Cédula">
+    </div>
+
+    <div class="form-group">
+        <label for="nombre" class="required">Nombre *</label>
+        <input type="text" name="nombre" id="nombre" value="" class="form-control" placeholder="Nombre">
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="optional">Email</label>
+        <input type="text" name="email" id="email" value="" class="form-control" placeholder="ej: john@gmail.com" required="1">
+    </div>
+
+    <div class="form-group">
+        <label for="fecha_nac" class="required">Fecha de Nacimiento *</label>
+        <input type="text" name="fecha_nac" id="fecha_nac" value="" class="form-control fecha" placeholder="Fecha de Nacimiento">
+    </div>
+
+    <div class="form-group">
+        <label for="estado" class="required">Estado  *</label>
+        <select name="estado" id="estado" class="form-control">
+    
+            <option value="">--Estado--</option>
+                    <?php foreach ($this->states as $state): ?>
+                    <option value="<?php echo $state->id; ?>" ><?php echo utf8_encode($state->state); ?></option>
+                    <?php endforeach; ?>
+
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="direccion" class="required">Dirección  *</label>
+        <input type="text" name="direccion" id="direccion" value="" class="form-control" placeholder="Dirección">
+    </div>
+
+    <div class="form-group">
+        <label for="tlf" class="required">Teléfono  *</label>
+        <input type="text" name="tlf" id="tlf" value="" class="form-control" placeholder="Teléfono">
+    </div>
+
+
+
+
+
+<dt id="buttons-label">&#160;</dt><dd id="buttons-element"><fieldset id="fieldset-buttons"><dl>
+
+<input type="submit" name="btn_submit" id="btn_submit" value="Guardar" class="btn btn-default">
+
+<a href="wake/empleados" name="btn_cancel" id="btn_cancel" type="button" class="btn btn-danger">Cancelar</a>
+
+</dl></fieldset></dd></div></form> 
+
+
+   
+
+
+
+
+
+
+<!--+++<?php// echo $this->EstForm; ?> ++++++++++++++++++++ Fin  del formulario+++++++++++++++ ++++++++++++-->
+
+
+
+	<div class="alert alert-danger" role="alert">
+		* Campos Requeridos 
+	</div>
+
+
+
+
+    </div>
+    
+</div>

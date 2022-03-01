@@ -1,0 +1,107 @@
+<div class="container">
+
+	<ol class="breadcrumb">
+		  <li><a href="<?php echo $this->baseUrl('/'); ?>">Inicio</a></li>
+		  <li><a href="<?php echo $this->baseUrl('/identidad'); ?>">Identidad</a></li>
+		  <li class="active">Editar</li>
+	</ol>
+
+    <h1 class="page-header">Editar </h1>
+    
+    <div class="row">
+
+
+
+<!--++++++++++++++++++++ Comienzo del formulario ++++++++++++++++++-->
+<div class="col-sm-12">
+	<form id="form_noticia" name="form_noticia" enctype="multipart/form-data" action="<?php echo $this->baseUrl('/identidad/edit'); ?>" method="post"><div>
+
+		<input type="hidden" id="id" name="id"  value="<?php echo $this->elemento['id']; ?>">
+
+		<div id="idNoticia" data-id="<?php echo $this->elemento['id']; ?>"></div>
+
+		
+		<div class="form-group">
+			<label for="cedula" class="required">Cotizacion Dolar *</label>
+			<input type="text" name="dolar" id="dolar" value="<?php echo $this->elemento['dolar']; ?>" class="form-control" placeholder="Dolar">
+		</div>
+
+		<div class="form-group">
+			<label for="cedula" class="required">Nombre *</label>
+			<input type="text" name="nombre" id="nombre" value="<?php echo $this->elemento['nombre']; ?>" class="form-control" placeholder="Nombre">
+		</div>
+
+		<div class="form-group">
+			<label for="cedula" class="required">Titulo *</label>
+			<input type="text" name="titulo" id="titulo" value="<?php echo $this->elemento['titulo']; ?>" class="form-control" placeholder="Direccion">
+		</div>
+
+		<div class="form-group">
+			<label for="cedula" class="required">Direccion *</label>
+			<input type="text" name="direccion" id="direccion" value="<?php echo $this->elemento['direccion']; ?>" class="form-control" placeholder="Direccion">
+		</div>
+
+		<div class="form-group">
+			<label for="cedula" class="required">Telefono *</label>
+			<input type="text" name="telefono" id="telefono" value="<?php echo $this->elemento['telefono']; ?>" class="form-control" placeholder="Telefono">
+		</div>
+
+		
+
+		<div class="form-group">
+			<label for="cedula" class="required">Email *</label>
+			<input type="text" name="email" id="email" value="<?php echo $this->elemento['email']; ?>" class="form-control" placeholder="Email">
+		</div>
+		
+		<div class="form-group">
+			<label for="cedula" class="required">Metatags *</label>
+			<input type="text" name="palabras" id="palabras" value="<?php echo $this->elemento['palabras']; ?>" class="form-control" placeholder="Metatags">
+		</div>
+
+		<div class="form-group">
+			<label for="cedula" class="required">MetaDescripcion *</label>
+			<input type="text" name="descripcion" id="descripcion" value="<?php echo $this->elemento['descripcion']; ?>" class="form-control" placeholder="MetaDescripcion">
+		</div>
+
+
+		<div class="col-sm-12">	
+				<div id="doc_path-label col-sm-9">
+		<label for="doc_path" class="optional">Imagen Destacada:</label>
+		</div>
+		<div id="doc_path-element">
+			<input type="hidden" name="MAX_FILE_SIZE" value="2097152" id="MAX_FILE_SIZE">
+			<input type="file" name="doc_path" id="doc_path" class="btn">
+			Tamaño Maximo de Imagen 1Mb. Cambie la Imagen solo si requiere actualizarla
+		</div>
+
+		<div class="col-sm-3">
+		<img src="<?php echo $this->baseUrl($this->elemento['logo']); ?>" class="img ig-responsive img-form" max-width="100px" >
+			
+		</div>
+
+		</div>
+		
+
+		<dt id="buttons-label">&#160;</dt>
+		<dd id="buttons-element">
+			<fieldset id="fieldset-buttons">
+				<dl>
+					<input type="submit" name="btn_submit" id="btn_submit" value="Guardar" class="btn btn-default">
+
+					<button name="btn_cancel" id="btn_cancel" type="button" class="btn btn-danger">Cancelar</button>
+				</dl>
+
+			</fieldset>
+		</dd>
+		</div>
+	</form> 
+
+
+</div>
+
+
+
+
+    </div> <!-- fin row -->
+    
+</div> <!-- fin container  -->

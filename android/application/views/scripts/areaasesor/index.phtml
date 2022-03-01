@@ -1,0 +1,167 @@
+
+<div class="w3l_agileits_breadcrumbs">
+   <div class="container">
+    <div class="w3l_agileits_breadcrumbs_inner">
+      <ul>
+        <li><a href="<?php echo $this->baseUrl('/'); ?>">Home</a><span>«</span></li>
+                  
+        <li>Area Asesor</li>
+        </ul>
+    </div>
+  </div>
+</div>    
+
+<!--Services-->
+<div class="options-wthree">
+
+    <div class="container">
+
+   <div class="col-xs-12 visible-xs" >
+
+      <p>Propiedades Activas  <?php echo $this->activas.'/'.$this->total; ?></p>
+
+
+        <div class="progress" style="margin-bottom: 2em;">
+            <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $this->activas ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $this->p_activas ?>%;">
+              <?php echo $this->activas?>
+            </div>
+          </div>
+
+
+            <p>Propiedades Alquiler  <?php echo $this->suspendidas.'/'.$this->total; ?></p>
+
+
+        <div class="progress" style="margin-bottom: 2em;">
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<?php echo $this->suspendidas ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $this->p_suspendidas ?>%;">
+              <?php echo $this->suspendidas ?>
+            </div>
+          </div>
+
+
+
+        <p>Propiedades Vendidas  <?php echo $this->vendidas.'/'.$this->total; ?></p>
+
+
+        <div class="progress" style="margin-bottom: 2em;">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $this->vendidas ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $this->p_vendidas ?>%;">
+              <?php echo $this->vendidas ?>
+            </div>
+          </div>
+
+
+
+          <p>Propiedades Suspendidas  <?php echo $this->suspendidas.'/'.$this->total; ?></p>
+
+
+        <div class="progress" style="margin-bottom: 2em;">
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<?php echo $this->suspendidas ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $this->p_suspendidas ?>%;">
+              <?php echo $this->suspendidas ?>
+            </div>
+          </div>
+
+
+
+    </div >
+
+
+
+  <div class="col-xs-12">
+
+    <ul>
+
+      <li>
+      <a href="<?php echo $this->baseUrl('/areaasesor/mispropiedades'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Mis Propiedades</h6>
+        </div>
+      </a>
+      </li>
+
+
+      <li>
+      <a href="<?php echo $this->baseUrl('/areaasesor/mensajes'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Ver Mensajes</h6>
+        </div>
+      </a>
+      </li>
+      <li>
+      <a href="<?php echo $this->baseUrl('/areaasesor/datos'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-clipboard" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Solicitus Datos </h6>
+        </div>
+      </a>
+      </li>
+      
+      <li>
+        <a href="<?php echo $this->baseUrl('/areaasesor/solicitudes'); ?>" class="opt-grids">
+          <div class="icon-agileits-w3layouts">
+            <i class="fa fa-list" aria-hidden="true"></i>
+          </div>
+          <div class="opt-text-w3layouts">
+            <h6>Solicitudes</h6>
+          </div>
+        </a>
+        </li>
+
+
+      <li>
+
+      <a href="<?php echo $this->baseUrl('/areaasesor/noticias'); ?>" class="opt-grids">
+        <div class="icon-agileits-w3layouts">
+          <i class="fa fa-file" aria-hidden="true"></i>
+        </div>
+        <div class="opt-text-w3layouts">
+          <h6>Noticias</h6>
+        </div>
+      </a>
+      </li>
+      
+      <li style="margin-bottom: 0.5em;">
+        <a href="<?php echo $this->baseUrl('/areaasesor/crm'); ?>" class="opt-grids">
+          <div class="icon-agileits-w3layouts">
+            <i class="fa fa-edit" aria-hidden="true"></i>
+          </div>
+          <div class="opt-text-w3layouts">
+            <h6>CRM</h6>
+          </div>
+        </a>
+      </li>
+
+      <li>
+        <a href="<?php echo $this->baseUrl('/areaasesor/agentes'); ?>" class="opt-grids">
+          <div class="icon-agileits-w3layouts">
+            <i class="fa fa-users" aria-hidden="true"></i>
+          </div>
+          <div class="opt-text-w3layouts">
+            <h6>Agentes </h6>
+          </div>
+        </a>
+      </li>
+
+     
+      <li>
+        <a href="<?php echo $this->baseUrl('/auth/logout'); ?>" class="opt-grids">
+          <div class="icon-agileits-w3layouts">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+          </div>
+          <div class="opt-text-w3layouts">
+            <h6>Salir</h6>
+          </div>
+        </a>
+      </li>
+
+    </ul>
+
+    </div>
+  </div>
+</div>

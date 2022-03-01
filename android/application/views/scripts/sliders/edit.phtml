@@ -1,0 +1,103 @@
+<div class="container" ng-controller="editnoticiaCtrl">
+
+	<ol class="breadcrumb">
+		  <li class="active">Editar</li>
+	</ol>
+
+    <h1 class="page-header">Editar Sliders</h1>
+    
+    <div class="row">
+
+
+
+<!--++++++++++++++++++++ Comienzo del formulario ++++++++++++++++++-->
+<div class="col-sm-12">
+	<form id="form_noticia" name="form_noticia" enctype="multipart/form-data" action="<?php echo $this->baseUrl('/sliders/edit'); ?>" method="post"><div>
+
+		<input type="hidden" id="id" name="id"  value="<?php echo $this->sliders['id']; ?>">
+
+		<div id="idsliders" data-id="<?php echo $this->sliders['id']; ?>"></div>
+
+		
+			<div class="form-group">
+			<label for="cedula" class="required">Titulo *</label>
+			<input type="text" name="titulo" id="titulo" value="<?php echo $this->sliders['titulo']; ?>" class="form-control" placeholder="Titulo">
+		</div>
+
+		<div class="form-group">
+			<label for="cedula" class="required">Descripcion *</label>
+			<input type="text" name="descripcion" id="descripcion" value="<?php echo $this->sliders['descripcion']; ?>" class="form-control" placeholder="Descripcion">
+		</div>
+
+		
+
+
+
+
+		<div class="col-sm-12">	
+				<div id="doc_path-label col-sm-9">
+		<label for="doc_path" class="optional">Imagen Destacada:</label>
+		</div>
+		<div id="doc_path-element">
+			<input type="hidden" name="MAX_FILE_SIZE" value="2097152" id="MAX_FILE_SIZE">
+			<input type="file" name="doc_path" id="doc_path" class="btn">
+			Tamaño Maximo de Imagen 1Mb y 2000x800 px. Cambie la Imagen solo si requiere actualizarla
+
+		</div>
+
+		<div class="col-sm-3">
+		<?php $imagen=$this->sliders['imagen']; ?>
+		<img src="<?php echo $this->baseUrl('/').$imagen; ?>" class="img ig-responsive img-form" width="200px" >
+			
+		</div>
+
+		</div>
+		
+
+		
+
+
+
+		<dt id="buttons-label">&#160;</dt>
+		<dd id="buttons-element">
+			<fieldset id="fieldset-buttons">
+				<dl>
+					<input type="submit" name="btn_submit" id="btn_submit" value="Guardar" class="btn btn-default">
+
+					<button name="btn_cancel" id="btn_cancel" type="button" class="btn btn-danger">Cancelar</button>
+				</dl>
+
+			</fieldset>
+		</dd>
+		</div>
+	</form> 
+
+
+</div>
+
+
+
+
+
+
+   
+
+
+
+
+
+
+<!--+++<?php// echo $this->EstForm; ?> ++++++++++++++++++++ Fin  del formulario+++++++++++++++ ++++++++++++-->
+
+
+
+
+
+
+
+
+
+
+    </div> <!-- fin row -->
+    
+</div> <!-- fin container  -->

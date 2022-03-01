@@ -1,0 +1,157 @@
+<!-- /navigation -->
+<div class="banner1">
+    <div class="container">
+      <h3 class="animated wow slideInLeft" data-wow-delay=".5s"><a href="<?php echo $this->baseUrl('/'); ?>">Home</a> / <span>Noticias</span></h3>
+    </div>
+  </div>
+
+<section class="blog-post">
+        <!-- Page Content -->
+    <div class="container">
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+                <!-- Blog Post -->
+                <br>
+                <h2 class="tittle"><?php echo $this->noticias['titulo']; ?></h2>
+        
+                <!-- Date/Time -->
+        <hr>
+                <p class="blogpost-w3ls w3layouts w3 w3l w3ls agileits"><i class="fa fa-clock-o"></i> Publicado: <?php echo $this->noticias['date_add']; ?></p>
+
+                <hr>
+
+                <!-- Preview Image -->
+        <div class="hover01 column">
+          <div>
+            <figure><img class="img-responsive blogpost-img-w3ls" src="<?php echo $this->baseUrl('/').$this->noticias['foto']; ?>" alt="w3layouts" title="w3layouts"></figure>
+          </div>
+        </div>
+
+                <hr>
+
+                <!-- Post Content -->
+                <?php echo $this->noticias['noticia']; ?>
+
+                <hr>
+
+                <p> Autor: <?php echo $this->noticias['name'].' '.$this->noticias['lastname']; ?>   </p>
+
+                <!-- Blog Comments -->
+                <hr>
+
+                <div id="botones-para-compartir">
+  <div class="col-sm-4">  
+      <div class="fb-share-button" data-href="http://dptpropiedades.com/blog/ver/id/<?php echo $this->noticias['id']; ?>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" src=sdkpreparse">Compartir</a></div>
+  </div>
+
+
+  <div class="col-sm-4">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="dptpropiedades" data-size="small">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </div>
+  <div class="col-sm-4">
+
+    <!-- Place this tag where you want the share button to render. -->
+    <div class="g-plus" data-action="share"></div>
+  </div>
+
+
+         </div>
+
+  
+
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <br>
+            <div class="col-md-4 blog-post-w3layouts">
+        
+        <!-- Blog Categories Well -->
+        <div class="well blog-post-agileits">
+          <h4 class="blogpost-w3lsagile">Noticias Relacionadas</h4>
+          <div class="row">
+            <div class="col-lg-12">
+              
+               <?php foreach ($this->related as $new): ?>
+
+
+                <div class="media">
+      
+      <div class="media-body">
+        <h4 class="media-heading"><a href="<?php echo $this->baseUrl('/blog/ver/id/').$new['id']; ?>"><?php echo $new['titulo']; ?></a> </h4>
+        <?php echo strip_tags(substr($new['noticia'], 0,100)); ?>
+      </div>
+    </div>
+              
+            <?php endforeach ?>
+
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+
+
+        <div class="well blog-post-agileits">
+          <h4 class="blogpost-w3lsagile">Comprar</h4>
+          <div class="row">
+            <div class="col-lg-12">
+              <ul class="list-unstyled">
+                 <li> <a href="http://pgmbienesraices.com/inmueble/buscar/f_estado//f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/Apartamento">Apartamentos</a></li>
+                    <li> <a href="http://pgmbienesraices.com/inmueble/buscar/f_estado//f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/Casa">Casas</a></li>
+                    <li> <a href="http://pgmbienesraices.com/inmueble/buscar/f_estado//f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/Local%20Comercial">Local Comercial</a></li>
+                    <li> <a href="http://pgmbienesraices.com/inmueble/buscar/f_estado//f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/Galpon">Galpon</a></li>
+                    <li> <a href="http://pgmbienesraices.com/inmueble/buscar/f_estado//f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/Terreno">Terreno</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+
+        <div class="well blog-post-agileits">
+          <h4 class="blogpost-w3lsagile">Ubicaciones</h4>
+          <div class="row">
+            <div class="col-lg-12">
+              <ul class="list-unstyled">
+                <li><a href="http://pgmbienesraices.com/inmueble/buscar/f_estado/4/f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/"><span class="fa fa-hand-o-right" aria-hidden="true"></span>Aragua</a></li>
+                <li><a href="http://pgmbienesraices.com/inmueble/buscar/f_estado/5/f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/"><span class="fa fa-hand-o-right" aria-hidden="true"></span>Caracas</a></li>
+                <li><a href="http://pgmbienesraices.com/inmueble/buscar/f_estado/9/f_ciudad//f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/"><span class="fa fa-hand-o-right" aria-hidden="true"></span>Carabobo</a></li>
+                <li><a href="http://pgmbienesraices.com/inmueble/buscar/f_estado//f_ciudad/352/f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/"><span class="fa fa-hand-o-right" aria-hidden="true"></span>Maracaibo</a></li>
+                <li><a href="http://pgmbienesraices.com/inmueble/buscar/f_estado//f_ciudad/163/f_zona//f_habitacion/undefined/f_bano/undefined/f_tipo/"><span class="fa fa-hand-o-right" aria-hidden="true"></span>Barquisimeto</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+
+
+
+        <!-- Blog Categories Well -->
+        <div class="well blog-post-agileits">
+          <h4 class="blogpost-w3lsagile">Etiquetas</h4>
+          <div class="row">
+            <div class="col-lg-12">
+
+            <?php foreach ($this->etiquetas as $new): ?>
+
+                  <a href="<?php echo $this->baseUrl('/blog/tags/id/').$new['descripcion']; ?>"> <span class="badge"><?php echo $new['descripcion']; ?></span> </a>
+              
+            <?php endforeach ?>
+              
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+
+        <!-- Side Widget Well -->
+         
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        
+    </div>
+    <!-- /.container -->
+</section>  
